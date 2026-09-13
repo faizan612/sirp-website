@@ -53,50 +53,39 @@ export const OMNISENSE_PAGE_DATA = {
   agents: {
     heading:     'Agents in the mesh',
     description: "OmniSense's autonomous SOC agents in the mesh accelerate alert containment, optimizing security operations with faster incident analysis, remediation, and response.",
+    // Order matches the eight mesh slots in the Figma frame, read top-to-bottom,
+    // left-to-right. OmnisenseAgents pins each item to its slot by index.
     items: [
       {
-        icon:        'classification',
-        title:       'Classification Agent',
-        description: 'The Classification Agent categorizes incoming alerts based on type (e.g., phishing, malware, insider threat). This helps in efficient triaging and routing of the alerts for appropriate action.',
-      },
-      {
-        icon:        'playbook',
-        title:       'Suggest Playbook Agent',
-        description: 'The Suggest Playbook Agent proposes relevant playbooks to follow based on the nature of the incident. It helps in ensuring that the right procedures are applied, aligning actions with pre-configured, best-practice response procedures.',
-      },
-      {
-        icon:        'assign',
-        title:       'Assign Analyst Agent',
-        description: 'The Assign Analyst Agent automatically assigns alerts to available analysts based on their expertise and workload. This optimizes resource allocation, ensuring that the right person handles the right incident.',
-      },
-      {
-        icon:        'header',
-        title:       'Header Analysis Agent',
-        description: 'Analysis email headers to detect spoofing, relay abuse, sender mismatches and anomalous routing, enhancing phishing detection, sender trust scoring and automated triage.',
-      },
-      {
-        icon:        'preprocessor',
-        title:       'Pre Processor Agent',
-        description: 'Processes and normalizes raw alerts by extracting key entities and context for downstream triage and enrichment.',
-      },
-      {
-        icon:        'enrichment',
-        title:       'Enrichment Agent',
-        description: 'The Enrichment Agent gathers external threat intelligence, asset data, and historical context to add depth to incoming alerts. It ensures that each alert is enriched with relevant details for better analysis and decision-making.',
-      },
-      {
-        icon:        'analysis',
         title:       'Analysis Agent',
         description: 'The Analysis Agent analyzes alerts to identify patterns, behaviors, and trends. It examines alert data and context, highlighting anomalous activities and key indicators, aiding the analyst in setting to quicker threat detection.',
       },
       {
-        icon:        'remediation',
-        title:       'Remediation Agent',
-        description: 'The Remediation Agent executes containment actions, such as isolating endpoints or blocking IPs, to automate remediation, ensuring swift and consistent incident response.',
+        title:       'Classification Agent',
+        description: 'The Classification Agent categorizes incoming alerts based on type (e.g., phishing, malware, insider threat). This helps in efficient triaging and routing of the alerts for appropriate action.',
       },
       {
-        icon:        'actions',
-        title:       'Suggested Actions Agent',
+        title:       'Header Analyst Agent',
+        description: 'Analysis email headers to detect spoofing, relay abuse, sender mismatches and anomalous routing, enhancing phishing detection, sender trust scoring and automated triage.',
+      },
+      {
+        title:       'Enrichment Agent',
+        description: 'The Enrichment Agent gathers external threat intelligence, asset data, and historical context to add depth to incoming alerts. It ensures that each alert is enriched with relevant details for better analysis and decision-making.',
+      },
+      {
+        title:       'Pre Processor Agent',
+        description: 'Processes and normalizes raw alerts by extracting key entities and context for downstream triage and enrichment.',
+      },
+      {
+        title:       'Suggest Playbook Agent',
+        description: 'The Suggest Playbook Agent proposes relevant playbooks to follow based on the nature of the incident. It helps in ensuring that the right procedures are applied, aligning actions with pre-configured, best-practice response procedures.',
+      },
+      {
+        title:       'Assign Analyst Agent',
+        description: 'The Assign Analyst Agent automatically assigns alerts to available analysts based on their expertise and workload. This optimizes resource allocation, ensuring that the right person handles the right incident.',
+      },
+      {
+        title:       'Suggest Actions Agent',
         description: 'The Suggested Actions Agent proposes targeted response steps based on alert context and severity, providing analysts with timely and appropriate responses to threats.',
       },
     ],

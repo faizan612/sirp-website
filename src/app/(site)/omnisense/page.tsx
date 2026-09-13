@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { OmnisenseParticleHero } from '@/sections/omnisense/OmnisenseParticleHero'
 import { TheLoopSection } from '@/sections/omnisense/TheLoopSection'
-import { BringYourWorstAlert } from '@/sections/omnisense/BringYourWorstAlert'
 import { OmnisensePlatform } from '@/sections/omnisense/OmnisensePlatform'
 import { OmnisenseAgents } from '@/sections/omnisense/OmnisenseAgents'
 import { OmnisenseAction } from '@/sections/omnisense/OmnisenseAction'
@@ -26,7 +25,6 @@ export default function OmnisensePage() {
       <OmnisenseParticleHero />
       <OmnisensePlatform data={OMNISENSE_PAGE_DATA.platform} />
       <TheLoopSection />
-      <BringYourWorstAlert />
       <OmnisenseAgents data={OMNISENSE_PAGE_DATA.agents} />
       <OmnisenseAction data={OMNISENSE_PAGE_DATA.action} />
       <div className="relative overflow-visible isolate">
