@@ -1,0 +1,63 @@
+.manifesto-citation-footer {
+  background: #000000;
+  padding: 4rem 0 5.5rem;
+}
+
+.manifesto-citation-footer-inner {
+  max-width: var(--manifesto-content-max);
+  margin-inline: auto;
+  padding-inline: var(--manifesto-pad-inline);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.manifesto-citation-footer-pill {
+  margin-bottom: 2.25rem;
+}
+
+.manifesto-citation-footer-copy {
+  /* Same width behavior as `.manifesto-abstract-body` (full manifesto band). */
+  max-width: 100%;
+  width: 100%;
+}
+
+.manifesto-citation-footer-line {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(0.75rem, 1.35vw, 0.875rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #ffffff;
+}
+
+.manifesto-citation-footer-line:last-of-type {
+  margin-bottom: 0;
+}
+
+.manifesto-citation-footer-link {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.manifesto-citation-footer-link:hover {
+  text-decoration-thickness: from-font;
+}
+
+.manifesto-citation-footer-orcid {
+  margin: 1.5rem 0 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(0.75rem, 1.35vw, 0.875rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .manifesto-citation-footer-line,
+  .manifesto-citation-footer-orcid {
+    font-size: 0.75rem;
+  }
+}

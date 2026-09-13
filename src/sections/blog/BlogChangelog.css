@@ -1,0 +1,170 @@
+/* ─── Grid ────────────────────────────────────────────────── */
+.changelog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(50px, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+/* ─── Card ────────────────────────────────────────────────── */
+.changelog-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgb(25, 25, 25);
+  border-radius: 16px;
+  background: #121218;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease, border-top-color 0.25s ease, background 0.25s ease;
+  will-change: transform;
+}
+
+.changelog-card:hover {
+  transform: translateY(-4px);
+  border-top-color: rgb(142, 45, 255);
+  background: linear-gradient(180deg, #8e2dff 0%, #121218 38.29%);
+}
+
+/* ─── Arrow on hover ──────────────────────────────────────── */
+.changelog-card-arrow {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.changelog-card:hover .changelog-card-arrow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Image ───────────────────────────────────────────────── */
+.changelog-card-image {
+  position: relative;
+  width: calc(100% - 20px);
+  margin: 10px 10px 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgb(28, 28, 38);
+  flex-shrink: 0;
+}
+
+.changelog-card-image img {
+  filter: grayscale(100%);
+}
+
+/* ─── Content ─────────────────────────────────────────────── */
+.changelog-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 16px 24px;
+}
+
+/* ─── Meta row ────────────────────────────────────────────── */
+.changelog-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.changelog-card-category {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b889ff;
+}
+
+.changelog-card-date {
+  margin-left: auto;
+  font-family: var(--font-inter, sans-serif);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.changelog-cta--solo {
+  margin-top: 0;
+}
+
+/* ─── Title ───────────────────────────────────────────────── */
+.changelog-card-title {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.changelog-card:hover .changelog-card-title {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ─── Whitepaper CTA ──────────────────────────────────────── */
+.changelog-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.changelog-cta-text {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.65;
+  max-width: 680px;
+}
+
+.changelog-cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-inter, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: rgba(142, 45, 255, 0.25);
+  border: 0.75px solid rgb(142, 45, 255);
+  border-radius: 5px;
+  padding: 5px 15px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.changelog-cta-pill:hover {
+  background-color: rgba(142, 45, 255, 0.4);
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .changelog-grid {
+    grid-template-columns: 1fr;
+  }
+}

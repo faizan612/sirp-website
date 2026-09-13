@@ -1,0 +1,22 @@
+@theme {
+
+  /* Figma variables — google-display-ads / Untitled */
+  --color-home-primary-200: #a557ff;
+  --color-home-primary-300: #8e2dff;
+  --color-home-danger-200: #f36767;
+  --color-home-danger-300: #f04141;
+
+  /* Surfaces pulled from the design */
+  --color-home-ink-950: #0a0a0a;
+  --color-home-ink-900: #0e0e0e;
+  --color-home-ink-850: #0f0f0f;
+  --color-home-ink-800: #141414;
+  --color-home-hairline: #282828;
+  --color-home-hairline-strong: #323232;
+}
+/* Keep the imported homepage's typography independent of site base rules. */
+@layer base {
+  .homepage-design { line-height: 1.5; color: white; font-family: var(--font-sans); }
+  .homepage-design :where(h1,h2,h3,h4,h5,h6) { letter-spacing: normal; }
+  .homepage-design :where(p,nav a,nav button,li) { color: inherit; }
+}

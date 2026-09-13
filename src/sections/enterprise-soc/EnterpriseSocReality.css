@@ -1,0 +1,31 @@
+/* ─── Reality card — matches home page feature-card style ─── */
+.reality-card {
+  border: 11px solid transparent;
+  border-radius: 20px;
+  background-color: rgb(18, 18, 24);
+  box-shadow: 0 0 0 1px rgb(58, 58, 77);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+  cursor: default;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* odd cards (1 & 3) — gradient flows top → bottom on hover */
+.reality-card:nth-child(odd):hover {
+  box-shadow: none;
+  background: linear-gradient(rgb(18, 18, 24), rgb(18, 18, 24)) padding-box,
+    linear-gradient(to bottom, rgb(18, 18, 24) 0%, #8A3CFF 30%, #B14DFF 65%, #5A189A 100%) border-box;
+}
+
+/* even cards (2 & 4) — gradient flows bottom → top on hover */
+.reality-card:nth-child(even):hover {
+  box-shadow: none;
+  background: linear-gradient(rgb(18, 18, 24), rgb(18, 18, 24)) padding-box,
+    linear-gradient(to top, rgb(18, 18, 24) 0%, #8A3CFF 30%, #B14DFF 65%, #5A189A 100%) border-box;
+}
+

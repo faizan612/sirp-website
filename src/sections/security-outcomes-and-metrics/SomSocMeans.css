@@ -1,0 +1,55 @@
+/* ─── Layout ──────────────────────────────────────────────── */
+.som-soc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ─── Heading ─────────────────────────────────────────────── */
+.som-soc-heading {
+  font-family: var(--font-inter, sans-serif);
+  font-size: clamp(1.75rem, 4vw, 2.625rem);
+  font-weight: 500;
+  color: #000000;
+  line-height: 1.1;
+  margin-bottom: 36px;
+}
+
+/* ─── Paragraphs ──────────────────────────────────────────── */
+.som-soc-paras {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.som-soc-para {
+  font-family: var(--font-inter, sans-serif);
+  font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.65;
+}
+
+/* ─── Image wrapper ───────────────────────────────────────── */
+.som-soc-image-wrap {
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .som-soc-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .som-soc-image-wrap {
+    min-height: 260px;
+  }
+
+  .som-soc-heading {
+    margin-bottom: 20px;
+  }
+}

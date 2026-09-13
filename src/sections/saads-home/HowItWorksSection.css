@@ -1,0 +1,204 @@
+/* HowItWorksSection — pipeline pulse rail, hover reveals, staggered entry.
+ * Tokens only (see globals.css @theme). One local var: --pipeline-number-hi
+ * for the brightened serif number on hover. All motion is compositor-only
+ * (opacity / transform) and gated by prefers-reduced-motion. */
+
+.pipeline {
+  /* Lighter tint of the accent for the hovered serif number. The token
+     --color-purple-light (#a855f7) is ~25% lighter than the accent. */
+  --pipeline-number-hi: var(--color-purple-light, #a855f7);
+}
+
+/* ─── Pulse rail ─────────────────────────────────────────── */
+.pipeline-rail {
+  position: relative;
+  width: 100%;
+  height: 6px; /* room for the 6px station / pulse dots centered on the track */
+}
+
+.pipeline-rail-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: left center;
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+/* Draw-in once the section enters view. */
+.pipeline.is-entered .pipeline-rail-track {
+  transition: transform 0.6s ease-out;
+  transform: translateY(-50%) scaleX(1);
+}
+
+.pipeline-station,
+.pipeline-pulse {
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+}
+
+.pipeline-station {
+  background: var(--color-border);
+}
+
+/* Traveling alert dot: left edge to right edge, fade in/out at the ends. */
+.pipeline-pulse {
+  left: 0;
+  background: var(--color-purple);
+  opacity: 0;
+}
+
+.pipeline.is-entered .pipeline-pulse {
+  /* Start the loop after the 0.6s rail draw-in completes. */
+  animation: pipeline-travel 5.5s linear 0.6s infinite;
+}
+
+.pipeline.is-entered.is-paused .pipeline-pulse {
+  animation-play-state: paused;
+}
+
+@keyframes pipeline-travel {
+  0%   { left: 0;    opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* ─── Cards ──────────────────────────────────────────────── */
+.pipeline-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sirp-md);
+  /* Final layout space is occupied immediately; only opacity/transform
+     animate, so there is no layout shift during entrance. */
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .pipeline-card { padding: 2.5rem; }
+}
+
+/* Staggered entrance: cards start hidden + nudged down, then settle in
+   sequence. Stagger derived from --card-index (120ms apart). */
+.pipeline.is-entered .pipeline-card {
+  animation: pipeline-card-in 0.45s ease-out backwards;
+  animation-delay: calc(0.6s + var(--card-index) * 0.12s);
+}
+
+@keyframes pipeline-card-in {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.pipeline-number {
+  color: var(--color-purple);
+  font-size: 2.5rem;
+  line-height: 1;
+  font-style: italic;
+  transition: color 0.25s ease;
+}
+
+/* ─── Tags ───────────────────────────────────────────────── */
+.pipeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pipeline-tag {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  padding: 3px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ─── Hover (desktop pointer only) ───────────────────────── */
+@media (hover: hover) {
+  .pipeline-card {
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  /* Tags hidden until hover; reveal via opacity + max-height (never display
+     or height of the card itself, so card layout does not shift). */
+  .pipeline-tags {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+  }
+
+  .pipeline-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-purple);
+  }
+
+  .pipeline-card:hover .pipeline-number {
+    color: var(--pipeline-number-hi);
+  }
+
+  .pipeline-card:hover .pipeline-tags {
+    opacity: 1;
+    max-height: 4rem;
+  }
+
+  /* Hovered tags shift toward the muted purple range (not full accent). */
+  .pipeline-card:hover .pipeline-tag {
+    color: rgba(168, 85, 247, 0.85);
+    border-color: rgba(142, 45, 255, 0.5);
+  }
+}
+
+/* ─── Below 768px: stacked cards, no rail, tags always visible ── */
+@media (max-width: 767px) {
+  .pipeline-rail {
+    display: none;
+  }
+  /* Touch / no-hover: tags are visible by default with no reveal. */
+  .pipeline-tags {
+    opacity: 1;
+    max-height: none;
+  }
+}
+
+/* ─── Reduced motion: final state, no loop, no entrance ──── */
+@media (prefers-reduced-motion: reduce) {
+  .pipeline-rail-track {
+    transition: none;
+    transform: translateY(-50%) scaleX(1);
+  }
+  /* Static rail with all three stations lit in accent purple, no pulse. */
+  .pipeline-station {
+    background: var(--color-purple);
+  }
+  .pipeline-pulse {
+    display: none;
+  }
+  .pipeline.is-entered .pipeline-pulse {
+    animation: none;
+  }
+  .pipeline.is-entered .pipeline-card {
+    animation: none;
+  }
+  /* Tags remain reachable on hover, no reveal transition. */
+  .pipeline-tags {
+    transition: none;
+  }
+}

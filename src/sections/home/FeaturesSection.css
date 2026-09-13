@@ -1,0 +1,65 @@
+/* ─── Grid layout ───────────────────────────────────────── */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* 2-column from desktop up (1024px) */
+@media (min-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* ─── Feature card ───────────────────────────────────────── */
+.feature-card {
+  border: 11px solid transparent;
+  border-radius: 20px;
+  background-color: rgb(18, 18, 24);
+  box-shadow: 0 0 0 1px rgb(58, 58, 77);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+  cursor: default;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Cards 1 & 3 hover — top merges with bg */
+.feature-card:nth-child(odd):hover {
+  box-shadow: none;
+  background: linear-gradient(rgb(18, 18, 24), rgb(18, 18, 24)) padding-box,
+    linear-gradient(to bottom, rgb(18, 18, 24) 0%, #8A3CFF 30%, #B14DFF 65%, #5A189A 100%) border-box;
+}
+
+/* Cards 2 & 4 hover — bottom merges with bg */
+.feature-card:nth-child(even):hover {
+  box-shadow: none;
+  background: linear-gradient(rgb(18, 18, 24), rgb(18, 18, 24)) padding-box,
+    linear-gradient(to top, rgb(18, 18, 24) 0%, #8A3CFF 30%, #B14DFF 65%, #5A189A 100%) border-box;
+}
+
+/* ─── BG div ─────────────────────────────────────────────── */
+.feature-card-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background-color: rgb(18, 18, 24);
+  filter: blur(0px);
+  transition: filter 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.feature-card > *:not(.feature-card-bg):not(.feature-card-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card:hover .feature-card-bg {
+  filter: blur(5px);
+}

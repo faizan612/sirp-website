@@ -1,0 +1,401 @@
+/* ──────────────────────────────────────────────────────────────────────────
+ * OmniSense view — product-aligned token layer + components.
+ * Active only on /saads-home-page?view=omnisense. Tokens are scoped to
+ * .omni-root so nothing leaks into the classic site. Derived from the
+ * sirp.io design-token doc (Incident Management / SARA / OmniBoard screens).
+ *
+ * Discipline: flat near-black surfaces, hairline borders, a three-step grey
+ * text ramp, and purple ONLY on primary actions + active states. Two weights:
+ * 400 and 500. No 600/700.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+.omni-root {
+  /* Surfaces */
+  --bg-page:        #0A0A0B;
+  --bg-panel:       #101012;
+  --bg-panel-hover: #16161A;
+  --bg-input:       #0E0E10;
+
+  /* Borders */
+  --border:         rgba(255, 255, 255, 0.06);
+  --border-strong:  rgba(255, 255, 255, 0.10);
+  --border-accent:  rgba(142, 45, 255, 0.55);
+
+  /* Text ramp */
+  --text-primary:   #FFFFFF;
+  --text-secondary: #C5C5CC;
+  --text-muted:     #7C7C85;
+
+  /* Accent — restrained */
+  --accent:         #8E2DFF;
+  --accent-hover:   #7C1FE8;
+  --accent-text:    #A974FF;
+
+  /* Severity / semantic (carried verbatim from product) */
+  --sev-5:          #3B82F6;
+  --sev-4:          #4ADE80;
+  --sev-3:          #FBBF24;
+  --sev-2:          #FB923C;
+  --sev-1:          #F87171;
+  --status-open:    #60A5FA;
+  --status-positive:#4ADE80;
+  --status-negative:#F87171;
+
+  /* Radii + spacing */
+  --radius-control: 8px;
+  --radius-card:    12px;
+  --pad-card:       20px 24px;
+  --gap-sm:         8px;
+  --gap-md:         16px;
+  --gap-lg:         24px;
+
+  background: var(--bg-page);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* When the OmniSense view is mounted, swap the page background and retire the
+ * global classic chrome so the product-aligned nav/footer read as one system. */
+html.omni-active { background: #0A0A0B; }
+html.omni-active body { background: #0A0A0B; }
+html.omni-active [data-chrome="global"] { display: none !important; }
+
+/* ─── Layout primitives ───────────────────────────────────────────────────── */
+.omni-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@media (min-width: 768px)  { .omni-container { padding-inline: 40px; } }
+
+.omni-section {
+  padding-block: 80px;
+  border-top: 1px solid var(--border);
+}
+@media (min-width: 768px) { .omni-section { padding-block: 112px; } }
+
+/* ─── Type ────────────────────────────────────────────────────────────────── */
+.omni-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.omni-h1 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.omni-h2 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.omni-h3 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+.omni-h1 em, .omni-h2 em, .omni-h3 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+.omni-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.omni-body-sm { font-size: 0.875rem; line-height: 1.6; color: var(--text-secondary); }
+.omni-muted   { color: var(--text-muted); }
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+.omni-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 11px 18px;
+  border-radius: var(--radius-control);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+.omni-btn--primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.omni-btn--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.omni-btn--secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-strong);
+}
+.omni-btn--secondary:hover { background: var(--bg-panel-hover); border-color: var(--border-strong); color: var(--text-primary); }
+.omni-btn__plus { font-size: 1.1em; line-height: 0; margin-top: -1px; }
+
+/* Quiet inline link with trailing arrow (the product's tertiary action) */
+.omni-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: gap 0.18s ease;
+}
+.omni-link:hover { gap: 12px; }
+.omni-link svg { color: var(--accent-text); width: 16px; height: 16px; }
+
+/* ─── Panels + cards ──────────────────────────────────────────────────────── */
+.omni-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--pad-card);
+}
+.omni-panel--interactive { transition: background-color 0.18s ease, border-color 0.18s ease; }
+.omni-panel--interactive:hover { background: var(--bg-panel-hover); border-color: var(--border-strong); }
+
+/* Metric card: mono eyebrow, big value, colored delta, muted vs-previous */
+.omni-metric { display: flex; flex-direction: column; gap: 6px; }
+.omni-metric__label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+.omni-metric__value { font-family: var(--font-sans); font-weight: 500; font-size: clamp(2.5rem, 5vw, 3.25rem); line-height: 1; letter-spacing: -0.02em; color: var(--text-primary); }
+.omni-metric__delta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--accent-text); }
+.omni-metric__sub   { font-family: var(--font-sans); font-size: 0.8125rem; color: var(--text-muted); }
+
+/* Mono tag chips */
+.omni-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-input);
+}
+
+/* ─── Segmented control ───────────────────────────────────────────────────── */
+.omni-seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 3px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+}
+.omni-seg-opt {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.omni-seg-opt:hover { color: var(--text-secondary); }
+.omni-seg-opt.is-active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--border-accent);
+}
+
+/* ─── Announcement strip + nav ────────────────────────────────────────────── */
+.omni-chrome { position: sticky; top: 0; z-index: 50; background: var(--bg-page); }
+.omni-announce {
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  padding: 9px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+.omni-announce__tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 10px;
+}
+.omni-announce__link { color: var(--accent-text); text-decoration: none; }
+.omni-announce__link:hover { text-decoration: underline; }
+
+.omni-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.omni-nav__brand { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
+.omni-nav__mark { width: 22px; height: 22px; border-radius: 6px; background: var(--accent); display: inline-block; }
+.omni-nav__wordmark { font-family: var(--font-sans); font-weight: 500; font-size: 1rem; color: var(--text-primary); letter-spacing: -0.01em; }
+.omni-nav__links { display: none; gap: 28px; align-items: center; }
+@media (min-width: 900px) { .omni-nav__links { display: flex; } }
+.omni-nav__link {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+.omni-nav__link:hover { color: var(--text-primary); }
+.omni-nav__link.is-active { color: var(--text-primary); }
+.omni-nav__actions { display: inline-flex; align-items: center; gap: var(--gap-sm); }
+
+/* ─── Integrations marquee ────────────────────────────────────────────────── */
+.omni-marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+.omni-marquee__track { display: flex; gap: 14px; width: max-content; animation: omni-scroll 45s linear infinite; }
+@keyframes omni-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.omni-logo-tile {
+  width: 76px; height: 76px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 14px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+.omni-logo-tile:hover { border-color: var(--border-strong); background: var(--bg-panel-hover); }
+.omni-logo-tile img { width: 40px; height: 40px; object-fit: contain; }
+
+/* ─── Footer ──────────────────────────────────────────────────────────────── */
+.omni-footer { border-top: 1px solid var(--border); padding-block: 40px; }
+.omni-footer__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+.omni-footer__links { display: flex; flex-wrap: wrap; gap: 22px; }
+.omni-footer__link { font-family: var(--font-sans); font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.18s ease; }
+.omni-footer__link:hover { color: var(--text-secondary); }
+
+/* ─── View toggle (the switch control) ────────────────────────────────────── */
+.omni-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(16, 16, 18, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+.omni-toggle:hover { border-color: var(--border-accent, rgba(142,45,255,0.55)); background: rgba(22, 22, 26, 0.92); }
+.omni-toggle__dot { width: 7px; height: 7px; border-radius: 999px; background: #8E2DFF; }
+
+/* ─── Hero ────────────────────────────────────────────────────────────────── */
+.omni-hero { position: relative; overflow: hidden; background: var(--bg-page); }
+.omni-hero__stage { position: relative; min-height: 78svh; }
+.omni-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.omni-hero__mask { position: absolute; inset: 0; background: linear-gradient(rgba(10,10,11,0) 40%, var(--bg-page) 96%); }
+.omni-hero__copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding-top: 8px;
+  padding-bottom: 96px;
+  max-width: 980px;
+  margin-top: -10svh;
+}
+.omni-hero__sub { max-width: 720px; font-size: 1.0625rem; color: var(--text-secondary); }
+.omni-hero__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.omni-hero__proof { max-width: 560px; }
+
+/* ─── Grids ───────────────────────────────────────────────────────────────── */
+.omni-grid-3 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.omni-grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) {
+  .omni-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .omni-grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── Problem ─────────────────────────────────────────────────────────────── */
+.omni-problem__legend {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 24px; margin-top: 20px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.omni-problem__legend span { display: inline-flex; align-items: center; gap: 8px; }
+.omni-dot { width: 10px; height: 10px; display: inline-block; }
+.omni-problem__cite { margin-top: 24px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; color: rgba(255,255,255,0.3); max-width: 620px; margin-inline: auto; }
+
+/* ─── How it works (step panels) ──────────────────────────────────────────── */
+.omni-step { display: flex; flex-direction: column; gap: 12px; }
+.omni-step__num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--accent-text); }
+.omni-step__tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 4px 0 0; }
+
+/* ─── Governed autonomy ───────────────────────────────────────────────────── */
+.omni-governed { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; }
+@media (min-width: 1000px) { .omni-governed { grid-template-columns: 5fr 7fr; gap: 48px; } }
+.omni-governed__visual { margin-top: 16px; padding: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.omni-governed__lottie { width: 100%; height: auto; }
+
+/* ─── Proof ───────────────────────────────────────────────────────────────── */
+.omni-proof__cite { text-align: center; margin-top: 40px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--text-muted); }
+.omni-proof__cite-link { color: var(--text-muted); text-decoration: underline; text-underline-offset: 2px; }
+.omni-proof__cite-link:hover { color: var(--text-secondary); }
+
+/* ─── Platform depth cards ────────────────────────────────────────────────── */
+.omni-depth-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.omni-depth-card__media { position: relative; width: 100%; height: 280px; }
+.omni-depth-card__body { display: flex; flex-direction: column; gap: 12px; flex: 1; padding: 24px; }
+
+/* ─── Final CTA band ──────────────────────────────────────────────────────── */
+.omni-cta { text-align: center; padding: 56px 24px; }
+.omni-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 28px; }
+
+/* ─── Entrance: a single load fade, never scroll-gated (keeps content
+ *     present for SSR + screenshots). Honors reduced motion. ──────────────── */
+.omni-fade { animation: omni-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes omni-fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .omni-fade { animation: none; } }

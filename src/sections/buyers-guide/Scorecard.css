@@ -1,0 +1,124 @@
+.bg-scorecard {
+  background: var(--bg-dark);
+  color: var(--ink-dark);
+  padding: 96px 0;
+}
+
+.bg-scorecard-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.bg-scorecard-eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.bg-scorecard-heading {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  line-height: 1.12;
+  max-width: 18ch;
+  color: var(--ink-dark);
+}
+
+.bg-scorecard-lead {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  color: var(--ink-dark-dim);
+  margin-top: 16px;
+  max-width: 56ch;
+}
+
+.bg-scorecard-log {
+  border-top: 1px solid var(--line-dark);
+  margin-top: 48px;
+}
+
+.bg-scorecard-row {
+  border-bottom: 1px solid var(--line-dark);
+  padding: 28px 0;
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 32px;
+}
+
+.bg-scorecard-num {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.8125rem;
+}
+
+.bg-scorecard-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  margin-top: 6px;
+  color: var(--ink-dark);
+}
+
+.bg-scorecard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bg-scorecard-line {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.bg-scorecard-key {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+.bg-scorecard-key--ask {
+  color: var(--ink-dark-dim);
+}
+
+.bg-scorecard-key--weak {
+  color: var(--signal-weak);
+}
+
+.bg-scorecard-key--strong {
+  color: var(--signal-strong);
+}
+
+.bg-scorecard-value {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--ink-dark);
+  max-width: 60ch;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .bg-scorecard-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bg-scorecard-line {
+    grid-template-columns: 64px 1fr;
+  }
+
+  .bg-scorecard-key {
+    font-size: 0.625rem;
+  }
+}

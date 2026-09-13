@@ -1,0 +1,105 @@
+/* Blog — guide CTA: `Link` + shared `PurplePill` in `PageHeader` subtext. */
+.blog-page .page-header-subtext .blog-page-guide-pill-link {
+  display: inline-flex;
+  max-width: 100%;
+  text-decoration: none;
+  color: inherit;
+  vertical-align: top;
+}
+
+.blog-page .page-header-subtext .blog-page-guide-pill-link:hover .purple-pill,
+.blog-page .page-header-subtext .blog-page-guide-pill-link:focus-visible .purple-pill {
+  border-color: rgba(185, 138, 255, 0.95);
+  background: rgba(142, 45, 255, 0.32);
+}
+
+.blog-page-guide-purple-pill {
+  font-weight: 600;
+  line-height: 1.35;
+  padding: 0.32rem 0.72rem;
+  border-radius: 5px;
+  max-width: min(100%, 36rem);
+  white-space: normal;
+  text-align: center;
+}
+
+/* Mobile type scale — matches PageHeader / InfoCtaBlock on other inner pages */
+@media (max-width: 640px) {
+  .blog-page .page-header-heading {
+    font-size: clamp(1.65rem, 7.2vw, 2.15rem);
+    letter-spacing: -0.01em;
+  }
+
+  .blog-page .page-header-subtext {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .blog-page .page-header-subtext > p {
+    margin-bottom: 0.85rem;
+  }
+
+  .blog-page .page-header-subtext-gap {
+    margin-top: 0.55rem;
+  }
+
+  .blog-page-guide-purple-pill {
+    font-size: 11px;
+    padding: 0.28rem 0.62rem;
+  }
+
+  .blog-page .bg-\[\#121218\].py-20 {
+    padding-top: 1.85rem !important;
+    padding-bottom: 1.85rem !important;
+  }
+
+  .blog-page .bg-\[\#121218\].pb-24 {
+    padding-bottom: 2rem !important;
+  }
+
+  .blog-page .blog-card-title {
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .blog-page .blog-card-category {
+    font-size: 9px;
+  }
+
+  .blog-page .blog-card-date {
+    font-size: 10px;
+  }
+
+  .blog-page .changelog-card-title {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .blog-page .changelog-card-category {
+    font-size: 9px;
+  }
+
+  .blog-page .changelog-card-date {
+    font-size: 10px;
+  }
+
+  .blog-page .changelog-cta-text {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .blog-page .page-header-heading {
+    font-size: clamp(1.5rem, 6.8vw, 1.95rem);
+  }
+
+  .blog-page .blog-card-title {
+    font-size: 0.875rem;
+  }
+
+  .blog-page .changelog-card-title {
+    font-size: 0.95rem;
+  }
+}

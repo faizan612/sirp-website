@@ -1,0 +1,99 @@
+/* ─── S10 Closing conversion band ──────────────────────────── */
+.wsoc-cta {
+  padding: 4.5rem 0 6rem;
+  background: #121218;
+}
+
+.wsoc-cta-band {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  border: 1px solid rgba(142, 45, 255, 0.5);
+  border-radius: var(--radius-sirp-xl);
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(142, 45, 255, 0.14), transparent 60%),
+    #16161f;
+}
+
+.wsoc-cta-glow {
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  width: 70%;
+  height: 100%;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, var(--color-purple-glow), transparent 70%);
+  filter: blur(40px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.wsoc-cta-eyebrow {
+  position: relative;
+  justify-content: center;
+}
+
+.wsoc-cta-heading {
+  position: relative;
+  margin: 1.1rem 0 0;
+  max-width: 18ch;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.wsoc-cta-actions {
+  position: relative;
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.wsoc-cta-tertiary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  font-family: var(--font-ibm-mono), 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-purple-light);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.wsoc-cta-tertiary:hover {
+  color: #ffffff;
+  gap: 0.65rem;
+}
+
+.wsoc-cta-tertiary:focus-visible {
+  outline: 2px solid rgba(168, 85, 247, 0.9);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+  .wsoc-cta-band {
+    padding: 2.75rem 1.5rem;
+  }
+
+  .wsoc-cta-actions {
+    width: 100%;
+  }
+
+  .wsoc-cta-actions .sirp-button {
+    flex: 1 1 auto;
+  }
+}

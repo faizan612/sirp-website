@@ -1,0 +1,158 @@
+/* ─── Info + CTA Block (inner pages) ───────────────────────── */
+.info-cta-block {
+  padding: 4.5rem 0 3.25rem;
+}
+
+.info-cta-inner {
+  max-width: 880px;
+}
+
+.info-cta-heading {
+  margin: 0;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  font-size: clamp(1.9rem, 3.2vw, 2.65rem);
+}
+
+.info-cta-body {
+  margin-top: 1.5rem;
+  max-width: 880px;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.info-cta-body p {
+  margin: 0 0 1.15rem;
+}
+
+.info-cta-lead {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+}
+
+.info-cta-body ul {
+  margin: 0 0 1.15rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+  list-style-position: outside;
+}
+
+.info-cta-body li {
+  margin: 0.1rem 0;
+  display: list-item;
+}
+
+.info-cta-body li::marker {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.info-cta-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.35rem;
+}
+
+@media (max-width: 640px) {
+  .info-cta-block {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .info-cta-heading {
+    font-size: 1.875rem; /* 30px */
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+  }
+
+  .info-cta-body {
+    margin-top: 1.15rem;
+    font-size: 1rem; /* 16px */
+    line-height: 1.65;
+  }
+
+  .info-cta-body p {
+    margin-bottom: 0.95rem;
+  }
+
+  .info-cta-button-row {
+    margin-top: 1.1rem;
+  }
+}
+
+/* ─── Authority closing (SOAR vs Autonomous SOC) ───────────── */
+.info-cta-block--authority {
+  background: #121218;
+  padding: 3rem 0 7rem;
+}
+
+/* Full row width; slightly tighter horizontal padding than default .container-sirp for long-line copy */
+.info-cta-block--authority .info-cta-inner {
+  max-width: 1280px;
+  text-align: left;
+  padding-inline: 1.5rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .info-cta-block--authority .info-cta-inner {
+    padding-inline: 2rem;
+  }
+}
+
+.info-cta-block--authority .info-cta-heading,
+.info-cta-block--authority .info-cta-body {
+  max-width: 100%;
+}
+
+.info-cta-block--authority .info-cta-heading {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.info-cta-block--authority .info-cta-body {
+  margin-top: 2.25rem;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.info-cta-block--authority .info-cta-body > p {
+  margin: 0 0 1rem;
+  white-space: pre-line;
+}
+
+.info-cta-block--authority .info-cta-body > p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .info-cta-block--authority {
+    padding: 2.5rem 0 4.75rem;
+  }
+
+  .info-cta-block--authority .info-cta-heading {
+    font-size: 1.875rem; /* 30px */
+    line-height: 1.18;
+  }
+
+  .info-cta-block--authority .info-cta-body {
+    margin-top: 1.35rem;
+    font-size: 1rem; /* 16px */
+    line-height: 1.55;
+  }
+
+  .info-cta-block--authority .info-cta-body > p {
+    margin-bottom: 0.85rem;
+  }
+}
+

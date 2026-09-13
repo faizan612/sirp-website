@@ -1,0 +1,50 @@
+/* ─── Section lead (heading + subheading) ─────────────────── */
+.section-lead {
+  background: #121218;
+  padding: 3rem 0 2.75rem;
+  border-bottom: 1px solid #3a3a4c;
+}
+
+.section-lead-inner {
+  text-align: left;
+  max-width: 70%;
+  margin-inline: auto;
+}
+
+.section-lead-heading {
+  margin: 0 0 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.section-lead-subheading {
+  margin: 0;
+  max-width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.00rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.section-lead-children {
+  margin-top: 1.75rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .section-lead {
+    padding: 2.5rem 0 2.25rem;
+  }
+
+  .section-lead-subheading {
+    font-size: 0.98rem;
+  }
+}

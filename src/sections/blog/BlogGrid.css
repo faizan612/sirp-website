@@ -1,0 +1,218 @@
+/* ─── Grid ────────────────────────────────────────────────── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.blog-grid-item {
+  display: flex;
+  min-height: 0;
+  height: 100%;
+}
+
+/* ─── Card ────────────────────────────────────────────────── */
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgb(25, 25, 25);
+  border-radius: 16px;
+  background: #121218;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-top-color: rgb(142, 45, 255);
+  background: linear-gradient(#8e2dff 0%, #121218 38.29%);
+}
+
+/* ─── Arrow on hover ──────────────────────────────────────── */
+.blog-card-arrow {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.blog-card:hover .blog-card-arrow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Thumbnail ───────────────────────────────────────────── */
+.blog-card-image {
+  position: relative;
+  width: calc(100% - 20px);
+  margin: 10px 10px 0;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgb(28, 28, 38);
+  flex-shrink: 0;
+}
+
+.blog-card-image img {
+  filter: grayscale(100%);
+}
+
+/* ─── Content block ───────────────────────────────────────── */
+.blog-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 16px 20px;
+}
+
+/* ─── Meta row ────────────────────────────────────────────── */
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.blog-card-category {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b889ff;
+}
+
+.blog-card-date {
+  margin-left: auto;
+  font-family: var(--font-inter, sans-serif);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+/* ─── Title ───────────────────────────────────────────────── */
+.blog-card-title {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.45;
+  transition: color 0.2s ease;
+}
+
+.blog-card:hover .blog-card-title {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ─── Load more ───────────────────────────────────────────── */
+.blog-load-more {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 56px;
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .blog-grid-item {
+    height: auto;
+  }
+
+  .blog-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border-color: rgba(58, 58, 77, 0.6);
+    background: #121218;
+  }
+
+  .blog-card:hover {
+    transform: none;
+    border-color: rgba(142, 45, 255, 0.45);
+    background: #16161e;
+    border-top-color: rgba(142, 45, 255, 0.45);
+  }
+
+  .blog-card-arrow {
+    display: none;
+  }
+
+  .blog-card-image {
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    margin: 0;
+    aspect-ratio: 1;
+    border-radius: 10px;
+  }
+
+  .blog-card-image img {
+    filter: grayscale(1);
+  }
+
+  .blog-card-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 0 0 14px;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .blog-card-meta {
+    gap: 6px;
+  }
+
+  .blog-card-category {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .blog-card-date {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .blog-card-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
+  }
+
+  .blog-load-more {
+    margin-top: 36px;
+  }
+}

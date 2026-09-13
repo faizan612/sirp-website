@@ -1,0 +1,34 @@
+/* ─── Shift card ──────────────────────────────────────────── */
+.shift-card {
+  border-radius: 16px;
+  background-color: rgb(18, 18, 24);
+  border: 1px solid rgb(58, 58, 77);
+  padding: clamp(20px, 4vw, 36px) clamp(16px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Icon pill ───────────────────────────────────────────── */
+.shift-icon-pill {
+  width: 46px;
+  height: 90px;
+  border-radius: 999px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  flex-shrink: 0;
+}
+
+.shift-icon-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/enterprise-soc/purple-rounded.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: inherit;
+  filter: drop-shadow(0 0 6px rgba(180, 100, 255, 0.5));
+  pointer-events: none;
+}

@@ -1,0 +1,18 @@
+.buyers-guide-page {
+  --bg-dark: #121218;
+  --bg-dark-panel: var(--color-bg-elevated, #252534);
+  --bg-light: #f6f5f8;
+  --bg-light-panel: #ececf0;
+
+  --ink-dark: #ffffff;
+  --ink-dark-dim: rgba(255, 255, 255, 0.6);
+  --ink-light: #0b0b12;
+  --ink-light-dim: rgba(0, 0, 0, 0.62);
+
+  --line-dark: var(--color-border-med, rgba(255, 255, 255, 0.14));
+  --line-light: rgba(0, 0, 0, 0.12);
+
+  --accent: var(--color-purple, #8e2dff);
+  --signal-strong: #35c98f;
+  --signal-weak: #ff8a5b;
+}

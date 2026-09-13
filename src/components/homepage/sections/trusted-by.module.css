@@ -1,0 +1,37 @@
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 7%,
+    black 93%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: trusted-logo-marquee 34s linear infinite;
+}
+
+.logoStrip {
+  width: min(1680px, calc(100vw - 96px));
+  height: auto;
+  flex: none;
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+@keyframes trusted-logo-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

@@ -1,0 +1,95 @@
+/* Editing surface for the Tiptap editor. Mirrors the reading typography of the
+   public blog so authors see a faithful preview while writing. */
+
+.cms-editor {
+  overflow: hidden;
+  border: 1px solid var(--cms-line-strong, rgba(255, 255, 255, 0.14));
+  border-radius: 12px;
+  background: var(--cms-surface-2, #1b1b26);
+}
+
+.cms-editor-content {
+  min-height: 22rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+}
+
+.cms-editor-content > * + * {
+  margin-top: 1rem;
+}
+
+.cms-editor-content h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.cms-editor-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.cms-editor-content p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cms-editor-content ul,
+.cms-editor-content ol {
+  padding-left: 1.5rem;
+}
+
+.cms-editor-content ul { list-style: disc; }
+.cms-editor-content ol { list-style: decimal; }
+
+.cms-editor-content blockquote {
+  border-left: 3px solid var(--color-purple);
+  padding-left: 1rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.cms-editor-content a {
+  color: var(--color-purple-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cms-editor-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--color-bg-elevated);
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-sirp-sm);
+}
+
+.cms-editor-content pre {
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-sirp-md);
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.cms-editor-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.cms-editor-content hr {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* Placeholder shown when the document is empty (Tiptap Placeholder extension). */
+.cms-editor-content p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: var(--color-text-muted);
+}

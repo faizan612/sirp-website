@@ -1,0 +1,169 @@
+/* ─── Dome layers container ───────────────────────────────── */
+.threat-dome-layers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ─── Purple glow ─────────────────────────────────────────── */
+.threat-cta-glow {
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(40px);
+  will-change: transform, opacity;
+  transform-origin: top;
+  background: radial-gradient(at 50% 100%, #d69dff 0%, #8e2dffcc 30%, #6414c833 60%, #0000 85%);
+  width: 998px;
+  height: 676px;
+  animation: 6s ease-in-out infinite alternate threat-dome-rise;
+  position: absolute;
+  top: -278px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes threat-dome-rise {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-50%) scale(0.8) translateY(-50px);
+    filter: blur(60px);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.1) translateY(0);
+    filter: blur(30px);
+  }
+}
+
+/* ─── Black dome ──────────────────────────────────────────── */
+.threat-cta-dome {
+  pointer-events: none;
+  z-index: 2;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: #121218;
+  border-bottom: none;
+  border-radius: 57% 57% 0 0 / 102% 100% 0 0;
+  width: 1000px;
+  height: 450px;
+  position: absolute;
+  bottom: 173px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.threat-cta-dome::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent 0%, #121218 100%);
+  pointer-events: none;
+  border-radius: 0 0 50% 50%;
+}
+
+/* ─── White outline arc ───────────────────────────────────── */
+.threat-cta-dome-outline {
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(3px);
+  width: 891px;
+  line-height: 0;
+  position: absolute;
+  bottom: 403px;
+  left: 50%;
+  overflow: hidden;
+  transform: translateX(-50%);
+}
+
+/* ─── Steps bar ───────────────────────────────────────────── */
+.threat-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  margin-top: 32px;
+  margin-bottom: 0;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .threat-steps {
+    margin-top: 48px;
+    padding: 0 24px;
+    gap: 0;
+  }
+}
+
+.threat-steps__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 13px;
+  font-weight: 400;
+  color: #ffffff;
+  white-space: nowrap;
+  padding: 0 20px;
+}
+
+.threat-steps__sep {
+  display: block;
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .threat-cta-dome {
+    width: 850px;
+    height: 440px;
+  }
+
+  .threat-cta-glow {
+    width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .threat-cta-dome {
+    width: 120%;
+    height: 300px;
+    bottom: 120px;
+  }
+
+  .threat-cta-glow {
+    width: 100%;
+  }
+
+  .threat-cta-dome-outline {
+    width: 100%;
+    bottom: 280px;
+  }
+
+  .threat-steps__item {
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .threat-steps__sep {
+    margin-right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .threat-steps {
+    gap: 4px 0;
+  }
+
+  .threat-steps__item {
+    padding: 4px 10px;
+  }
+}

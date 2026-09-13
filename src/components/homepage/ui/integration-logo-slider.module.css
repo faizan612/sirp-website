@@ -1,0 +1,84 @@
+.viewport {
+  position: relative;
+  width: calc(100% + 96px);
+  margin-top: clamp(56px, 5vw, 88px);
+  margin-inline: -48px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.viewport::before,
+.viewport::after {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: clamp(64px, 10vw, 180px);
+  content: "";
+  pointer-events: none;
+}
+
+.viewport::before {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    #f6f5f8 8%,
+    rgb(246 245 248 / 92%) 28%,
+    rgb(246 245 248 / 0%) 100%
+  );
+}
+
+.viewport::after {
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    #f6f5f8 8%,
+    rgb(246 245 248 / 92%) 28%,
+    rgb(246 245 248 / 0%) 100%
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.logoGroup {
+  display: flex;
+  flex: none;
+  align-items: flex-start;
+  gap: clamp(8px, 0.55vw, 12px);
+  padding-right: clamp(8px, 0.55vw, 12px);
+}
+
+.logoColumn {
+  flex: none;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.logoAsset {
+  display: block;
+  width: auto;
+  height: clamp(218px, 15.625vw, 300px);
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .logoColumn {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .viewport {
+    margin-top: 48px;
+  }
+
+  .viewport::before,
+  .viewport::after {
+    width: 72px;
+  }
+}

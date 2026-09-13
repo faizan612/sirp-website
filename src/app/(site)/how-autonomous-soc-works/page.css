@@ -1,0 +1,60 @@
+/* Tighter vertical rhythm + mobile type scale (matches PageHeader / InfoCtaBlock). */
+
+@media (max-width: 768px) {
+  .how-autonomous-soc-works-page > section.bg-\[\#121218\]:not(:last-of-type) {
+    padding-top: 2.65rem !important;
+    padding-bottom: 2.65rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .how-autonomous-soc-works-page .page-header-heading {
+    font-size: 2.75rem; /* 44px */
+    letter-spacing: -0.01em;
+  }
+
+  .how-autonomous-soc-works-page .page-header-subtext {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.7;
+  }
+
+  .how-autonomous-soc-works-page > section.bg-\[\#121218\]:not(:last-of-type) {
+    padding-top: 1.85rem !important;
+    padding-bottom: 1.85rem !important;
+  }
+
+  .how-autonomous-soc-works-page > section.bg-\[\#121218\]:not(:last-of-type) h2 {
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem) !important;
+    line-height: 1.18 !important;
+  }
+
+  .how-autonomous-soc-works-page > section.bg-\[\#121218\]:not(:last-of-type) h3 {
+    font-size: clamp(1.1rem, 3.5vw, 1.25rem) !important;
+    line-height: 1.22 !important;
+  }
+
+  .how-autonomous-soc-works-page > section.bg-\[\#121218\]:not(:last-of-type) p {
+    font-size: 0.875rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .how-autonomous-soc-works-page > section:last-of-type h2 {
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem) !important;
+    line-height: 1.18 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-autonomous-soc-works-page .page-header-heading {
+    font-size: 2.75rem; /* keep 44px on small phones */
+  }
+
+  .how-autonomous-soc-works-page > section.bg-\[\#121218\]:not(:last-of-type) h2,
+  .how-autonomous-soc-works-page > section:last-of-type h2 {
+    font-size: clamp(1.35rem, 5.8vw, 1.75rem) !important;
+  }
+
+  .how-autonomous-soc-works-page > section.bg-\[\#121218\]:not(:last-of-type) h3 {
+    font-size: 1.05rem !important;
+  }
+}

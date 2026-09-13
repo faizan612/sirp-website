@@ -1,0 +1,212 @@
+.comparison-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid #3a3a4d;
+  background: #000000;
+  padding: 26px 34px 30px;
+}
+
+.comparison-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 182.29px;
+  height: 443.36px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 100% 100%;
+}
+
+.comparison-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 52px;
+  pointer-events: none;
+}
+
+.comparison-card--red::before {
+  background-image: url('/images/benefitsOfSOC/red shadow.svg');
+}
+
+.comparison-card--yellow::before {
+  background-image: url('/images/benefitsOfSOC/yellow shadow.svg');
+}
+
+.comparison-card--red::after {
+  background: linear-gradient(
+    90deg,
+    rgba(240, 65, 65, 0.28) 0%,
+    rgba(240, 65, 65, 0.1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.comparison-card--yellow::after {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 219, 38, 0.28) 0%,
+    rgba(255, 219, 38, 0.1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.comparison-card--blue::before {
+  background-image: url('/images/benefitsOfSOC/blue shadow.svg');
+}
+
+.comparison-card--blue::after {
+  background: linear-gradient(
+    90deg,
+    rgba(142, 45, 255, 0.32) 0%,
+    rgba(142, 45, 255, 0.12) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.comparison-card--purple::before {
+  background-image: url('/images/benefitsOfSOC/purple shadow.svg');
+}
+
+.comparison-card--purple::after {
+  background: linear-gradient(
+    90deg,
+    rgba(142, 45, 255, 0.28) 0%,
+    rgba(168, 85, 247, 0.1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* SOAR vs Autonomous SOC Comparison — Framer card specs */
+.comparison-grid--soar {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 386.67px);
+  justify-content: center;
+}
+
+/* Two-card row (Architectural Difference): ~1180px row, wider tiles than 3-up comparison */
+.comparison-grid--soar.comparison-grid--soar-2 {
+  grid-template-columns: repeat(2, minmax(0, 580px));
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.comparison-section--soar .comparison-card {
+  width: 386.67px;
+  max-width: 100%;
+  min-height: 300px;
+  box-sizing: border-box;
+  padding: 18px;
+  background: #060606;
+}
+
+.comparison-section--soar .comparison-grid--soar-2 .comparison-card {
+  width: 100%;
+  max-width: 580px;
+  min-height: auto;
+}
+
+.comparison-card-heading--soar {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.comparison-section--soar ul.comparison-card-list--soar {
+  list-style: none;
+  margin: 0;
+  padding: 1.5rem 0 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.comparison-section--soar ul.comparison-card-list--soar li {
+  font-size: inherit;
+  font-weight: 700;
+}
+
+.comparison-section--soar ul.comparison-card-list--soar li + li {
+  margin-top: 0.55rem;
+}
+
+@media (max-width: 1240px) {
+  .comparison-grid--soar {
+    grid-template-columns: minmax(0, 386.67px);
+    justify-items: stretch;
+  }
+
+  .comparison-grid--soar.comparison-grid--soar-2 {
+    grid-template-columns: minmax(0, 580px);
+    max-width: 100%;
+  }
+
+  .comparison-section--soar .comparison-card {
+    width: 100%;
+    max-width: 386.67px;
+    margin-inline: auto;
+  }
+
+  .comparison-section--soar .comparison-grid--soar-2 .comparison-card {
+    max-width: min(580px, 100%);
+  }
+}
+
+.comparison-section-intro {
+  margin-top: 1.5rem;
+  max-width: 720px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.comparison-section-intro p {
+  margin: 0 0 0.35rem;
+}
+
+.comparison-section-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.comparison-section-footer-with-link {
+  margin-top: 4.5rem;
+  max-width: 900px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+.comparison-section-footer-with-link p {
+  margin: 0 0 0.85rem;
+}
+
+.comparison-section-footer-with-link p:last-child {
+  margin-bottom: 0;
+}
+
+.comparison-section-footer-with-link-anchor {
+  color: #9ecbff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.comparison-section-footer-with-link-anchor:hover {
+  color: #c8e0ff;
+}

@@ -1,0 +1,256 @@
+/* Left-aligned hero (matches https://www.sirp.io/technical-white-paper layout) */
+.technical-white-paper-page .page-header-inner {
+  text-align: left;
+}
+
+.technical-white-paper-page .page-header-stack {
+  margin-inline: 0;
+  max-width: none;
+}
+
+.technical-white-paper-page .page-header-subtext {
+  margin-inline: 0;
+  max-width: 42rem;
+  font-size: 1.06rem;
+  line-height: 1.62;
+}
+
+.technical-white-paper-page .page-header-subtitle {
+  font-size: clamp(1rem, 2vw, 1.22rem);
+}
+
+.technical-white-paper-page .page-header {
+  border-bottom: none;
+  padding-bottom: 2.25rem;
+}
+
+.whitepaper-hero-diagram {
+  background: #121218;
+  padding: 0 0 3rem;
+}
+
+.whitepaper-hero-diagram .container-sirp.whitepaper-hero-diagram-inner {
+  max-width: 1320px;
+}
+
+.whitepaper-architecture-frame {
+  position: relative;
+  width: 100%;
+  min-height: clamp(280px, 56vw, 820px);
+  margin-inline: auto;
+}
+
+.whitepaper-architecture-img {
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* Body: outer band 1320px; section copy narrower and centered (hero stays full width) */
+.technical-white-paper-page .whitepaper-main .container-sirp.whitepaper-main-inner {
+  max-width: 1320px;
+  position: relative;
+  z-index: 1;
+}
+
+.whitepaper-main {
+  position: relative;
+  overflow: hidden;
+  background: #121218;
+  border-top: 1px solid #3a3a4c;
+}
+
+/* Grey fade above Founder's Preface — matches home AutonomousSection top (#252534) */
+.whitepaper-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  height: 12rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, #252534 0%, rgba(37, 37, 52, 0) 100%);
+}
+
+.whitepaper-section {
+  padding: 3rem 0 2.75rem;
+  text-align: left;
+}
+
+.whitepaper-section:last-of-type {
+  padding-bottom: 4rem;
+}
+
+/* Narrower reading column than hero / diagram */
+.whitepaper-section-heading,
+.whitepaper-section-body {
+  max-width: 50rem;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.whitepaper-section-heading {
+  margin-top: 0;
+  margin-bottom: 1.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.whitepaper-section-body > p {
+  margin: 0 0 1.15rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+.whitepaper-section-body > p:last-child {
+  margin-bottom: 0;
+}
+
+.whitepaper-em-paragraph {
+  margin: 0 0 1.15rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+.whitepaper-em-paragraph em {
+  font-style: italic;
+}
+
+.whitepaper-strong-label {
+  margin: 0 0 0.85rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+.whitepaper-list,
+.whitepaper-ordered-list {
+  margin: 0 0 1.25rem;
+  padding-left: 1.35rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: #ffffff;
+}
+
+.whitepaper-list {
+  list-style: disc;
+  list-style-position: outside;
+}
+
+.whitepaper-ordered-list {
+  list-style: decimal;
+  list-style-position: outside;
+}
+
+.whitepaper-list li,
+.whitepaper-ordered-list li {
+  display: list-item;
+  margin: 0.35rem 0;
+}
+
+.whitepaper-list li::marker {
+  color: #ffffff;
+}
+
+.whitepaper-inline-figure {
+  margin: 1.75rem 0 0;
+  width: 100%;
+}
+
+.whitepaper-inline-figure + .whitepaper-inline-figure {
+  margin-top: 1.25rem;
+}
+
+.whitepaper-inline-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.whitepaper-copyright {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: #ffffff;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .technical-white-paper-page .page-header {
+    padding-bottom: 1.75rem;
+  }
+
+  .technical-white-paper-page .page-header-heading {
+    font-size: clamp(1.65rem, 7.2vw, 2.15rem);
+    letter-spacing: -0.01em;
+  }
+
+  .technical-white-paper-page .page-header-subtext {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .technical-white-paper-page .page-header-subtitle {
+    font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+  }
+
+  .whitepaper-hero-diagram {
+    padding-bottom: 2rem;
+  }
+
+  .whitepaper-architecture-frame {
+    min-height: clamp(200px, 52vw, 360px);
+  }
+
+  .whitepaper-section {
+    padding: 1.85rem 0 1.65rem;
+  }
+
+  .whitepaper-section:last-of-type {
+    padding-bottom: 2.5rem;
+  }
+
+  .whitepaper-section-heading {
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    line-height: 1.18;
+  }
+
+  .whitepaper-section-body > p,
+  .whitepaper-em-paragraph,
+  .whitepaper-strong-label,
+  .whitepaper-list,
+  .whitepaper-ordered-list {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .whitepaper-copyright {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .technical-white-paper-page .page-header-heading {
+    font-size: clamp(1.5rem, 6.8vw, 1.95rem);
+  }
+
+  .technical-white-paper-page .whitepaper-section-heading {
+    font-size: clamp(1.35rem, 5.8vw, 1.75rem);
+  }
+}

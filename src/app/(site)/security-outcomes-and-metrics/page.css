@@ -1,0 +1,187 @@
+/* Security Outcomes & Metrics — typography aligned with enterprise-soc / soar-alternatives */
+
+.security-outcomes-page .esoc-hero-heading {
+  font-size: clamp(1.65rem, 5.5vw, 4.625rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.security-outcomes-page .esoc-hero-desc {
+  font-size: clamp(0.95rem, 1.6vw, 1.0625rem);
+  line-height: 1.65;
+}
+
+/* Matches the homepage's own h2 recipe (HowItWorksResultsSection,
+ * AutonomyGovernanceSection, IntelligenceSection, FeaturesMorphSection)
+ * so section headings read the same across the site. */
+.security-outcomes-page .esoc-section-heading {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.security-outcomes-page .esoc-section-subtext {
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+}
+
+.security-outcomes-page .esoc-card-title {
+  font-size: clamp(1.15rem, 2.5vw, 2.125rem);
+  line-height: 1.3;
+}
+
+.security-outcomes-page .esoc-card-body {
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
+  line-height: 1.65;
+}
+
+/* CTA dome tighter overlap */
+.security-outcomes-page .cta-section {
+  margin-top: -2rem;
+}
+
+@media (max-width: 640px) {
+  /* ── Headings ── */
+  .security-outcomes-page .esoc-hero-heading {
+    font-size: 42px;
+    letter-spacing: -0.01em;
+  }
+
+  .security-outcomes-page .esoc-section-heading {
+    font-size: 42px;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .security-outcomes-page .esoc-card-title {
+    font-size: 24px;
+    line-height: 1.22;
+  }
+
+  .security-outcomes-page .impact-metrics-heading {
+    font-size: 42px;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .security-outcomes-page .outcomes-title {
+    font-size: 42px;
+    line-height: 1.18;
+  }
+
+  .security-outcomes-page .som-soc-heading {
+    font-size: 42px;
+    line-height: 1.18;
+  }
+
+  .security-outcomes-page .som-esc-heading {
+    font-size: 42px;
+    line-height: 1.18;
+  }
+
+  /* ── Paragraphs / body text ── */
+  .security-outcomes-page .esoc-hero-desc {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .security-outcomes-page .esoc-section-subtext {
+    font-size: 16px;
+    line-height: 1.65;
+    white-space: normal;
+  }
+
+  .security-outcomes-page .esoc-card-body {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .security-outcomes-page .impact-metrics-subtext,
+  .security-outcomes-page .impact-metrics-subtitle {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .security-outcomes-page .impact-metrics-value {
+    font-size: clamp(2.5rem, 8vw, 3rem);
+  }
+
+  .security-outcomes-page .outcomes-para {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .security-outcomes-page .outcomes-tab {
+    font-size: 0.75rem;
+    flex: 1 1 100%;
+  }
+
+  .security-outcomes-page .som-soc-para {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .security-outcomes-page .som-esc-text {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .security-outcomes-page .som-esc-label,
+  .security-outcomes-page .som-esc-item,
+  .security-outcomes-page .som-esc-stat,
+  .security-outcomes-page .som-esc-summary {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .security-outcomes-page .deploy-text,
+  .security-outcomes-page .deploy-quote-text {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .security-outcomes-page .deploy-before-after {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .security-outcomes-page .deploy-company {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+}
+
+/* ── 320 px — prevent headings from escaping the viewport ── */
+@media (max-width: 380px) {
+  .security-outcomes-page .esoc-hero-heading {
+    font-size: clamp(1.5rem, 8.5vw, 1.875rem);
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .security-outcomes-page .esoc-section-heading,
+  .security-outcomes-page .impact-metrics-heading,
+  .security-outcomes-page .outcomes-title,
+  .security-outcomes-page .som-soc-heading,
+  .security-outcomes-page .som-esc-heading {
+    font-size: clamp(1.5rem, 8.5vw, 1.875rem);
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .security-outcomes-page .esoc-card-title {
+    font-size: clamp(1.1rem, 5.5vw, 1.375rem);
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Ensure no container clips or pushes text out */
+  .security-outcomes-page .esoc-hero-heading,
+  .security-outcomes-page .esoc-section-heading,
+  .security-outcomes-page .impact-metrics-heading,
+  .security-outcomes-page .outcomes-title,
+  .security-outcomes-page .som-soc-heading,
+  .security-outcomes-page .som-esc-heading {
+    max-width: 100%;
+  }
+}

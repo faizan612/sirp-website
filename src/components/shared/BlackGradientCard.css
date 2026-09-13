@@ -1,0 +1,70 @@
+/* ─── Black gradient two-column card ───────────────────────── */
+.black-gradient-card {
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(180deg, #1c1c28 0%, #000000 65%, #000000 100%);
+  padding: clamp(1rem, 2.2vw, 1.35rem) clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.black-gradient-card-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  column-gap: clamp(1.5rem, 4vw, 3.5rem);
+  row-gap: 1.25rem;
+}
+
+.black-gradient-card-title {
+  margin: 0;
+  align-self: center;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.05rem, 1.75vw, 1.38rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.black-gradient-card-text {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+  font-weight: 500;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.black-gradient-card-text p {
+  margin: 0 0 0.85rem;
+}
+
+.black-gradient-card-text p:last-child {
+  margin-bottom: 0;
+}
+
+.black-gradient-card-text ul {
+  margin: 0 0 0.85rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+  list-style-position: outside;
+}
+
+.black-gradient-card-text li {
+  margin: 0.22rem 0;
+  display: list-item;
+}
+
+.black-gradient-card-text li::marker {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 768px) {
+  .black-gradient-card-inner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .black-gradient-card-title {
+    align-self: start;
+  }
+}

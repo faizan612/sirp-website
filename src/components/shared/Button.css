@@ -1,0 +1,133 @@
+/* ─── Link-styled CTA (primary / secondary) ───────────────── */
+.sirp-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 8px 26px;
+  gap: 8px;
+  border-radius: 50px;
+  background: #8e2dff;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+button.sirp-button {
+  font: inherit;
+}
+
+.sirp-button:focus-visible {
+  outline: 2px solid rgba(168, 85, 247, 0.9);
+  outline-offset: 3px;
+}
+
+/* Inner glow ellipse — mirrors Framer's framer-z77im9 */
+.sirp-button__glow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  translate: -50% 0;
+  width: 60%;
+  height: 60%;
+  border-radius: 100%;
+  background-color: rgb(184, 137, 255);
+  filter: blur(25px);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.sirp-button:hover .sirp-button__glow {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.sirp-button__text {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ─── Secondary variant ────────────────────────────────────── */
+.sirp-button--secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: none;
+}
+
+.sirp-button--secondary:hover {
+  border-color: #8e2dff;
+  box-shadow: none;
+}
+
+.sirp-button--secondary:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.75);
+}
+
+/* Mobile nav menu — pill size only; colors match secondary CTA */
+.sirp-button--secondary.sirp-button--mobile-demo {
+  min-width: unset;
+  width: auto;
+  height: 50px;
+  padding: 8px 26px;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: none;
+}
+
+.sirp-button--secondary.sirp-button--mobile-demo:hover {
+  background: transparent;
+  border-color: #8e2dff;
+  box-shadow: none;
+}
+
+.sirp-button--disabled,
+button.sirp-button:disabled {
+  pointer-events: none;
+  cursor: default;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .sirp-button {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1.2rem;
+    letter-spacing: 0.015em;
+  }
+
+  .sirp-button--secondary.sirp-button--mobile-demo {
+    height: 50px;
+    padding: 8px 26px;
+    font-size: 0.9375rem;
+  }
+
+  .sirp-button__text {
+    gap: 0.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sirp-button {
+    font-size: 0.8125rem;
+    padding: 0.45rem 1rem;
+    letter-spacing: 0.012em;
+  }
+}

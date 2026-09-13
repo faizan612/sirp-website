@@ -1,0 +1,198 @@
+/* Enterprise SOC — typography scale aligned with soar-alternatives/page.css */
+
+.enterprise-soc-page .esoc-hero-heading {
+  font-size: clamp(44px, 5.5vw, 74px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.enterprise-soc-page .esoc-hero-desc {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.enterprise-soc-page .esoc-section-heading {
+  font-size: 60px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.enterprise-soc-page .esoc-section-subtext {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.enterprise-soc-page .esoc-card-title {
+  font-size: clamp(1.15rem, 2.5vw, 2.125rem);
+  line-height: 1.3;
+}
+
+.enterprise-soc-page .esoc-card-body {
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
+  line-height: 1.65;
+}
+
+.enterprise-soc-page .esoc-shift-card-title {
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.35;
+}
+
+.enterprise-soc-page .esoc-shift-card-body {
+  font-size: clamp(0.875rem, 1.3vw, 0.9375rem);
+  line-height: 1.65;
+}
+
+.enterprise-soc-page .esoc-threat-heading {
+  font-size: clamp(36px, 4.5vw, 74px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.enterprise-soc-page .esoc-threat-cta-heading {
+  font-size: clamp(1.5rem, 4vw, 3.75rem);
+  line-height: 1.2;
+}
+
+.enterprise-soc-page .esoc-threat-cta-subtext {
+  font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+  line-height: 1.5;
+}
+
+.enterprise-soc-page .esoc-reality-header {
+  max-width: 780px;
+  min-width: 0;
+}
+
+.enterprise-soc-page .impact-metrics-heading {
+  font-size: 42px;
+}
+
+.enterprise-soc-page .impact-metrics-subtext {
+  font-size: 18px;
+}
+
+/* CTA dome tighter overlap */
+.enterprise-soc-page .cta-section {
+  margin-top: -2rem;
+}
+
+@media (min-width: 1025px) {
+  .enterprise-soc-page .cta-section {
+    padding-top: 200px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .enterprise-soc-page .cta-section {
+    padding-top: 220px;
+  }
+}
+
+/* CTA heading — long text needs smaller size on small screens */
+@media (max-width: 480px) {
+  .enterprise-soc-page .cta-heading {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .enterprise-soc-page .cta-heading {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .enterprise-soc-page .esoc-hero-heading {
+    font-size: clamp(1.65rem, 7.2vw, 2.15rem);
+    letter-spacing: -0.01em;
+  }
+
+  .enterprise-soc-page .esoc-hero-desc {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .enterprise-soc-page .esoc-section-heading {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .enterprise-soc-page .esoc-section-subtext {
+    font-size: clamp(0.875rem, 4vw, 1.125rem);
+    line-height: 1.65;
+  }
+
+  .enterprise-soc-page .esoc-ainative-section .esoc-section-heading {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+
+  .enterprise-soc-page .esoc-ainative-section .esoc-section-subtext {
+    font-size: clamp(0.875rem, 3.5vw, 1rem);
+  }
+
+  .enterprise-soc-page .esoc-card-title {
+    font-size: clamp(1.1rem, 6vw, 1.5rem);
+    line-height: 1.22;
+  }
+
+  .enterprise-soc-page .esoc-card-body {
+    font-size: clamp(0.8125rem, 3.5vw, 1rem);
+    line-height: 1.65;
+  }
+
+  .enterprise-soc-page .esoc-shift-card-title {
+    font-size: clamp(1rem, 5.5vw, 1.375rem);
+    line-height: 1.22;
+  }
+
+  .enterprise-soc-page .esoc-shift-card-body {
+    font-size: clamp(0.8125rem, 3.5vw, 1rem);
+    line-height: 1.65;
+  }
+
+  .enterprise-soc-page .esoc-threat-heading {
+    font-size: clamp(1.25rem, 7vw, 1.75rem);
+    line-height: 1.18;
+  }
+
+  .enterprise-soc-page .esoc-threat-cta-heading {
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    line-height: 1.18;
+  }
+
+  .enterprise-soc-page .esoc-threat-cta-subtext {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .enterprise-soc-page .esoc-reality-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .enterprise-soc-page .shift-card {
+    padding: 28px 24px;
+  }
+
+  .enterprise-soc-page .threat-steps__item {
+    font-size: 0.75rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .enterprise-soc-page .impact-metrics-heading {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .enterprise-soc-page .impact-metrics-subtext,
+  .enterprise-soc-page .impact-metrics-subtitle {
+    font-size: clamp(0.875rem, 3.5vw, 1rem);
+    line-height: 1.65;
+  }
+
+  .enterprise-soc-page .impact-metrics-value {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+}

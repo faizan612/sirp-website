@@ -1,0 +1,20 @@
+/* ─── Mono section eyebrow (what-is-autonomous-soc) ─────────── */
+.wsoc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-ibm-mono), 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-purple-light);
+}
+
+.wsoc-eyebrow__tick {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-purple), transparent);
+}

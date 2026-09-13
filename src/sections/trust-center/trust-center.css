@@ -1,0 +1,182 @@
+/* ─── Trust Center — matches the current homepage's light/dark section
+ * rhythm (bg-hero-surface ↔ #f6f5f8), font-medium headings, plain pill
+ * eyebrows and hairline tables — not the bold/sparkle-pill legacy style. */
+
+.trust-center-page .tc-h2 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.trust-center-page .tc-h1 {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.trust-center-page .tc-body {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ─── Eyebrow pill ────────────────────────────────────────── */
+.trust-center-page .tc-pill--dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #323232;
+  background: #0E0E0E;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+.trust-center-page .tc-pill--light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: #000000;
+}
+
+/* ─── Status badges (compliance table) ───────────────────── */
+.trust-center-page .tc-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.trust-center-page .tc-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.trust-center-page .tc-status--evidenced { color: #0f9d63; }
+.trust-center-page .tc-status--evidenced .tc-status-dot { background: #0f9d63; }
+
+.trust-center-page .tc-status--in-progress { color: #b45309; }
+.trust-center-page .tc-status--in-progress .tc-status-dot { background: #d97706; }
+
+.trust-center-page .tc-status--not-claimed { color: rgba(0, 0, 0, 0.4); }
+.trust-center-page .tc-status--not-claimed .tc-status-dot { background: rgba(0, 0, 0, 0.3); }
+
+/* ─── Tables ──────────────────────────────────────────────── */
+.trust-center-page .tc-table-wrap--dark {
+  border-radius: var(--radius-sirp-lg);
+  border: 1px solid var(--color-hairline);
+  overflow-x: auto;
+}
+.trust-center-page .tc-table-wrap--dark table { width: 100%; min-width: 620px; border-collapse: collapse; }
+.trust-center-page .tc-table-wrap--dark thead th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+.trust-center-page .tc-table-wrap--dark tbody tr { border-top: 1px solid var(--color-hairline); }
+.trust-center-page .tc-table-wrap--dark tbody td {
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  vertical-align: top;
+}
+.trust-center-page .tc-table-wrap--dark tbody td:first-child { color: #ffffff; font-weight: 500; }
+
+.trust-center-page .tc-table-wrap--dark table.tc-table--kv tbody td:first-child {
+  width: 220px;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.trust-center-page .tc-table-wrap--light {
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  overflow-x: auto;
+}
+.trust-center-page .tc-table-wrap--light table { width: 100%; min-width: 620px; border-collapse: collapse; }
+.trust-center-page .tc-table-wrap--light thead th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+.trust-center-page .tc-table-wrap--light tbody tr { border-top: 1px solid rgba(0, 0, 0, 0.08); }
+.trust-center-page .tc-table-wrap--light tbody td {
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.72);
+  vertical-align: top;
+}
+.trust-center-page .tc-table-wrap--light tbody td:first-child { color: #000000; font-weight: 500; }
+
+/* ─── Note / callout card ────────────────────────────────── */
+.trust-center-page .tc-note--dark {
+  border-radius: 16px;
+  border: 1px solid var(--color-hairline);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.25rem 1.5rem;
+}
+.trust-center-page .tc-note--light {
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 1.25rem 1.5rem;
+}
+.trust-center-page .tc-note-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8e2dff;
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Grouped list rows (governance / controls) ──────────── */
+.trust-center-page .tc-row--dark { border-top: 1px solid var(--color-hairline); padding: 1rem 0; }
+.trust-center-page .tc-row--dark:first-child { border-top: none; padding-top: 0; }
+.trust-center-page .tc-row--light { border-top: 1px solid rgba(0, 0, 0, 0.08); padding: 1rem 0; }
+.trust-center-page .tc-row--light:first-child { border-top: none; padding-top: 0; }
+
+.trust-center-page .tc-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.trust-center-page .tc-group-label--dark { color: var(--color-text-tertiary); }
+.trust-center-page .tc-group-label--light { color: rgba(0, 0, 0, 0.45); }

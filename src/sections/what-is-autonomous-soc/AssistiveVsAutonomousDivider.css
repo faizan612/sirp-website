@@ -1,0 +1,132 @@
+/* ─── S5 Assistive vs Autonomous — signature full-width band ── */
+.wsoc-divider {
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 0;
+  background:
+    linear-gradient(180deg, rgba(142, 45, 255, 0.06), rgba(18, 18, 24, 0)) ,
+    #0c0c12;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Soft accent wash anchored to the autonomous (right) side */
+.wsoc-divider-glow {
+  position: absolute;
+  top: 50%;
+  right: -6%;
+  width: 46%;
+  height: 150%;
+  transform: translateY(-50%);
+  background: radial-gradient(closest-side, var(--color-purple-glow), transparent 72%);
+  filter: blur(28px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.wsoc-divider-inner {
+  position: relative;
+}
+
+.wsoc-divider-eyebrow {
+  justify-content: center;
+  width: 100%;
+}
+
+.wsoc-divider-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.wsoc-divider-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 2.25rem;
+  border-radius: var(--radius-sirp-lg);
+  border: 1px solid var(--color-border);
+}
+
+/* Muted via low-contrast text/border (not opacity, which the reveal animates). */
+.wsoc-divider-panel--assistive {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.wsoc-divider-panel--autonomous {
+  background: rgba(142, 45, 255, 0.08);
+  border-color: rgba(142, 45, 255, 0.55);
+  box-shadow: 0 0 28px rgba(142, 45, 255, 0.16), inset 0 0 0 1px rgba(142, 45, 255, 0.12);
+}
+
+.wsoc-divider-label {
+  font-family: var(--font-ibm-mono), 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.wsoc-divider-panel--assistive .wsoc-divider-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.wsoc-divider-panel--autonomous .wsoc-divider-label {
+  color: var(--color-purple-light);
+}
+
+.wsoc-divider-statement {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+}
+
+.wsoc-divider-panel--assistive .wsoc-divider-statement {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.wsoc-divider-panel--autonomous .wsoc-divider-statement {
+  color: #ffffff;
+}
+
+/* Center progression arrow assistive → autonomous */
+.wsoc-divider-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-purple-light);
+}
+
+.wsoc-divider-arrow svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+@media (max-width: 880px) {
+  .wsoc-divider {
+    padding: 3.75rem 0;
+  }
+
+  .wsoc-divider-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Arrow points down when stacked — rotate the icon, not the full-width
+     grid cell (rotating the cell turns it into a tall empty band). */
+  .wsoc-divider-arrow svg {
+    transform: rotate(90deg);
+  }
+
+  .wsoc-divider-glow {
+    width: 90%;
+    right: -20%;
+    opacity: 0.4;
+  }
+}

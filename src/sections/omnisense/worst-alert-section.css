@@ -1,0 +1,52 @@
+/* ─── "Bring us your worst alert" — section-scoped tokens ────
+ * This section runs light, same page rhythm as the pillars/loop
+ * stretch above it. The spec asked to reuse the loop section's
+ * light tokens, but the loop section is currently the page's dark
+ * beat (flipped in a later pass), so there are no light values
+ * left there to borrow. Falling back to this site's one other
+ * established light-beat pattern instead (#f6f5f8 background,
+ * black text hierarchy — see OmnisensePlatform on this same page,
+ * HowItWorksResultsSection, ProblemSection `light`), scoped here
+ * under `.worst-alert-section` so it can't leak elsewhere. */
+
+.worst-alert-section {
+  --wa-bg:            #f6f5f8;
+  --wa-text-primary:  #000000;
+  --wa-text-secondary: rgba(0, 0, 0, 0.72);
+  --wa-text-muted:     rgba(0, 0, 0, 0.55);
+  --wa-corrupt:        #b3261e; /* red/amber "unresolved alert" tint */
+
+  background: var(--wa-bg);
+}
+
+/* Headline corruption-to-resolve effect — scoped to the headline only. */
+.wa-corrupt-word {
+  display: inline-block;
+}
+
+.wa-corrupt-char {
+  display: inline-block;
+  color: var(--wa-corrupt);
+  transition: color 0.5s ease, transform 0.5s ease;
+  transition-delay: var(--wa-settle-delay, 0ms);
+  animation: wa-jitter 0.15s steps(2, jump-none) infinite;
+}
+
+.wa-corrupt-headline[data-resolved='true'] .wa-corrupt-char {
+  color: inherit;
+  animation: none;
+  transform: none;
+}
+
+@keyframes wa-jitter {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(0.6px, -0.6px); }
+  100% { transform: translate(-0.6px, 0.6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-corrupt-char {
+    animation: none !important;
+    transition: none !important;
+  }
+}

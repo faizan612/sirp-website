@@ -1,0 +1,71 @@
+/* ─── "The loop" — section-scoped dark-beat tokens ───────────
+ * This section is the dark beat in the OmniSense page's light/
+ * dark rhythm (OmnisensePlatform above it runs light). Values are
+ * scoped to `.loop-section` only — do not reference these vars
+ * outside this component. */
+
+.loop-section {
+  --loop-bg:            #121218;
+  --loop-text-primary:  #ffffff;
+  --loop-text-secondary: rgba(255, 255, 255, 0.7);
+  --loop-text-muted:     rgba(255, 255, 255, 0.55);
+  --loop-text-quiet:     rgba(255, 255, 255, 0.4);
+  --loop-border:         rgba(255, 255, 255, 0.12);
+  --loop-border-soft:    rgba(255, 255, 255, 0.08);
+
+  /* Planner — warm register, dim amber wash on dark */
+  --loop-warm-bg:     rgba(251, 191, 36, 0.06);
+  --loop-warm-border: rgba(251, 191, 36, 0.28);
+
+  /* Executor / Governor — cool register, dim blue wash on dark */
+  --loop-cool-bg:      rgba(96, 165, 250, 0.06);
+  --loop-cool-border:  rgba(96, 165, 250, 0.28);
+  --loop-cool-text:    #8fb4f7;
+  --loop-cool-deepen:  rgba(147, 181, 255, 0.14);
+
+  /* Autonomy Gate — same accent hue as the rest of the page. On dark,
+   * the hover highlight brightens toward the accent rather than
+   * deepening (there's nowhere darker to go against near-black). */
+  --loop-purple:         #8e2dff;
+  --loop-purple-bg:      rgba(142, 45, 255, 0.08);
+  --loop-purple-border:  rgba(142, 45, 255, 0.55);
+  --loop-purple-deepen:  rgba(142, 45, 255, 0.32);
+
+  background: var(--loop-bg);
+}
+
+.loop-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--loop-card-bg, #1a1a22);
+  border: 1px solid var(--loop-card-border, var(--loop-border));
+}
+
+/* Cursor-tracked radial. Position is driven by --mouse-x/-y, set on
+ * mousemove in JS; under prefers-reduced-motion those vars are never
+ * updated, so the same overlay just sits centered and static instead
+ * of tracking the cursor. */
+.loop-card__spotlight {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    260px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--loop-spotlight-color, transparent),
+    transparent 70%
+  );
+}
+
+.loop-card--spotlight:hover .loop-card__spotlight,
+.loop-card--spotlight:focus-within .loop-card__spotlight {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loop-card__spotlight {
+    transition: none;
+  }
+}

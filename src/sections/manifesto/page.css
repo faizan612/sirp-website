@@ -1,0 +1,295 @@
+.manifesto-page {
+  background: #0b0c10;
+  /* Same horizontal band as the embedded PDF (`.manifesto-pdf-inner`). */
+  --manifesto-content-max: 1320px;
+  --manifesto-pad-inline: clamp(0.75rem, 1.75vw, 1.25rem);
+}
+
+@media (min-width: 768px) {
+  .manifesto-page {
+    --manifesto-pad-inline: clamp(1rem, 2.25vw, 1.75rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .manifesto-page {
+    --manifesto-pad-inline: clamp(1.15rem, 2vw, 2rem);
+  }
+}
+
+.manifesto-page .page-header {
+  background: #0b0c10;
+  border-bottom: none;
+  padding-bottom: 2.25rem;
+}
+
+.manifesto-page .page-header .container-sirp {
+  max-width: var(--manifesto-content-max);
+  padding-inline: var(--manifesto-pad-inline);
+}
+
+.manifesto-page .page-header-stack {
+  max-width: 100%;
+  width: 100%;
+}
+
+.manifesto-page .page-header-badge .purple-pill {
+  background: rgba(88, 28, 135, 0.55);
+  border-color: rgba(168, 85, 247, 0.45);
+}
+
+.manifesto-page .page-header-heading {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-size: clamp(2.85rem, 6.2vw, 4.65rem);
+}
+
+.manifesto-page .page-header-heading em {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.manifesto-page .page-header-subtext {
+  margin-top: 1.75rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+.manifesto-page .page-header-subtitle {
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.65vw, 1.55rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 640px) {
+  .manifesto-page .page-header-heading {
+    font-size: 2.75rem; /* 44px */
+  }
+
+  .manifesto-page .page-header-subtitle {
+    font-size: 1rem; /* 16px */
+  }
+
+  .manifesto-page .page-header-subtext {
+    margin-top: 1rem;
+  }
+}
+
+.manifesto-page .page-header-byline {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .manifesto-page .page-header-byline {
+    font-size: 1.0625rem;
+  }
+}
+
+.manifesto-hero-cta {
+  background: #0b0c10;
+  padding: 0 0 2.25rem;
+}
+
+.manifesto-hero-cta-inner {
+  max-width: var(--manifesto-content-max);
+  margin-inline: auto;
+  padding-inline: var(--manifesto-pad-inline);
+}
+
+.manifesto-hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+}
+
+.manifesto-pdf-section {
+  background: #0b0c10;
+  padding: 0 0 3rem;
+}
+
+.manifesto-pdf-inner {
+  max-width: var(--manifesto-content-max);
+  margin-inline: auto;
+  padding-inline: var(--manifesto-pad-inline);
+}
+
+.manifesto-pdf-frame {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(58, 58, 76, 0.9);
+  background: #16161f;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.manifesto-pdf-iframe {
+  display: block;
+  width: 100%;
+  height: clamp(520px, 72vh, 920px);
+  border: 0;
+}
+
+.manifesto-abstract-section {
+  background: #0b0c10;
+  padding: 2.5rem 0 3rem;
+}
+
+.manifesto-abstract-inner {
+  max-width: var(--manifesto-content-max);
+  margin-inline: auto;
+  padding-inline: var(--manifesto-pad-inline);
+}
+
+.manifesto-abstract-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.35rem;
+}
+
+.manifesto-page .manifesto-abstract-pill,
+.manifesto-page .manifesto-framework-pill,
+.manifesto-page .manifesto-key-insights-kicker,
+.manifesto-page .manifesto-citation-footer-pill,
+.manifesto-page .manifesto-about-author-pill {
+  background: rgba(88, 28, 135, 0.55);
+  border-color: rgba(168, 85, 247, 0.45);
+}
+
+.manifesto-abstract-body {
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(0.875rem, 1.75vw, 0.98rem);
+  line-height: 1.7;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .manifesto-abstract-body {
+    font-size: 0.875rem;
+  }
+}
+
+.manifesto-framework-section {
+  background: #0b0c10;
+  padding: 0 0 3rem;
+}
+
+.manifesto-framework-inner {
+  max-width: var(--manifesto-content-max);
+  margin-inline: auto;
+  padding-inline: var(--manifesto-pad-inline);
+}
+
+.manifesto-framework-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.manifesto-framework-title {
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.65rem, 3.5vw, 2.25rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.manifesto-framework-stack .soc-af-table-scroll {
+  margin-top: 0.35rem;
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+}
+
+/* SAF table — fit narrow viewports (manifesto only; shared component used only here today). */
+@media (max-width: 640px) {
+  .manifesto-page .soc-af-table-scroll {
+    overflow-x: visible;
+  }
+
+  .manifesto-page .soc-af-table {
+    min-width: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .manifesto-page .soc-af-table thead th {
+    padding: 0.38rem 0.28rem;
+    font-size: 0.48rem;
+    letter-spacing: 0.055em;
+    white-space: normal;
+    line-height: 1.22;
+    vertical-align: bottom;
+  }
+
+  .manifesto-page .soc-af-table tbody td {
+    padding: 0.38rem 0.28rem;
+    font-size: 0.62rem;
+    line-height: 1.28;
+    overflow-wrap: break-word;
+  }
+
+  .manifesto-page .soc-af-table tbody td:first-child {
+    font-size: 0.66rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .manifesto-page .soc-af-table thead th {
+    padding: 0.32rem 0.22rem;
+    font-size: 0.44rem;
+    letter-spacing: 0.04em;
+    line-height: 1.18;
+  }
+
+  .manifesto-page .soc-af-table tbody td {
+    padding: 0.32rem 0.22rem;
+    font-size: 0.54rem;
+    line-height: 1.24;
+  }
+
+  .manifesto-page .soc-af-table tbody td:first-child {
+    font-size: 0.58rem;
+  }
+}
+
+/* ─── Dome CTA — bottom-to-top gradient: dome interior → black ─────────── */
+.manifesto-page .cta-section {
+  background: linear-gradient(rgb(0, 0, 0) 0%, rgb(18, 18, 24) 50%);
+  margin-top: 0;
+}
+
+.manifesto-key-insights-divider-wrap {
+  background: #0b0c10;
+}
+
+.manifesto-citation-divider-wrap {
+  background: #000000;
+}
+
+.manifesto-section-divider {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}

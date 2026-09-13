@@ -1,0 +1,102 @@
+/* ─── S1 Definition hero ───────────────────────────────────── */
+.wsoc-hero {
+  position: relative;
+  overflow: hidden;
+  background: #121218;
+  /* Clear the fixed navbar (mirrors .page-header). */
+  padding-top: calc(3rem + 100px);
+  padding-bottom: 4.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Subtle purple radial glow behind the headline */
+.wsoc-hero-glow {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: min(900px, 90vw);
+  height: 620px;
+  transform: translateX(-50%);
+  background: radial-gradient(50% 50% at 50% 50%, var(--color-purple-glow), transparent 70%);
+  opacity: 0.55;
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.wsoc-hero-inner {
+  position: relative;
+  max-width: 1040px;
+}
+
+.wsoc-hero-eyebrow {
+  margin-bottom: 1.5rem;
+}
+
+.wsoc-hero-heading {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
+  font-size: clamp(2.55rem, 5.7vw, 4.35rem);
+}
+
+.wsoc-hero-heading em {
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* The definition is the centerpiece — large display lead. */
+.wsoc-hero-definition {
+  margin: 1.75rem 0 0;
+  max-width: 38ch;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.wsoc-hero-verb {
+  color: var(--color-purple-light);
+  font-weight: 600;
+}
+
+.wsoc-hero-supporting {
+  margin-top: 1.75rem;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.wsoc-hero-ctas {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .wsoc-hero {
+    padding-top: calc(2rem + 92px);
+    padding-bottom: 3.25rem;
+  }
+
+  .wsoc-hero-ctas {
+    gap: 0.75rem;
+  }
+
+  .wsoc-hero-ctas .sirp-button {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}

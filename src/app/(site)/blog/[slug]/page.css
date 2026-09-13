@@ -1,0 +1,389 @@
+/* Typography aligned with sirp.io Framer blog (Inter body + section headings) */
+
+.blog-post-page {
+  background: #121218;
+  padding: calc(3rem + 100px) 0 5rem;
+}
+
+.blog-post-page-inner {
+  max-width: 60rem;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.blog-post-back {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-post-back:hover {
+  color: #b98aff;
+}
+
+.blog-post-header {
+  margin-bottom: 2rem;
+}
+
+.blog-post-date {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.blog-post-title {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(1.875rem, 4.2vw, 2.625rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.blog-post-excerpt {
+  margin-top: 1rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.blog-post-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 2.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgb(25, 25, 25);
+}
+
+/* Body copy — Framer preset rjcyly (Inter 16px / 500 / 150%) */
+.blog-post-prose {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.blog-post-prose p {
+  margin: 0 0 1.25rem;
+}
+
+.blog-post-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-post-prose strong {
+  font-weight: 600;
+  color: #fff;
+}
+
+.blog-post-prose em {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Section headings — Framer preset 1lrvyty (Inter h2, 42px desktop) */
+.blog-post-prose h2 {
+  margin: 2.75rem 0 1rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(1.625rem, 4vw, 2.625rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.blog-post-prose h2:first-child {
+  margin-top: 0;
+}
+
+/* Subheadings — Framer h3/h4/h5 presets */
+.blog-post-prose h3 {
+  margin: 2rem 0 0.85rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(1.125rem, 2.5vw, 1.875rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.blog-post-prose h4 {
+  margin: 1.75rem 0 0.75rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.blog-post-prose h5,
+.blog-post-prose h6 {
+  margin: 1.5rem 0 0.65rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.blog-post-prose h1 {
+  margin: 2rem 0 1rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(1.875rem, 4vw, 2.625rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+}
+
+.blog-post-prose a {
+  color: #b98aff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-post-prose ul,
+.blog-post-prose ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.35rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+}
+
+/* Tailwind preflight removes list markers — restore disc/decimal bullets */
+.blog-post-prose ul {
+  list-style: disc;
+  list-style-position: outside;
+}
+
+.blog-post-prose ol {
+  list-style: decimal;
+  list-style-position: outside;
+}
+
+.blog-post-prose li {
+  display: list-item;
+  margin: 0.35rem 0;
+}
+
+.blog-post-prose li::marker {
+  color: #fff;
+}
+
+.blog-post-prose ul ul,
+.blog-post-prose ol ul {
+  list-style-type: circle;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Pull-quote / callout (grey rule + italic grey copy — sirp.io blog) */
+.blog-post-prose blockquote {
+  margin: 1.75rem 0;
+  padding: 0 0 0 1rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.38);
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.blog-post-prose blockquote :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.blog-post-prose blockquote p {
+  margin: 0 0 0.5rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.blog-post-prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-post-prose blockquote strong {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.blog-post-prose blockquote em {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.blog-post-prose hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Markdown / HTML tables — dark grid (sirp.io blog style) */
+.blog-post-table-wrap {
+  width: 100%;
+  margin: 2rem 0;
+  overflow-x: auto;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background: transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-post-prose table,
+.blog-post-table-wrap table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  table-layout: auto;
+  background: transparent;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.blog-post-prose:not(.blog-post-prose-html) > table {
+  margin: 2rem 0;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.blog-post-prose-html table {
+  margin: 2rem 0;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.blog-post-prose :is(th, td),
+.blog-post-table-wrap :is(th, td) {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #333;
+}
+
+.blog-post-prose th,
+.blog-post-table-wrap th {
+  font-weight: 600;
+  color: #fff;
+  background: transparent;
+}
+
+.blog-post-prose td,
+.blog-post-table-wrap td {
+  font-weight: 500;
+  color: #fff;
+  background: transparent;
+}
+
+.blog-post-prose tbody tr,
+.blog-post-table-wrap tbody tr {
+  background: transparent;
+}
+
+.blog-post-prose table em,
+.blog-post-table-wrap table em,
+.blog-post-prose-html table em {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-style: italic;
+  color: #fff;
+}
+
+.blog-post-prose pre {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #1a1a22;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.blog-post-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  font-weight: 400;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+}
+
+.blog-post-prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.blog-post-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.blog-post-prose-html img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .blog-post-page {
+    padding-top: 2.25rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .blog-post-prose h2 {
+    margin-top: 2.25rem;
+    font-size: 1.625rem;
+  }
+
+  .blog-post-prose h3 {
+    font-size: 1.25rem;
+  }
+
+  .blog-post-prose h4 {
+    font-size: 1.125rem;
+  }
+
+  .blog-post-prose h5,
+  .blog-post-prose h6 {
+    font-size: 1rem;
+  }
+
+  .blog-post-prose :is(th, td),
+  .blog-post-table-wrap :is(th, td) {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.9rem;
+  }
+}

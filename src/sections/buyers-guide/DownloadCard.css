@@ -1,0 +1,79 @@
+.bg-download-card {
+  margin-top: 48px;
+  background: var(--bg-dark-panel);
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.bg-download-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.375rem;
+  margin: 0 0 10px;
+  color: var(--ink-dark);
+}
+
+.bg-download-body {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--ink-dark-dim);
+  margin: 0;
+}
+
+.bg-download-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bg-download-input {
+  flex: 1;
+  min-width: 180px;
+  background: var(--bg-dark);
+  border: 1px solid var(--line-dark);
+  border-radius: 2px;
+  padding: 13px 16px;
+  color: var(--ink-dark);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.bg-download-input::placeholder {
+  color: var(--ink-dark-dim);
+}
+
+.bg-download-input[aria-invalid='true'] {
+  border-color: var(--signal-weak);
+}
+
+.bg-download-error {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--signal-weak);
+}
+
+.bg-download-success {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--ink-dark);
+  margin: 0;
+}
+
+.bg-download-success a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .bg-download-card {
+    grid-template-columns: 1fr;
+  }
+}

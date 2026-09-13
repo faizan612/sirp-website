@@ -1,0 +1,47 @@
+/* ─── Heading + stacked statements (inner pages) ───────────── */
+.statement-lines-section {
+  background: #121218;
+  padding: 3rem 0 2.75rem;
+  border-bottom: 1px solid #3a3a4c;
+}
+
+.statement-lines-inner {
+  text-align: left;
+  max-width: 70%;
+  margin-inline: auto;
+}
+
+.statement-lines-heading {
+  margin: 0 0 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.statement-lines-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.statement-lines-body p {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.65;
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .statement-lines-section {
+    padding: 2.5rem 0 2.25rem;
+  }
+
+  .statement-lines-body p {
+    font-size: 0.98rem;
+  }
+}

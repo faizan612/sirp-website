@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme {
+  /* ─── Brand colors ───────────────────────────────────── */
+  --color-purple:         #8e2dff;
+  --color-purple-light:   #a855f7;
+  --color-purple-dim:     rgba(142, 45, 255, 0.25);
+  --color-purple-glow:    rgba(142, 45, 255, 0.35);
+
+  --color-bg-base:        #121218;
+  --color-bg-surface:     #121218;
+  --color-bg-elevated:    #252534;
+
+  --color-border:         #3a3a4d;
+  --color-border-med:     rgba(255, 255, 255, 0.14);
+
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: #ffffff;
+  --color-text-muted:     rgba(255, 255, 255, 0.6);
+
+  /* ─── Typography ─────────────────────────────────────── */
+  --font-sans:  var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-noto-serif), Georgia, serif;
+  --font-mono:  var(--font-inter), 'Inter', sans-serif;
+
+  /* ─── Border radius ──────────────────────────────────── */
+  --radius-sirp-sm: 6px;
+  --radius-sirp-md: 10px;
+  --radius-sirp-lg: 16px;
+  --radius-sirp-xl: 24px;
+
+  /* ─── Animations ─────────────────────────────────────── */
+  --animate-fade-up:  fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in:  fadeIn 0.5s ease forwards;
+  --animate-float:    float 6s ease-in-out infinite;
+
+  @keyframes fadeUp {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+  }
+}
+
+/* ─── Base reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #121218;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+p, a, li, span, button {
+  color: inherit;
+}
+
+/* ─── Utility classes ────────────────────────────────────── */
+.container-sirp {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 768px)  { .container-sirp { padding-inline: 2.5rem; } }
+@media (min-width: 1280px) { .container-sirp { padding-inline: 3rem; } }
+
+/* Matches hero / stats copy horizontal inset */
+.hero-section-x {
+  padding-left: 3rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 640px) {
+  .hero-section-x {
+    padding-left: 4rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .hero-section-x {
+    padding-left: 6rem;
+    padding-right: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-section-x {
+    padding-left: 280px;
+    padding-right: 0;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f0eeff 30%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-purple {
+  box-shadow: 0 0 24px rgba(142, 45, 255, 0.35), 0 0 60px rgba(142, 45, 255, 0.15);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(142, 45, 255, 0.6);
+  color: #ffffff;
+  background: rgba(142, 45, 255, 0.25);
+}
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-base); }
+::-webkit-scrollbar-thumb { background: var(--color-bg-elevated); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-purple); }
+
+::selection {
+  background: var(--color-purple-dim);
+  color: var(--color-text-primary);
+}

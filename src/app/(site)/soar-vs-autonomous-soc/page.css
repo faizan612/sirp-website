@@ -1,0 +1,199 @@
+.soar-vs-autonomous-soc-cta-wrap > section {
+  margin-top: -2rem;
+}
+
+/* ── All section images — larger on mobile for better visibility ── */
+@media (max-width: 900px) {
+  .soar-vs-autonomous-soc-page .split-image-wrap {
+    height: clamp(300px, 90vw, 420px);
+  }
+}
+
+@media (max-width: 640px) {
+  .soar-vs-autonomous-soc-page .split-image-wrap {
+    height: clamp(280px, 88vw, 380px);
+  }
+}
+
+@media (max-width: 480px) {
+  .soar-vs-autonomous-soc-page .split-image-wrap {
+    height: clamp(260px, 85vw, 340px);
+  }
+}
+
+/* ── What Is SOAR? — centered heading on mobile ── */
+@media (max-width: 900px) {
+  .soar-what-is-soar-section .traditional-models-heading {
+    text-align: center;
+    display: block;
+  }
+}
+
+/* Page body (below shared `PageHeader`): tighter vertical rhythm + slightly smaller headings on phones. */
+
+@media (max-width: 768px) {
+  .soar-vs-autonomous-soc-page .split-info-cta-image {
+    padding: 2.65rem 0 2.85rem;
+  }
+
+  .soar-vs-autonomous-soc-page .split-info-cta-inner {
+    gap: 1.75rem;
+  }
+
+  .soar-vs-autonomous-soc-page .autonomous-benefits {
+    padding: 2.65rem 0 3rem !important;
+  }
+
+  .soar-vs-autonomous-soc-page section[class*='py-24'][class*='121218'] {
+    padding-top: 2.65rem !important;
+    padding-bottom: 2.65rem !important;
+  }
+
+  .soar-vs-autonomous-soc-page .info-cta-block--authority {
+    padding-top: 2.25rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Global paragraph rule — 18px Inter across all sections */
+  .soar-vs-autonomous-soc-page p {
+    font-size: 18px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    color: #ffffff !important;
+    line-height: 1.7 !important;
+  }
+
+  .soar-vs-autonomous-soc-page li {
+    font-size: 18px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    color: #ffffff !important;
+    line-height: 1.7 !important;
+  }
+
+  .soar-vs-autonomous-soc-page .split-info-cta-image {
+    padding: 1.85rem 0 2rem;
+  }
+
+  .soar-vs-autonomous-soc-page .split-info-cta-inner {
+    gap: 1.35rem;
+  }
+
+  .soar-vs-autonomous-soc-page .autonomous-benefits {
+    padding: 1.85rem 0 2rem !important;
+  }
+
+  .soar-vs-autonomous-soc-page section[class*='py-24'][class*='121218'] {
+    padding-top: 1.85rem !important;
+    padding-bottom: 1.85rem !important;
+  }
+
+  .soar-vs-autonomous-soc-page .info-cta-block--authority {
+    padding-top: 1.65rem !important;
+    padding-bottom: 3.25rem !important;
+  }
+
+  /* ── Hero heading & subtext ── */
+  .soar-vs-autonomous-soc-page .page-header-heading,
+  .soar-vs-autonomous-soc-page .page-header-heading-line2 {
+    font-size: 1.875rem; /* 30px */
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  .soar-vs-autonomous-soc-page .page-header-subtext {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.7;
+  }
+
+  /* ── All section headings → 30px ── */
+  .soar-vs-autonomous-soc-page .traditional-models-heading,
+  .soar-vs-autonomous-soc-page .autonomous-benefits-heading,
+  .soar-vs-autonomous-soc-page .info-cta-block--authority .info-cta-heading,
+  .soar-vs-autonomous-soc-page .soar-vs-autonomous-soc-cta-wrap h2 {
+    font-size: 1.875rem !important; /* 30px */
+    line-height: 1.18;
+  }
+
+  .soar-vs-autonomous-soc-page .comparison-section--soar h2 {
+    font-size: 1.875rem !important; /* 30px */
+    line-height: 1.18 !important;
+  }
+
+  .soar-vs-autonomous-soc-page .comparison-section--soar article h3 {
+    font-size: 1.875rem !important; /* 30px */
+    line-height: 1.18 !important;
+  }
+
+  /* ── All paragraphs / body text → 18px ── */
+  .soar-vs-autonomous-soc-page .split-info-cta-image--body-18 .info-cta-body,
+  .soar-vs-autonomous-soc-page .split-left-body {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.7;
+  }
+
+  .soar-vs-autonomous-soc-page .autonomous-benefits-intro,
+  .soar-vs-autonomous-soc-page .autonomous-benefit-body p {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.7;
+  }
+
+  .soar-vs-autonomous-soc-page .autonomous-benefit-title {
+    font-size: 1.5rem; /* 24px — card title slightly larger than body */
+    line-height: 1.22;
+  }
+
+  .soar-vs-autonomous-soc-page .comparison-section-intro p,
+  .soar-vs-autonomous-soc-page .comparison-section-footer-with-link p {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.7;
+  }
+
+  .soar-vs-autonomous-soc-page .comparison-section--soar ul.comparison-card-list--soar {
+    font-size: 1.125rem !important; /* 18px */
+    line-height: 1.7 !important;
+  }
+
+  .soar-vs-autonomous-soc-page .info-cta-block--authority .info-cta-body {
+    font-size: 1.125rem !important; /* 18px */
+    line-height: 1.7 !important;
+  }
+
+  .soar-vs-autonomous-soc-page .comparison-section-footer-with-link {
+    margin-top: 2.5rem !important;
+  }
+
+  .soar-vs-autonomous-soc-page .comparison-section--soar .mt-10 {
+    margin-top: 1.75rem !important;
+  }
+
+  .soar-vs-autonomous-soc-page .comparison-section--soar .mt-16 {
+    margin-top: 2.25rem !important;
+  }
+
+  .soar-vs-autonomous-soc-page .comparison-section--soar ul.comparison-card-list--soar {
+    padding-top: 1.15rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Keep 30px headings and 18px paragraphs on very small phones too */
+  .soar-vs-autonomous-soc-page .page-header-heading,
+  .soar-vs-autonomous-soc-page .page-header-heading-line2,
+  .soar-vs-autonomous-soc-page .traditional-models-heading,
+  .soar-vs-autonomous-soc-page .autonomous-benefits-heading,
+  .soar-vs-autonomous-soc-page .comparison-section--soar h2,
+  .soar-vs-autonomous-soc-page .comparison-section--soar article h3,
+  .soar-vs-autonomous-soc-page .info-cta-block--authority .info-cta-heading,
+  .soar-vs-autonomous-soc-page .soar-vs-autonomous-soc-cta-wrap h2 {
+    font-size: 1.875rem !important; /* 30px */
+  }
+}
+
+.soar-vs-autonomous-soc-page .soar-vs-tertiary-cta {
+  display: flex;
+  justify-content: center;
+  padding: 0 1.5rem 2.5rem;
+}

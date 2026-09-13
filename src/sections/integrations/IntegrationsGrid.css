@@ -1,0 +1,10 @@
+/* IntegrationsGrid — hover transitions only; no glow, no entrance motion.
+ * The grid reflows in place as results filter, so there is no layout-shift
+ * jump on the page itself. */
+
+@media (prefers-reduced-motion: reduce) {
+  .integrations-card,
+  .integrations-chip {
+    transition: none;
+  }
+}

@@ -1,0 +1,128 @@
+/* ─── S6 Benefits — outcome-led cards ──────────────────────── */
+.wsoc-benefits {
+  padding: 5rem 0 5.5rem;
+  background: #121218;
+}
+
+.wsoc-benefits-inner {
+  max-width: 1200px;
+}
+
+.wsoc-benefits-head {
+  max-width: 760px;
+}
+
+.wsoc-benefits-heading {
+  margin: 1rem 0 0;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  font-size: clamp(2rem, 3.6vw, 2.875rem);
+}
+
+.wsoc-benefits-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.wsoc-benefit-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sirp-lg);
+  background: rgba(11, 12, 20, 0.5);
+}
+
+.wsoc-benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sirp-md);
+  border: 1px solid rgba(142, 45, 255, 0.4);
+  background: rgba(142, 45, 255, 0.1);
+  color: var(--color-purple-light);
+}
+
+/* Outcome leads, in the display face */
+.wsoc-benefit-outcome {
+  margin: 1.25rem 0 0;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.4rem, 2vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.18;
+  color: #ffffff;
+}
+
+/* Mechanism — a mono signal line beneath the outcome */
+.wsoc-benefit-mechanism {
+  margin-top: 0.6rem;
+  font-family: var(--font-ibm-mono), 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-purple-light);
+}
+
+.wsoc-benefit-body {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* OmniFlex / OmniCollective glosses */
+.wsoc-benefit-glosses {
+  margin: 1.25rem 0 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.wsoc-benefit-gloss {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.wsoc-benefit-gloss dt {
+  font-family: var(--font-ibm-mono), 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.wsoc-benefit-gloss dd {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 760px) {
+  .wsoc-benefits {
+    padding: 3.75rem 0 4.25rem;
+  }
+
+  .wsoc-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}

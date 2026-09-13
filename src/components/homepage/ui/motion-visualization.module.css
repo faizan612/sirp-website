@@ -1,0 +1,51 @@
+.viewport {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 48px auto 0;
+  aspect-ratio: 32 / 15;
+  overflow: hidden;
+  background: #0e0e0e;
+}
+
+.viewport::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(
+      90deg,
+      #0e0e0e 0%,
+      transparent 5%,
+      transparent 95%,
+      #0e0e0e 100%
+    ),
+    linear-gradient(
+      180deg,
+      #0e0e0e 0%,
+      transparent 7%,
+      transparent 91%,
+      #0e0e0e 100%
+    );
+}
+
+.widget {
+  display: block;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  margin: -4px;
+  border: 0;
+  outline: 0;
+  background: #0e0e0e;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .viewport {
+    width: 150%;
+    margin-left: -25%;
+    margin-top: 40px;
+  }
+}

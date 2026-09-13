@@ -1,0 +1,93 @@
+/* Top fade — mirrors hero bottom gradient (#252534) */
+.autonomous-security-page .info-cta-block.autonomous-security-designed-world {
+  position: relative;
+  overflow: hidden;
+}
+
+.autonomous-security-page .info-cta-block.autonomous-security-designed-world::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  height: 12rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, #252534 0%, rgba(37, 37, 52, 0) 100%);
+}
+
+.autonomous-security-page .info-cta-block.autonomous-security-designed-world .info-cta-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* "Go Deeper" diagram — show full architecture (avoid cover cropping the top). */
+.autonomous-security-page .split-info-cta-image.autonomous-security-split .split-image-wrap {
+  background: transparent;
+  height: clamp(380px, 48vw, 560px);
+}
+
+.autonomous-security-page .split-info-cta-image.autonomous-security-split .split-image {
+  object-fit: contain;
+  object-position: center center;
+}
+
+@media (max-width: 900px) {
+  .autonomous-security-page .split-info-cta-image.autonomous-security-split .split-image-wrap {
+    height: clamp(280px, 68vw, 440px);
+  }
+}
+
+@media (max-width: 640px) {
+  .autonomous-security-page .split-info-cta-image.autonomous-security-split .split-image-wrap {
+    height: 100vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .autonomous-security-page .split-info-cta-image.autonomous-security-split .split-image-wrap {
+    height: 100vw;
+  }
+}
+
+/* Tighter vertical rhythm between stacked sections on small viewports (page-only). */
+
+@media (max-width: 768px) {
+  .autonomous-security-page .info-cta-block {
+    padding: 2.65rem 0 1.85rem;
+  }
+
+  .autonomous-security-page .split-info-cta-image {
+    padding: 2.65rem 0 2.85rem;
+  }
+
+  .autonomous-security-page .split-info-cta-inner {
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* "Go Deeper" heading — 44px on mobile */
+  .autonomous-security-page .split-info-cta-image.autonomous-security-split .info-cta-heading {
+    font-size: 2.75rem; /* 44px */
+    line-height: 1.08;
+  }
+
+  .autonomous-security-page .info-cta-block {
+    padding: 1.85rem 0 1.15rem;
+  }
+
+  .autonomous-security-page .split-info-cta-image {
+    padding: 1.85rem 0 2rem;
+  }
+
+  .autonomous-security-page .split-info-cta-inner {
+    gap: 1.35rem;
+  }
+
+  .autonomous-security-page .sirp-button {
+    font-size: 0.8125rem;
+    padding: 0.52rem 1.25rem;
+    letter-spacing: 0.01em;
+  }
+}

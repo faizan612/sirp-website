@@ -1,0 +1,337 @@
+/* ─── Section badge ───────────────────────────────────────── */
+.deploy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-inter, sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 5px 14px;
+  border-radius: 5px;
+  border: 0.75px solid rgb(142, 45, 255);
+  background-color: rgba(142, 45, 255, 0.25);
+}
+
+/* ─── Card ────────────────────────────────────────────────── */
+.deploy-card {
+  position: relative;
+  background: rgb(18, 18, 24);
+  border: 1px solid rgb(58, 58, 77);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 740px;
+}
+
+/* Faint grain — anonymized-report texture. Opacity kept low enough that it
+ * never competes with the white/near-white text sitting on top of it. */
+.deploy-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── Case ID ─────────────────────────────────────────────── */
+.deploy-case-id {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  z-index: 2;
+  font-family: var(--font-inter, sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ─── Card header ─────────────────────────────────────────── */
+.deploy-card-header {
+  position: relative;
+  padding: 30px;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Multi-layer teal glow (saas card) */
+.deploy-glow-teal {
+  position: absolute;
+  top: 110px;
+  left: -9px;
+  width: 588px;
+  height: 372px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.deploy-glow-teal__l1 {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 294px);
+  width: 588px;
+  height: 372px;
+  border-radius: 100%;
+  background: linear-gradient(#13a3ad00 0%, #13a3ad 100%);
+  filter: blur(47.5px);
+}
+
+.deploy-glow-teal__l2 {
+  position: absolute;
+  top: 25px;
+  left: calc(50% - 126px);
+  width: 252px;
+  height: 322px;
+  border-radius: 100%;
+  background-color: #7fd2d8;
+  filter: blur(25px);
+}
+
+.deploy-glow-teal__l3 {
+  position: absolute;
+  top: 53px;
+  left: calc(50% - 126px);
+  width: 252px;
+  height: 266px;
+  border-radius: 100%;
+  background-color: #fff;
+  filter: blur(10px);
+}
+
+/* Multi-layer purple glow (fintech card) */
+.deploy-glow-purple {
+  position: absolute;
+  top: 110px;
+  left: -9px;
+  width: 588px;
+  height: 372px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.deploy-glow-purple__l1 {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 294px);
+  width: 588px;
+  height: 372px;
+  border-radius: 100%;
+  background: linear-gradient(#8e2dff00 0%, #8e2dff 100%);
+  filter: blur(47.5px);
+}
+
+.deploy-glow-purple__l2 {
+  position: absolute;
+  top: 25px;
+  left: calc(50% - 126px);
+  width: 252px;
+  height: 322px;
+  border-radius: 100%;
+  background-color: #b889ff;
+  filter: blur(25px);
+}
+
+.deploy-glow-purple__l3 {
+  position: absolute;
+  top: 53px;
+  left: calc(50% - 126px);
+  width: 252px;
+  height: 266px;
+  border-radius: 100%;
+  background-color: #fff;
+  filter: blur(10px);
+}
+
+/* Logo row */
+.deploy-logo-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.deploy-logo {
+  object-fit: contain;
+  object-position: left center;
+}
+
+.deploy-logo-pill {
+  width: 36px;
+  height: 60px;
+  background-image: url('/images/whitepill.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.deploy-pill-plus {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Redaction-bar treatment — echoes a real redacted line in an incident
+ * report: a solid near-black bar with the descriptor visible inside it in
+ * a lighter weight, rather than plain highlighted text. */
+.deploy-company-redacted {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-redact-bar, #050507);
+  border-radius: 3px;
+  padding: 3px 10px;
+}
+
+.deploy-company {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ─── Card body ───────────────────────────────────────────── */
+.deploy-card-body {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Tags ────────────────────────────────────────────────── */
+.deploy-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.deploy-tag {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ─── Divider ─────────────────────────────────────────────── */
+.deploy-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Before / After ──────────────────────────────────────── */
+.deploy-before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ─── Labels ──────────────────────────────────────────────── */
+.deploy-label {
+  display: block;
+  font-family: var(--font-inter, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.deploy-label--before  { color: rgb(255, 196, 144); }
+.deploy-label--after   { color: rgb(184, 137, 255); }
+.deploy-label--results { color: rgb(146, 248, 192); }
+.deploy-label--quote   { color: rgb(127, 210, 216); }
+
+/* ─── Text ────────────────────────────────────────────────── */
+.deploy-text {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.deploy-text.mt-3 { margin-top: 0; }
+
+/* ─── Quote box ───────────────────────────────────────────── */
+.deploy-quote-box {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px 24px;
+}
+
+.deploy-quote-text {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.65;
+  margin-top: 6px;
+}
+
+/* ─── Responsive — tablet/mobile ─────────────────────────── */
+@media (max-width: 768px) {
+  .deploy-card {
+    min-height: auto;
+  }
+
+  .deploy-card-header {
+    min-height: 160px;
+    padding: 24px;
+  }
+
+  .deploy-before-after {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .deploy-card-body {
+    padding: 24px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .deploy-logo-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .deploy-company {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    text-align: center;
+    width: 100%;
+  }
+
+  .deploy-pill-plus {
+    font-size: 1rem;
+  }
+
+  .deploy-logo-pill {
+    width: 28px;
+    height: 48px;
+  }
+}

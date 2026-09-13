@@ -1,0 +1,379 @@
+.statsCards {
+  container-type: inline-size;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 828 / 612;
+  grid-template-rows: 1fr 1fr;
+  gap: clamp(10px, 1vw, 16px);
+}
+
+.primaryCard,
+.secondaryCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.primaryCard {
+  color: white;
+  isolation: isolate;
+}
+
+.primaryCardBackground {
+  z-index: 0;
+  object-fit: cover;
+}
+
+.primaryContent {
+  position: relative;
+  z-index: 1;
+  padding: 3.62cqw;
+}
+
+.primaryValue,
+.secondaryValue {
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+}
+
+.primaryValue {
+  font-size: 9.18cqw;
+  line-height: 0.9;
+}
+
+.secondaryLabel {
+  margin: 1.45cqw 0 0;
+  font-size: 2.42cqw;
+  line-height: 1.2;
+}
+
+.primaryLabelAsset {
+  display: block;
+  width: 21.5cqw;
+  height: auto;
+  margin-top: 1.69cqw;
+  filter: brightness(0) invert(1);
+}
+
+.progressTrack {
+  position: absolute;
+  z-index: 1;
+  right: 3.62cqw;
+  bottom: 3.62cqw;
+  left: 3.62cqw;
+  aspect-ratio: 768 / 40;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.progressFill {
+  position: relative;
+  z-index: 1;
+  width: 0;
+  height: 100%;
+  overflow: visible;
+  transition: width 1.45s cubic-bezier(0.16, 1, 0.3, 1) 140ms;
+}
+
+.progressTrack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.progressFillAsset {
+  object-fit: fill;
+}
+
+.progressFrame {
+  position: absolute;
+  z-index: 0;
+  object-fit: fill;
+  /* The asset's extra hatching must not show through the empty track. */
+  clip-path: inset(0 0 0 83.5%);
+}
+
+.statsCards[data-active="true"] .progressFill {
+  width: var(--progress);
+}
+
+.progressAnnotation {
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 100%;
+  width: 15cqw;
+  /* Anchored to the fill itself: no independent horizontal animation. */
+  opacity: 1;
+}
+
+.statsCards[data-active="true"] .progressAnnotation {
+  opacity: 1;
+}
+
+.annotationDot {
+  position: absolute;
+  top: -0.48cqw;
+  left: 0;
+  transform: translateX(-50%);
+  width: 1.69cqw;
+  height: 1.69cqw;
+  border: 0.48cqw solid rgb(255 255 255 / 46%);
+  border-radius: 999px;
+  background: white;
+}
+
+.annotationLine {
+  display: block;
+  width: 0.48cqw;
+  height: 6cqw;
+  margin-left: -0.24cqw;
+  object-fit: fill;
+  transition: height 1.45s cubic-bezier(0.16, 1, 0.3, 1) 140ms;
+}
+
+.statsCards[data-active="true"] .annotationLine {
+  height: 12.8cqw;
+}
+
+.annotationLabel {
+  position: absolute;
+  top: 0;
+  left: 2.4cqw;
+  width: 13cqw;
+  font-size: 1.93cqw;
+  line-height: 1.2;
+}
+
+.secondaryCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.93cqw;
+}
+
+.secondaryCard {
+  padding: 3.62cqw;
+  background: #ddd;
+  color: #111;
+}
+
+.secondaryValue {
+  font-size: 8.21cqw;
+  line-height: 0.9;
+}
+
+.secondaryLabel {
+  color: #575757;
+}
+
+.mttrLabel {
+  display: block;
+  width: 14.4cqw;
+  height: auto;
+  margin-top: 1.45cqw;
+}
+
+.mttrGauge {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mttrTrack,
+.mttrFill,
+.mttrGlow,
+.mttrMarker {
+  position: absolute;
+  height: auto;
+}
+
+.mttrTrack {
+  z-index: 0;
+  bottom: 0;
+  left: 11.5%;
+  width: 78.5%;
+}
+
+.mttrFill {
+  z-index: 1;
+  bottom: 0;
+  left: 11.5%;
+  width: 54.35%;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.mttrGlow {
+  z-index: 2;
+  bottom: 11.5%;
+  left: 55.2%;
+  width: 31.8%;
+  opacity: 0;
+  transform: scale(0.82);
+  transform-origin: 22% 28%;
+  transition:
+    opacity 180ms ease-out 950ms,
+    transform 360ms cubic-bezier(0.16, 1, 0.3, 1) 950ms;
+}
+
+.mttrMarker {
+  z-index: 3;
+  bottom: 28%;
+  left: 56.4%;
+  width: 13.2%;
+  opacity: 0;
+  transform: scale(0.6);
+  transform-origin: center;
+  transition:
+    opacity 180ms ease-out 1s,
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1) 1s;
+}
+
+.mttrFill[data-active="true"] {
+  clip-path: inset(0 0 0 0);
+}
+
+.mttrGlow[data-active="true"],
+.mttrMarker[data-active="true"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.investigationValue {
+  height: 7.39cqw;
+}
+
+.investigationValueAsset {
+  display: block;
+  width: 13.3cqw;
+  height: auto;
+}
+
+.investigationGauge {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.investigationTrack,
+.investigationFill,
+.investigationGlow,
+.investigationMarker {
+  position: absolute;
+  height: auto;
+}
+
+.investigationTrack {
+  z-index: 0;
+  bottom: 0;
+  left: 10.3%;
+  width: 79.2%;
+  transform: scaleY(1.024);
+  transform-origin: bottom left;
+}
+
+.investigationFill {
+  z-index: 1;
+  bottom: 0;
+  left: 10.6%;
+  width: 65.3%;
+  background: linear-gradient(239.92deg, #F79090 17.84%, #F04141 67.58%);
+  /* Apply the Figma ellipse gradient through the original curved asset. */
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  clip-path: inset(0 100% 0 0);
+  transform: scaleY(1.025);
+  transform-origin: bottom left;
+  transition: clip-path 1.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.investigationGlowClip {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* Keep the blurred end layer inside the track, starting under its marker. */
+  clip-path: inset(0 0 0 70%);
+  mask-size: 79.2% auto;
+  mask-position: 49.51923% bottom;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 79.2% auto;
+  -webkit-mask-position: 49.51923% bottom;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.investigationGlow {
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 360ms ease-out 950ms;
+}
+
+.investigationMarker {
+  z-index: 3;
+  bottom: 22.15%;
+  left: 64.925%;
+  width: 13.184%;
+  opacity: 0;
+  transform: scale(0.6);
+  transform-origin: center;
+  transition:
+    opacity 180ms ease-out 1s,
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1) 1s;
+}
+
+.investigationFill[data-active="true"] {
+  clip-path: inset(0 0 0 0);
+}
+
+.investigationGlow[data-active="true"],
+.investigationMarker[data-active="true"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressFill {
+    transition: none;
+  }
+
+  .statsCards[data-active="true"] .progressAnnotation,
+  .annotationLine,
+  .mttrFill,
+  .mttrGlow,
+  .mttrMarker,
+  .investigationFill,
+  .investigationGlow,
+  .investigationMarker {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .statsCards {
+    gap: 10px;
+  }
+
+  .secondaryCards {
+    gap: 10px;
+  }
+
+  .primaryCard,
+  .secondaryCard {
+    border-radius: 14px;
+  }
+
+  .annotationLabel {
+    display: none;
+  }
+}

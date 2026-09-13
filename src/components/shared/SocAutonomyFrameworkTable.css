@@ -1,0 +1,78 @@
+/* ─── SOC Autonomy Framework (SAF) levels table ───────────── */
+.soc-af-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  border: 1px solid rgba(58, 58, 76, 0.85);
+  background: rgba(18, 18, 24, 0.65);
+}
+
+.soc-af-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+.soc-af-table thead th {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(58, 58, 76, 0.9);
+  white-space: nowrap;
+}
+
+.soc-af-table tbody td {
+  padding: 0.85rem 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  vertical-align: top;
+}
+
+.soc-af-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.soc-af-table tbody td:first-child {
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* Full purple box on highlighted row (e.g. L4 on manifesto) */
+.soc-af-table tbody tr:has(+ .soc-af-table__row--highlight) td {
+  border-bottom-color: transparent;
+}
+
+.soc-af-table__row--highlight td {
+  border-top: 1px solid #8e2dff;
+  border-bottom: 1px solid #8e2dff;
+  background: rgba(142, 45, 255, 0.06);
+  box-shadow: inset 0 -1px 0 0 #8e2dff;
+}
+
+.soc-af-table__row--highlight td:first-child {
+  border-left: 1px solid #8e2dff;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.soc-af-table__row--highlight td:last-child {
+  border-right: 1px solid #8e2dff;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* No top border on next row — `border-top-color: transparent` alone can hide L4's bottom edge */
+.soc-af-table__row--highlight + tr td {
+  border-top: none;
+}

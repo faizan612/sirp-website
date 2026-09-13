@@ -1,0 +1,144 @@
+/* ─── Dome layers container ───────────────────────────────── */
+.cta-dome-layers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ─── Purple glow ─────────────────────────────────────────── */
+.cta-glow {
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(40px);
+  will-change: transform, opacity;
+  transform-origin: top;
+  background: radial-gradient(at 50% 100%, #d69dff 0%, #8e2dffcc 30%, #6414c833 60%, #0000 85%);
+  width: 766px;
+  height: 565px;
+  animation: 6s ease-in-out infinite alternate purple-dome-rise;
+  position: absolute;
+  top: -278px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes purple-dome-rise {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-50%) scale(0.8) translateY(-50px);
+    filter: blur(60px);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.1) translateY(0);
+    filter: blur(30px);
+  }
+}
+
+/* ─── Black dome ──────────────────────────────────────────── */
+.cta-dome {
+  pointer-events: none;
+  z-index: 2;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: #121218;
+  border-bottom: none;
+  border-radius: 57% 57% 0 0 / 102% 100% 0 0;
+  width: 1000px;
+  height: 438px;
+  position: absolute;
+  top: 21%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cta-dome::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent 0%, #121218 100%);
+  pointer-events: none;
+  border-radius: 0 0 50% 50%;
+}
+
+/* ─── White outline arc ───────────────────────────────────── */
+.cta-dome-outline {
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(3px);
+  width: 891px;
+  line-height: 0;
+  position: absolute;
+  bottom: 332px;
+  left: 50%;
+  overflow: hidden;
+  transform: translateX(-50%);
+}
+
+/* ─── Large desktop (≤1400px) ───────────────────────────── */
+@media (max-width: 1400px) {
+  .cta-dome         { width: 920px; height: 438px; }
+  .cta-dome-outline { width: 820px; bottom: 332px; }
+  .cta-glow         { width: 720px; }
+}
+
+/* ─── Laptop (≤1200px) ──────────────────────────────────── */
+@media (max-width: 1200px) {
+  .cta-dome         { width: 840px; height: 420px; }
+  .cta-dome-outline { width: 750px; bottom: 318px; }
+  .cta-glow         { width: 680px; }
+}
+
+/* ─── iPad Pro / Surface Pro (≤1024px) ─────────────────── */
+@media (max-width: 1024px) {
+  .cta-dome         { width: 96%; height: 400px; }
+  .cta-dome-outline { width: 88%; bottom: 300px; }
+  .cta-glow         { width: 80%; }
+}
+
+/* ─── iPad Air (≤820px) ─────────────────────────────────── */
+@media (max-width: 820px) {
+  .cta-dome         { width: 108%; height: 380px; }
+  .cta-dome-outline { width: 98%;  bottom: 280px; }
+  .cta-glow         { width: 90%; }
+}
+
+/* ─── iPad Mini (≤768px) ────────────────────────────────── */
+@media (max-width: 768px) {
+  .cta-dome         { width: 120%; height: 360px; }
+  .cta-dome-outline { width: 110%; bottom: 260px; }
+  .cta-glow         { width: 95%; }
+}
+
+/* ─── Large phones (≤600px) ────────────────────────────── */
+@media (max-width: 600px) {
+  .cta-dome         { width: 140%; height: 340px; top: 18%; }
+  .cta-dome-outline { width: 128%; bottom: 240px; }
+  .cta-glow         { width: 100%; height: 480px; top: -200px; }
+}
+
+/* ─── iPhone 14 Pro Max (≤430px) ────────────────────────── */
+@media (max-width: 430px) {
+  .cta-dome         { width: 158%; height: 320px; top: 16%; }
+  .cta-dome-outline { width: 145%; bottom: 220px; }
+  .cta-glow         { width: 100%; height: 440px; top: -180px; }
+}
+
+/* ─── iPhone 12 Pro (≤390px) ────────────────────────────── */
+@media (max-width: 390px) {
+  .cta-dome         { width: 140%; height: 300px; top: 16%; }
+  .cta-dome-outline { width: 117%; bottom: 326px; }
+  .cta-glow         { width: 100%; height: 420px; top: -160px; }
+  .cta-content      { padding-top: 120px !important; }
+}
+
+/* ─── Small phones (≤375px) ─────────────────────────────── */
+@media (max-width: 375px) {
+  .cta-dome         { width: 175%; height: 295px; top: 14%; }
+  .cta-dome-outline { width: 162%; bottom: 195px; }
+  .cta-glow         { width: 100%; height: 400px; top: -150px; }
+}

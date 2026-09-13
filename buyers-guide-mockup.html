@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buyer's Guide | SIRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-dark: #080810;
+    --bg-dark-panel: #101018;
+    --bg-light: #eef0f4;
+    --bg-light-panel: #e2e5ec;
+    --ink-dark: #f5f5f7;
+    --ink-dark-dim: #9a9aad;
+    --ink-light: #0b0b12;
+    --ink-light-dim: #55566b;
+    --purple: #8e2dff;
+    --purple-dim: #b98dff;
+    --line-dark: #232332;
+    --line-light: #ccced9;
+    --strong: #35c98f;
+    --weak: #ff8a5b;
+    --font-sans: 'DM Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-sans);
+    background:var(--bg-dark);
+    color:var(--ink-dark);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+  section{padding:96px 0;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--purple);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:18px; height:1px;
+    background:var(--purple);
+  }
+  h1,h2,h3{font-weight:700; letter-spacing:-0.02em;}
+  h1{font-size:clamp(36px,5vw,58px); line-height:1.06; max-width:16ch;}
+  h2{font-size:clamp(28px,3.4vw,40px); line-height:1.12; max-width:18ch;}
+  p{color:var(--ink-dark-dim); font-size:17px; max-width:56ch;}
+  .light p{color:var(--ink-light-dim);}
+  .light{background:var(--bg-light); color:var(--ink-light);}
+  .light h1,.light h2,.light h3{color:var(--ink-light);}
+
+  /* ---- Nav ---- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(8,8,16,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav{
+    max-width:1080px; margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{font-family:var(--font-mono); font-weight:600; font-size:15px; letter-spacing:0.02em;}
+  .logo span{color:var(--purple);}
+  .nav-links{display:flex; gap:28px; font-size:14px; color:var(--ink-dark-dim);}
+  .nav-cta{
+    font-family:var(--font-mono); font-size:13px;
+    padding:9px 18px; border:1px solid var(--line-dark); border-radius:2px;
+    color:var(--ink-dark);
+  }
+
+  /* ---- Hero ---- */
+  .hero{padding:110px 0 90px;}
+  .hero p.lead{font-size:19px; color:var(--ink-dark-dim); margin-top:22px; max-width:52ch;}
+  .btn-row{display:flex; gap:14px; margin-top:40px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.02em;
+    padding:14px 26px; border-radius:2px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{background:var(--purple); color:#fff;}
+  .btn-ghost{border:1px solid var(--line-dark); color:var(--ink-dark);}
+  .light .btn-ghost{border:1px solid var(--line-light); color:var(--ink-light);}
+
+  .hero-meta{
+    margin-top:64px; padding-top:28px; border-top:1px solid var(--line-dark);
+    display:flex; gap:48px; flex-wrap:wrap;
+  }
+  .hero-meta div{font-family:var(--font-mono); font-size:12px; color:var(--ink-dark-dim); text-transform:uppercase; letter-spacing:0.08em;}
+  .hero-meta strong{display:block; font-family:var(--font-sans); font-size:15px; color:var(--ink-dark); text-transform:none; letter-spacing:0; margin-top:4px; font-weight:600;}
+
+  /* ---- Classify cards ---- */
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-light); margin-top:48px; border:1px solid var(--line-light);}
+  .card{background:var(--bg-light); padding:32px 28px;}
+  .card .tag{font-family:var(--font-mono); font-size:11px; color:var(--purple); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; display:block;}
+  .card h3{font-size:19px; margin-bottom:10px;}
+  .card p{font-size:15px; max-width:none;}
+  .card.active{background:#e4d9fc;}
+
+  /* ---- Scorecard (signature) ---- */
+  .scorecard-section{background:var(--bg-dark);}
+  .log{border-top:1px solid var(--line-dark); margin-top:48px;}
+  .log-row{
+    border-bottom:1px solid var(--line-dark);
+    padding:28px 0;
+    display:grid;
+    grid-template-columns:210px 1fr;
+    gap:32px;
+  }
+  .log-num{
+    font-family:var(--font-mono); color:var(--purple); font-size:13px;
+  }
+  .log-title{
+    font-family:var(--font-sans); font-weight:700; font-size:17px; margin-top:6px; color:var(--ink-dark);
+  }
+  .log-body{display:flex; flex-direction:column; gap:14px;}
+  .log-line{display:grid; grid-template-columns:78px 1fr; gap:16px; align-items:baseline;}
+  .log-line .k{font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em; padding-top:2px;}
+  .log-line .v{font-size:15px; color:var(--ink-dark); max-width:60ch;}
+  .k.ask{color:var(--ink-dark-dim);}
+  .k.weak{color:var(--weak);}
+  .k.strong{color:var(--strong);}
+
+  /* ---- Scoring grid (light) ---- */
+  .score-grid{margin-top:48px; display:flex; flex-direction:column; border-top:1px solid var(--line-light);}
+  .score-item{
+    display:grid; grid-template-columns:260px 1fr;
+    gap:24px; padding:22px 0; border-bottom:1px solid var(--line-light);
+    align-items:start;
+  }
+  .score-item .label{font-family:var(--font-mono); font-size:12px; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-light-dim); padding-top:3px;}
+  .score-item .answer{font-size:15.5px; color:var(--ink-light);}
+  .score-item .answer b{color:var(--purple); font-weight:700;}
+  .check{color:var(--strong); font-family:var(--font-mono); margin-right:8px;}
+
+  /* ---- Download + FAQ ---- */
+  .download-card{
+    margin-top:48px;
+    background:var(--bg-dark-panel);
+    border:1px solid var(--line-dark);
+    border-radius:4px;
+    padding:40px;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .download-card h3{font-size:22px; margin-bottom:10px;}
+  .fake-form{display:flex; gap:10px;}
+  .fake-input{
+    flex:1; background:var(--bg-dark); border:1px solid var(--line-dark);
+    border-radius:2px; padding:13px 16px; color:var(--ink-dark-dim);
+    font-family:var(--font-mono); font-size:13px;
+  }
+  .faq{margin-top:72px;}
+  .faq-item{border-bottom:1px solid var(--line-dark); padding:24px 0;}
+  .faq-item .q{font-weight:700; font-size:16.5px; display:flex; justify-content:space-between; cursor:pointer;}
+  .faq-item .q::after{content:'+'; font-family:var(--font-mono); color:var(--purple); font-size:20px;}
+  .faq-item .a{color:var(--ink-dark-dim); font-size:15px; margin-top:12px; max-width:58ch; display:none;}
+  .faq-item.open .a{display:block;}
+  .faq-item.open .q::after{content:'\2212';}
+
+  footer{
+    border-top:1px solid var(--line-dark);
+    padding:56px 0 40px;
+    font-family:var(--font-mono); font-size:12px; color:var(--ink-dark-dim);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;
+  }
+
+  @media (max-width:760px){
+    .cards{grid-template-columns:1fr;}
+    .log-row{grid-template-columns:1fr;}
+    .log-line{grid-template-columns:64px 1fr;}
+    .score-item{grid-template-columns:1fr; gap:8px;}
+    .download-card{grid-template-columns:1fr;}
+    .hero-meta{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">SIRP<span>·</span>OMNISENSE</div>
+    <div class="nav-links">
+      <span>Autonomous Security</span><span>Platform</span><span>Resources</span>
+    </div>
+    <a class="nav-cta" href="#">Get a demo</a>
+  </div>
+</header>
+
+<!-- HERO — dark -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Buyer's guide</div>
+    <h1>Evaluate this the way you'd evaluate anyone.</h1>
+    <p class="lead">A scorecard for judging any Autonomous SOC or SOAR platform, including this one. Built from the questions real buyers ask before they sign, not the ones vendors want asked.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#download">Download the scorecard →</a>
+      <a class="btn btn-ghost" href="#scorecard">Read it on this page</a>
+    </div>
+    <div class="hero-meta">
+      <div>Read time<strong>7 minutes</strong></div>
+      <div>Format<strong>8-point scorecard</strong></div>
+      <div>Built for<strong>RFPs &amp; self-serve evaluation</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSIFY — light -->
+<section class="light">
+  <div class="wrap">
+    <div class="eyebrow">Step 1</div>
+    <h2>First, know what category you're actually buying</h2>
+    <p style="margin-top:16px;">Most evaluations conflate three different things. Sort your need before you score a vendor against criteria that don't apply to its category.</p>
+
+    <div class="cards">
+      <div class="card">
+        <span class="tag">Orchestration</span>
+        <h3>SOAR</h3>
+        <p>Automates predefined workflows across your tools. Good at repeatable enrichment, bounded by the workflow you wrote in advance.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Detection</span>
+        <h3>SIEM / XDR</h3>
+        <p>Surfaces the alert. Doesn't decide what to do about it, or execute anything on its own.</p>
+      </div>
+      <div class="card active">
+        <span class="tag">Decision system</span>
+        <h3>Autonomous SOC</h3>
+        <p>Computes risk continuously and executes response within policy boundaries. What this guide is built to evaluate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCORECARD — dark, signature -->
+<section class="scorecard-section" id="scorecard">
+  <div class="wrap">
+    <div class="eyebrow">Step 2 — the scorecard</div>
+    <h2>Eight questions worth asking any finalist</h2>
+    <p style="margin-top:16px;">Ask each vendor these directly. The gap between a weak and strong answer is usually where the architecture actually lives.</p>
+
+    <div class="log">
+      <div class="log-row">
+        <div><div class="log-num">01 / 08</div><div class="log-title">Decision latency</div></div>
+        <div class="log-body">
+          <div class="log-line"><span class="k ask">ASK</span><span class="v">Does it re-evaluate risk as new telemetry arrives mid-response, or only at trigger time?</span></div>
+          <div class="log-line"><span class="k weak">WEAK</span><span class="v">"Our playbooks already cover that scenario."</span></div>
+          <div class="log-line"><span class="k strong">STRONG</span><span class="v">Risk score updates continuously; execution path can change mid-incident.</span></div>
+        </div>
+      </div>
+
+      <div class="log-row">
+        <div><div class="log-num">02 / 08</div><div class="log-title">Governance model</div></div>
+        <div class="log-body">
+          <div class="log-line"><span class="k ask">ASK</span><span class="v">How does the system express confidence before acting autonomously? What's captured per decision, not just per action?</span></div>
+          <div class="log-line"><span class="k weak">WEAK</span><span class="v">An action log with timestamps.</span></div>
+          <div class="log-line"><span class="k strong">STRONG</span><span class="v">A reasoning trail: inputs, policy check, confidence threshold, outcome.</span></div>
+        </div>
+      </div>
+
+      <div class="log-row">
+        <div><div class="log-num">03 / 08</div><div class="log-title">Integration cost curve</div></div>
+        <div class="log-body">
+          <div class="log-line"><span class="k ask">ASK</span><span class="v">What does the 40th integration cost relative to the 4th?</span></div>
+          <div class="log-line"><span class="k weak">WEAK</span><span class="v">Every integration is a new set of playbook branches to maintain.</span></div>
+          <div class="log-line"><span class="k strong">STRONG</span><span class="v">Cost is bounded by the context model, not by branch count.</span></div>
+        </div>
+      </div>
+
+      <div class="log-row">
+        <div><div class="log-num">04 / 08</div><div class="log-title">Learning loop</div></div>
+        <div class="log-body">
+          <div class="log-line"><span class="k ask">ASK</span><span class="v">Does a closed incident change how the next similar alert is scored — automatically?</span></div>
+          <div class="log-line"><span class="k weak">WEAK</span><span class="v">Someone has to manually edit a playbook or detection rule.</span></div>
+          <div class="log-line"><span class="k strong">STRONG</span><span class="v">Outcome feeds back into the decision model without manual edits.</span></div>
+        </div>
+      </div>
+
+      <div class="log-row">
+        <div><div class="log-num">05 / 08</div><div class="log-title">Data residency &amp; deployment</div></div>
+        <div class="log-body">
+          <div class="log-line"><span class="k ask">ASK</span><span class="v">Where does data actually live, and can that be constrained by region?</span></div>
+          <div class="log-line"><span class="k weak">WEAK</span><span class="v">"We're compliant" with no region-level detail.</span></div>
+          <div class="log-line"><span class="k strong">STRONG</span><span class="v">Named in-region deployment options, stated plainly.</span></div>
+        </div>
+      </div>
+
+      <div class="log-row">
+        <div><div class="log-num">06 / 08</div><div class="log-title">Implementation ownership</div></div>
+        <div class="log-body">
+          <div class="log-line"><span class="k ask">ASK</span><span class="v">Who does the integration work — the vendor or your team? What does week one look like?</span></div>
+          <div class="log-line"><span class="k weak">WEAK</span><span class="v">A generic onboarding deck.</span></div>
+          <div class="log-line"><span class="k strong">STRONG</span><span class="v">A named plan with owners and dates for week one.</span></div>
+        </div>
+      </div>
+
+      <div class="log-row">
+        <div><div class="log-num">07 / 08</div><div class="log-title">Commercial model</div></div>
+        <div class="log-body">
+          <div class="log-line"><span class="k ask">ASK</span><span class="v">Priced per seat, per asset, per integration, or per incident? What breaks the model as you scale?</span></div>
+          <div class="log-line"><span class="k weak">WEAK</span><span class="v">"We'll figure out pricing once we know your environment."</span></div>
+          <div class="log-line"><span class="k strong">STRONG</span><span class="v">A clear model with a stated scaling assumption.</span></div>
+        </div>
+      </div>
+
+      <div class="log-row">
+        <div><div class="log-num">08 / 08</div><div class="log-title">References</div></div>
+        <div class="log-body">
+          <div class="log-line"><span class="k ask">ASK</span><span class="v">Can I speak to a reference in a similar environment — industry, scale, region?</span></div>
+          <div class="log-line"><span class="k weak">WEAK</span><span class="v">Any reference they have on hand.</span></div>
+          <div class="log-line"><span class="k strong">STRONG</span><span class="v">A reference matched to your actual environment.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCORING — light -->
+<section class="light">
+  <div class="wrap">
+    <div class="eyebrow">Step 3</div>
+    <h2>Where OmniSense lands on each line</h2>
+    <p style="margin-top:16px;">Stated plainly, in the same order as the scorecard above.</p>
+
+    <div class="score-grid">
+      <div class="score-item"><div class="label">01 Decision latency</div><div class="answer"><span class="check">✓</span>Risk is recomputed continuously by the <b>Planner</b>, not fixed at trigger time.</div></div>
+      <div class="score-item"><div class="label">02 Governance</div><div class="answer"><span class="check">✓</span>Every autonomous action carries a full reasoning trail: inputs, policy check, confidence, outcome.</div></div>
+      <div class="score-item"><div class="label">03 Integration cost</div><div class="answer"><span class="check">✓</span>Cost scales with the context model, not with playbook branches — bounded, not linear.</div></div>
+      <div class="score-item"><div class="label">04 Learning loop</div><div class="answer"><span class="check">✓</span>Resolved incidents feed <b>S3 risk scoring</b> (findings → assets → org) without manual playbook edits.</div></div>
+      <div class="score-item"><div class="label">05 Data residency</div><div class="answer"><span class="check">✓</span>In-region deployment options exist, including configurations built for KSA/SDAIA residency requirements.</div></div>
+      <div class="score-item"><div class="label">06 Implementation</div><div class="answer"><span class="check">✓</span>A named week-one plan, owned jointly with your team — not a generic onboarding deck.</div></div>
+      <div class="score-item"><div class="label">07 Commercial model</div><div class="answer">Ask us directly — pricing depends on environment scope, stated plainly on a call, not hidden pending discovery.</div></div>
+      <div class="score-item"><div class="label">08 References</div><div class="answer"><span class="check">✓</span>Matched by industry, scale, and region on request.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD + FAQ — dark -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Take it with you</div>
+    <h2>Get the scorecard as a document</h2>
+    <p style="margin-top:16px;">A clean, portable version you can drop straight into an RFP or circulate to your evaluation committee.</p>
+
+    <div class="download-card" id="download">
+      <div>
+        <h3>Buyer's guide, PDF</h3>
+        <p style="margin-top:0;">Same eight criteria, formatted for procurement. No pitch inside — just the scorecard.</p>
+      </div>
+      <div class="fake-form">
+        <div class="fake-input">you@company.com</div>
+        <a class="btn btn-primary" href="#">Send it</a>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item open">
+        <div class="q">What's the difference between an RFP and this scorecard?</div>
+        <div class="a">This is a starting point — every question here can be dropped straight into an RFP document as-is.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">How long does a typical evaluation take?</div>
+        <div class="a">Most teams run a phased evaluation alongside their existing SOAR before shifting containment classes over — see the migration path in the SOAR vs Autonomous SOC guide.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Do you provide reference calls?</div>
+        <div class="a">Yes, matched to your industry, scale, and region on request.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:16px;">
+    <div>© 2026 SIRP Labs Inc.</div>
+    <div>Powered by OmniSense™</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item .q').forEach(q=>{
+    q.addEventListener('click', ()=>{
+      q.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
