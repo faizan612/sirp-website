@@ -1,0 +1,101 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 148px 48px 120px;
+  background: #0e0e0e;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  padding: 8px 16px;
+  border: 1px solid #282828;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ddd;
+}
+
+.title {
+  margin: 32px 0 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: 0;
+  color: #f7f7f7;
+}
+
+.description {
+  max-width: 760px;
+  margin: 32px 0 0;
+  font-size: 18px;
+  line-height: 26px;
+  color: #aaa;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 52px;
+}
+
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  min-height: 48px;
+  border: 1px solid #282828;
+  border-radius: 12px;
+  background: #050505;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+  transition: border-color 150ms ease;
+}
+
+.secondary:hover { border-color: #777; }
+.secondary:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+
+.visual {
+  max-width: 1220px;
+  margin: 80px auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.image { display: block; width: 100%; height: auto; }
+
+@media (max-width: 1024px) {
+  .hero { padding: 100px 32px 88px; }
+  .title { font-size: 54px; }
+  .visual { margin-top: 64px; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 72px 20px 64px; }
+  .title { margin-top: 24px; font-size: clamp(36px, 9vw, 48px); line-height: 1.12; text-wrap: balance; }
+  .desktopBreak { display: none; }
+  .description { margin-top: 24px; font-size: 16px; line-height: 24px; }
+  .actions { width: 100%; margin-top: 32px; gap: 12px; }
+  .actions > a { width: 100%; }
+  .visual { margin-top: 48px; border-radius: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .secondary { transition: none; }
+}

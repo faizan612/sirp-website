@@ -1,0 +1,302 @@
+/* "Agents in the mesh" — geometry mirrors the Figma frame (node 58:6896).
+   The section content box is 1278x1273 inside a 1920 page, so every length below
+   is that Figma value expressed against the 1278-wide container. */
+
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #0e0e0e;
+  color: #f5f5f5;
+  padding: min(3.177vw, 61px) 0 min(7.24vw, 139px);
+  scroll-margin-top: 100px;
+}
+
+/* Full-bleed line texture, top-aligned with the section like the Figma layer. */
+.pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1920 / 1023;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Scale the entire 1278px composition with the 1920px Figma artboard.
+   Holding this box at 1278px made all card text 25% too large at 1536px. */
+.stage {
+  position: relative;
+  width: 66.5625%;
+  margin: 0 auto;
+  aspect-ratio: 1278 / 1273;
+  container-type: inline-size;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.badge {
+  position: absolute;
+  left: 46.9484%;   /* 600/1278 */
+  top: 0;
+  display: inline-flex;
+  padding: 0.5477cqw 1.2520cqw;  /* 7px 16px — with the borders this lands the 36px Figma box */
+  border: 1px solid #323232;
+  border-radius: 50px;
+  background: #0f0f0f;
+  color: #fff;
+  font-size: 1.0955cqw;          /* 14px */
+  line-height: 1.4286;           /* 20px */
+  white-space: nowrap;
+}
+
+.title {
+  position: absolute;
+  left: 33.3333%;   /* 426/1278 */
+  top: 5.9702%;     /* 76/1273 */
+  width: 33.3333%;  /* 426 — the box width that forces the Figma line break */
+  margin: 0;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 5.3208cqw;          /* 68px */
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: #f7f7f7;
+}
+
+.lede {
+  position: absolute;
+  left: 18.8576%;   /* 241/1278 */
+  top: 18.5389%;    /* 236/1273 */
+  width: 62.2848%;  /* 796/1278 */
+  margin: 0;
+  text-align: center;
+  color: #ccc;
+  font-size: 1.4085cqw;          /* 18px */
+  line-height: 1.4444;
+}
+
+/* ── Mesh artwork ───────────────────────────────────────────────────────── */
+.glow {
+  position: absolute;
+  left: -10.4069%;  /* filter region origin, -133/1278 */
+  top: 4.4776%;     /* 57/1273 */
+  width: 120.8920%; /* 1545/1278 */
+  max-width: none;  /* the blur region is wider than the stage; preflight would clamp it */
+  height: auto;
+  aspect-ratio: 1;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.lines,
+.linesFront {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Lets .glow keep positioning against .stage on desktop, then becomes a real box
+   for the stacked layout where the core stands on its own. */
+.coreWrap {
+  display: contents;
+}
+
+.core {
+  display: none;
+}
+
+/* ── Agent cards ────────────────────────────────────────────────────────── */
+.card {
+  position: absolute;
+  width: 32.5509%;   /* 416/1278 */
+  height: 12.6473%;  /* 161/1273 — a fixed box in Figma, not a minimum */
+  box-sizing: border-box;
+  /* No bottom padding: Figma runs the copy to the card's inner edge, which is what
+     lets five description lines sit inside 161px. */
+  padding: 1.6432cqw 1.6432cqw 0;  /* 21px */
+  border-radius: 0.9390cqw;        /* 12px */
+  /* Fill only. The border must NOT be a second background layer here: this fill fades
+     to transparent, so a border-box layer under it would show through the whole card
+     and wash it grey. The 1px ring is drawn as a masked pseudo-element instead. */
+  background: linear-gradient(90deg, #141414 0%, rgba(20, 20, 20, 0) 100%);
+  backdrop-filter: blur(0.4695cqw);          /* Figma background blur 12 */
+  -webkit-backdrop-filter: blur(0.4695cqw);
+}
+
+/* Figma mirrors the fill on the right-hand column, so the edge facing the core is the
+   clear one — that, not a uniform treatment, is what frosts those cards over the glow. */
+.fillRight {
+  background: linear-gradient(90deg, rgba(20, 20, 20, 0) 0%, #141414 100%);
+}
+
+/* Enrichment and Suggest Playbook mirror the border too: faint beside the core. */
+.strokeRight::before {
+  background: linear-gradient(90deg, rgba(49, 50, 50, 0.2) 0%, #313232 100%);
+}
+
+/* The four cards flanking the core carry double the background blur (Figma 24). */
+.blurStrong {
+  backdrop-filter: blur(0.9390cqw);
+  -webkit-backdrop-filter: blur(0.9390cqw);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #313232 0%, rgba(49, 50, 50, 0.2) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+.card h3 {
+  margin: 0;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 1.4085cqw;  /* 18px */
+  font-weight: 600;
+  line-height: 1.222222; /* Figma auto: 22px at 18px */
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.card p {
+  margin: 0.938967cqw 0 0; /* 12px title-to-description gap */
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 1.0955cqw;   /* 14px */
+  font-weight: 400;
+  line-height: 1.214286; /* Figma auto: 17px at 14px */
+  color: #9f9f9f;
+}
+
+/* Figma card origins, as a fraction of the 1278x1273 stage. */
+.analysis       { left: 12.9108%; top: 30.6363%; }
+.classification { left: 55.1643%; top: 30.6363%; }
+.headerAgent    { left: 0;        top: 48.7038%; }
+.enrichment     { left: 67.4491%; top: 48.7038%; }
+.preprocessor   { left: 0;        top: 69.1281%; }
+.playbook       { left: 67.4491%; top: 69.1281%; }
+.assign         { left: 12.9108%; top: 87.3527%; }
+.actions        { left: 55.1643%; top: 87.3527%; }
+
+/* ── Stacked layout ─────────────────────────────────────────────────────────
+   Below the point where the mesh copy stops being legible the composition is
+   rebuilt as a column. The connectors are dropped with it — they point at card
+   positions that no longer exist — and the ring core is shown on its own. */
+/* Use the readable stacked layout below the desktop composition breakpoint. */
+@media (max-width: 1180px) {
+  .section { padding: 72px 0 88px; }
+
+  .stage {
+    width: auto;
+    margin: 0 24px;
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    container-type: normal;
+  }
+
+  .badge,
+  .title,
+  .lede,
+  .card {
+    position: static;
+    width: auto;
+    left: auto;
+    top: auto;
+  }
+
+  .badge { padding: 8px 16px; font-size: 14px; line-height: 20px; }
+
+  .title {
+    max-width: 12ch;
+    margin: 28px 0 0;
+    font-size: clamp(34px, 5.6vw, 56px);
+  }
+
+  .lede {
+    max-width: 640px;
+    margin: 20px 0 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .lines,
+  .linesFront { display: none; }
+
+  .coreWrap {
+    display: block;
+    position: relative;
+    width: min(280px, 62vw);
+    aspect-ratio: 1;
+    margin: 40px 0 8px;
+  }
+
+  .core {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .glow {
+    left: -35%;
+    top: -35%;
+    width: 170%;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 440px;
+    margin-top: 32px;
+  }
+
+  .card {
+    height: auto;
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: linear-gradient(90deg, #141414 0%, rgba(20, 20, 20, 0.35) 100%);
+  }
+
+  /* One column, nothing behind the cards to frost — normalise the mirrored variants. */
+  .fillRight {
+    background: linear-gradient(90deg, #141414 0%, rgba(20, 20, 20, 0.35) 100%);
+  }
+
+  .strokeRight::before {
+    background: linear-gradient(90deg, #313232 0%, rgba(49, 50, 50, 0.2) 100%);
+  }
+
+  .card h3 { font-size: 18px; }
+  .card p  { margin-top: 10px; font-size: 14px; }
+}
+
+/* Wide enough for two columns but too narrow for the mesh — a single 440px column
+   would leave most of the width empty. */
+@media (min-width: 700px) and (max-width: 1180px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stage { margin: 0 20px; }
+  .lede { font-size: 15px; }
+}

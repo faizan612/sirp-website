@@ -1,0 +1,62 @@
+/* Figma frame: 1920 × 1029. One scale for all desktop geometry. */
+.section { container-type: inline-size; background: #0e0e0e; color: #f7f7f7; scroll-margin-top: 100px; }
+.container { position: relative; width: 100%; height: 53.59375cqw; }
+.header { text-align: center; }
+.badge {
+  position: absolute; top: 7.395833cqw; left: 47.03125%; width: 5.9375cqw; height: 1.875cqw;
+  display: flex; align-items: center; justify-content: center;
+  border: .052083cqw solid #323232; border-radius: 2.604167cqw; background: #0f0f0f; color: #fff;
+  font-family: var(--font-inter), sans-serif; font-size: .729167cqw; line-height: 1.428571;
+}
+.header h2 {
+  position: absolute; top: 11.354167cqw; left: 27.65625%; width: 44.6875%; margin: 0;
+  font-family: var(--font-noto-serif), 'Noto Serif', serif; font-size: 3.333333cqw;
+  font-weight: 400; line-height: 1.15625; letter-spacing: 0;
+  text-box-trim: trim-both; text-box-edge: cap alphabetic;
+}
+.header p {
+  position: absolute; top: 19.6875cqw; left: 26.510417%; width: 46.979167%; margin: 0;
+  color: #ccc; font-family: var(--font-inter), sans-serif; font-size: .9375cqw;
+  font-weight: 400; line-height: 1.444444; letter-spacing: 0;
+  text-box-trim: trim-both; text-box-edge: cap alphabetic;
+}
+.cards {
+  position: absolute; top: 32.1875cqw; left: 6.25%; width: 87.5%;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25cqw;
+}
+.card {
+  position: relative; isolation: isolate; min-width: 0; aspect-ratio: 402 / 280;
+  border-radius: .625cqw; overflow: hidden; background: #141414; container-type: inline-size;
+}
+.artwork { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; z-index: -1; }
+.copy { position: absolute; inset: 0; }
+.copy h3 {
+  position: absolute; top: 37.810945cqw; left: 6.218905cqw; width: 87.562189cqw; margin: 0;
+  font-family: var(--font-inter), sans-serif; font-size: 6.467662cqw; font-weight: 500;
+  line-height: 2.846154; letter-spacing: 0; color: #eee;
+  text-box-trim: trim-both; text-box-edge: cap alphabetic;
+}
+.copy p {
+  position: absolute; top: 50cqw; left: 6.218905cqw; width: 77.114428cqw; margin: 0;
+  color: #a7a7a7; font-family: var(--font-inter), sans-serif; font-size: 3.9801cqw;
+  font-weight: 400; line-height: 1.375; letter-spacing: 0;
+  text-box-trim: trim-both; text-box-edge: cap alphabetic;
+}
+.card:last-child .copy p { width: 87.562189cqw; }
+/* Reflow on smaller screens; preserve readable card copy. */
+@media (max-width: 1100px) {
+  .section { padding: 80px 0; }
+  .container { height: auto; width: calc(100% - 48px); margin: auto; }
+  .badge { position: static; width: 114px; height: 36px; margin: auto; border-width: 1px; border-radius: 50px; font-size: 14px; }
+  .header h2 { position: static; width: 100%; margin: 40px 0 32px; font-size: 44px; }
+  .header p { position: static; width: 100%; max-width: 740px; margin: auto; font-size: 16px; line-height: 24px; }
+  .cards { position: static; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 72px; }
+  .card { border-radius: 12px; }
+}
+@media (max-width: 600px) {
+  .section { padding: 64px 0; }
+  .container { width: calc(100% - 40px); }
+  .header h2 { font-size: clamp(27px, 7.1vw, 40px); margin: 32px 0 28px; }
+  .cards { grid-template-columns: minmax(0, 1fr); margin-top: 48px; gap: 20px; }
+  .card { width: 100%; max-width: 440px; margin: auto; }
+}
