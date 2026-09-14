@@ -90,6 +90,13 @@ export const OMNISENSE_PAGE_DATA = {
       },
     ],
   },
+  sara: {
+    badge:       'Sara Assistant',
+    heading:     'Meet Sara, your always evolving security analyst',
+    // Figma repeats the agents lede verbatim here; kept as designed.
+    description: "OmniSense's autonomous SOC agents in the mesh accelerate alert containment, optimizing security operations with faster incident analysis, remediation, and response.",
+    media: { src: '/video/sara-assistant.mp4' },
+  },
   action: {
     heading: 'See Autonomous SOC in Action',
     description: 'Watch how SIRP ingests a live alert, constructs relational context, computes risk, enforces policy boundaries, and executes containment actions autonomously — without manual routing or workflow delays.',

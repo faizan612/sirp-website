@@ -3,9 +3,10 @@ import { OmnisenseParticleHero } from '@/sections/omnisense/OmnisenseParticleHer
 import { TheLoopSection } from '@/sections/omnisense/TheLoopSection'
 import { OmnisensePlatform } from '@/sections/omnisense/OmnisensePlatform'
 import { OmnisenseAgents } from '@/sections/omnisense/OmnisenseAgents'
-import { OmnisenseAction } from '@/sections/omnisense/OmnisenseAction'
-import { IntegrationsSection } from '@/sections/home/IntegrationsSection'
-import { OMNISENSE_PAGE_DATA, INTEGRATIONS_DATA } from '@/lib/constants'
+import { OmnisenseSara } from '@/sections/omnisense/OmnisenseSara'
+import { Integrations } from '@/components/homepage/sections/integrations'
+import { SocCta } from '@/components/homepage/sections/soc-cta'
+import { OMNISENSE_PAGE_DATA } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'OmniSense™: Security Decision Intelligence',
@@ -26,9 +27,12 @@ export default function OmnisensePage() {
       <OmnisensePlatform data={OMNISENSE_PAGE_DATA.platform} />
       <TheLoopSection />
       <OmnisenseAgents data={OMNISENSE_PAGE_DATA.agents} />
-      <OmnisenseAction data={OMNISENSE_PAGE_DATA.action} />
-      <div className="relative overflow-visible isolate">
-        <IntegrationsSection data={INTEGRATIONS_DATA} variant="dark" />
+      <OmnisenseSara data={OMNISENSE_PAGE_DATA.sara} />
+      <div className="homepage-design relative overflow-x-hidden bg-home-ink-900">
+        <div className="overflow-hidden rounded-t-[40px] rounded-b-[64px] bg-[#f6f5f8]">
+          <Integrations />
+          <SocCta />
+        </div>
       </div>
     </>
   )

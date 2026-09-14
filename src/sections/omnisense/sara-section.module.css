@@ -1,0 +1,167 @@
+/* "Meet Sara" — Figma frame is 1920 wide (node 58:7579 and siblings). Every length
+   below is that Figma value as a share of the 1920px artboard, so the whole
+   composition scales with the viewport the way the neighbouring sections do.
+
+   Figma stacks the four blocks with one uniform 40px gap, so this is a flex
+   column rather than the absolute grid the architecture section needs. */
+
+/* No padding-top: Figma puts 139px between the last agent card (stage bottom,
+   8582) and this badge (8721), and OmnisenseAgents already emits exactly that as
+   its own padding-bottom. Adding any here would double the gap. */
+.section {
+  container-type: inline-size;
+  background: #0e0e0e;
+  color: #f7f7f7;
+  padding: 0 0 4.166667cqw;  /* 80px */
+  scroll-margin-top: 100px;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.083333cqw;  /* 40px — the single gap Figma uses between all four blocks */
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+/* Fixed box rather than padding: Figma hugs to 127×36, which 6px padding alone
+   does not reproduce at Inter's metrics. Same treatment as the other sections. */
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.614583cqw;   /* 127px */
+  height: 1.875cqw;     /* 36px */
+  border: .052083cqw solid #323232;
+  border-radius: 2.604167cqw;  /* 50px */
+  background: #0f0f0f;
+  color: #fff;
+  font-family: var(--font-inter), sans-serif;
+  font-size: .729167cqw;  /* 14px */
+  line-height: 1.428571;  /* 20px */
+  white-space: nowrap;
+}
+
+/* The 911px box is what forces the Figma line break after "always". */
+.title {
+  width: 47.447917%;  /* 911/1920 */
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-noto-serif), 'Noto Serif', serif;
+  font-size: 3.333333cqw;  /* 64px */
+  font-weight: 400;
+  line-height: 1.15625;    /* 74px */
+  letter-spacing: 0;
+  color: #f7f7f7;
+  /* Figma reports the two-line box as 120px, not 148px — it trims the leading,
+     which is also what makes the 40px gaps above and below land correctly. */
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+.lede {
+  width: 40.833333%;  /* 784/1920 */
+  margin: 0;
+  text-align: center;
+  color: #ccc;
+  font-family: var(--font-inter), sans-serif;
+  font-size: .9375cqw;   /* 18px */
+  font-weight: 400;
+  line-height: 1.444444; /* 26px */
+  letter-spacing: 0;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+/* ── Device shell ───────────────────────────────────────────────────────── */
+.shell {
+  box-sizing: border-box;
+  width: 72.708333%;    /* 1396/1920 */
+  padding: .520833cqw;  /* 10px */
+  border: .052083cqw solid #262626;
+  border-radius: 1.25cqw;  /* 24px */
+  background: #111;
+  box-shadow: 0 0 1.25cqw #313131;  /* Figma drop shadow 0/0/24 */
+}
+
+/* The inner black plate. Figma clips it, which is what cuts the two glow
+   ellipses off at the rounded edge instead of letting them bleed into the page. */
+.screen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+  aspect-ratio: 1374 / 806;
+  border: .052083cqw solid #232323;
+  border-radius: .833333cqw;  /* 16px */
+  background: #000;
+}
+
+/* Two 1396×178.68 ellipses hanging off the top and bottom edges, blurred hard.
+   Figma layer blur 524 ≈ CSS blur(262px). */
+.glow {
+  position: absolute;
+  left: -.800582%;      /* -11/1374 */
+  width: 101.601164%;   /* 1396/1374 */
+  height: 22.168734%;   /* 178.68/806 */
+  border-radius: 50%;
+  filter: blur(13.645833cqw);  /* 262px */
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glowTop    { top: -8.312655%; background: #cbaaff; }  /* -67/806 */
+.glowBottom { top: 77.831266%; background: #8c4bf7; }  /* 627.32/806 */
+
+.media {
+  position: absolute;
+  left: 2.765648%;     /* 38/1374 */
+  top: 5.086849%;      /* 41/806 */
+  width: 94.468705%;   /* 1298/1374 */
+  height: 89.826303%;  /* 724/806 */
+  box-sizing: border-box;
+  border: .052083cqw solid #242424;
+  border-radius: .833333cqw;  /* 16px */
+  opacity: .8;
+  object-fit: cover;
+}
+
+/* ── Reflow ─────────────────────────────────────────────────────────────────
+   Below the desktop composition the cqw type gets too small to read, so the
+   band switches to fixed sizes and the shell gives up its Figma margins. */
+@media (max-width: 1100px) {
+  .section { padding: 0 0 72px; }
+  .stage { gap: 32px; padding: 0 24px; }
+
+  .badge {
+    width: auto;
+    height: auto;
+    padding: 8px 16px;
+    border-width: 1px;
+    border-radius: 50px;
+    font-size: 14px;
+  }
+
+  .title { width: 100%; max-width: 640px; font-size: clamp(34px, 5.4vw, 52px); }
+  .lede  { width: 100%; max-width: 740px; font-size: 16px; line-height: 1.5; }
+
+  .shell {
+    width: 100%;
+    padding: 8px;
+    border-width: 1px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #313131;
+  }
+
+  .screen { border-width: 1px; border-radius: 12px; }
+  .glow   { filter: blur(120px); }
+  .media  { border-width: 1px; border-radius: 12px; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 0 0 56px; }
+  .stage { gap: 24px; padding: 0 20px; }
+  .title { font-size: clamp(27px, 7.2vw, 40px); }
+  .lede { font-size: 15px; }
+  .glow { filter: blur(72px); }
+}

@@ -26,13 +26,13 @@ const riseUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE_OUT } },
 }
 
-export function Footer() {
+export function Footer({ showHero = true }: { showHero?: boolean }) {
   const year = new Date().getFullYear()
 
   return (
     <footer data-chrome="global" className="relative overflow-hidden bg-[#121218]">
       {/* Hero image */}
-      <div className="relative w-full">
+      {showHero && <div className="relative w-full">
         <motion.div
           variants={imageReveal}
           initial="hidden"
@@ -79,6 +79,7 @@ export function Footer() {
         </motion.div>
       </div>
 
+      }
       {/* Main content */}
       <div className="container-sirp relative py-16">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-5">

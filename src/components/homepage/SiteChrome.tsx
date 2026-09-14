@@ -29,5 +29,5 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const pathname = usePathname()
-  return pathname === '/' ? null : <Footer />
+  return pathname === '/' ? null : <Footer showHero={pathname !== '/omnisense'} />
 }
