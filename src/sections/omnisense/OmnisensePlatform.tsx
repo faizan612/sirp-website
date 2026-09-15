@@ -20,7 +20,13 @@ interface PlatformData {
   tabs: readonly Tab[]
 }
 
-const artwork = ['orchestrator', 'omnisec', 'omnimap', 'omniflex', 'omnicollective']
+const artwork: Record<string, string> = {
+  'omnisense-core': '/images/omnisense/pillar-orchestrator.png',
+  'omnisec-llm': '/images/omnisense/pillar-omnisec.png',
+  'omnimap-rag': '/images/omnisense/pillar-omnimap.png',
+  omniflex: '/images/omnisense/pillar-omniflex.png',
+  omnicollective: '/images/omnisense/pillar-omnicollective.png',
+}
 
 export function OmnisensePlatform({ data }: { data: PlatformData }) {
   const section = useRef<HTMLElement>(null)
@@ -33,6 +39,11 @@ export function OmnisensePlatform({ data }: { data: PlatformData }) {
     let frame = 0
     const update = () => {
       frame = 0
+      const navEdge = document.querySelector('header[data-chrome="global"]')?.getBoundingClientRect().bottom ?? 69
+      root.style.setProperty('--nav-edge', `${Math.max(0, navEdge)}px`)
+      const first = panels.current[0]?.getBoundingClientRect()
+      const last = panels.current[panels.current.length - 1]?.getBoundingClientRect()
+      root.dataset.scrolling = String(Boolean(first && last && first.top < navEdge && last.bottom > navEdge + 200))
       const threshold = window.innerHeight * 0.48
       let selected = 0
       panels.current.forEach((panel, index) => {
@@ -41,27 +52,20 @@ export function OmnisensePlatform({ data }: { data: PlatformData }) {
       setActive(selected)
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.setAttribute('data-revealed', 'true')
-      })
-    }, { threshold: 0.12 })
-    panels.current.forEach(panel => { if (panel) observer.observe(panel) })
-    root.dataset.enhanced = 'true'
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
     update()
     return () => {
       cancelAnimationFrame(frame)
-      observer.disconnect()
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
-      delete root.dataset.enhanced
+      delete root.dataset.scrolling
     }
   }, [data.tabs.length])
 
   return (
     <section ref={section} className={styles.section} aria-labelledby="pillars-heading">
+      <div className={styles.scrollFade} aria-hidden="true" />
       <div className={styles.container}>
         <header className={styles.heading}>
           <span className={styles.badge}>{data.badge}</span>
@@ -88,8 +92,8 @@ export function OmnisensePlatform({ data }: { data: PlatformData }) {
               <article key={tab.id} id={`pillar-${tab.id}`} ref={node => { panels.current[index] = node }}
                 className={styles.panel} aria-labelledby={`pillar-title-${tab.id}`}>
                 <div className={styles.artwork}>
-                  <Image src={`/images/omnisense/pillar-${artwork[index]}.svg?v=2`} alt={`${tab.title} platform illustration`}
-                    width={828} height={740} unoptimized className={styles.image} />
+                  <Image src={artwork[tab.id] ?? tab.image} alt={`${tab.title} platform illustration`}
+                    width={3312} height={2960} sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 65vw, (max-width: 1920px) 43.125vw, 828px" className={styles.image} />
                 </div>
                 <div className={styles.copy}>
                   <h3 id={`pillar-title-${tab.id}`}>{tab.title}</h3>
