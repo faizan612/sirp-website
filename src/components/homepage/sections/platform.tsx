@@ -47,9 +47,13 @@ const SCREENS: Screen[] = [
     src: "/homepage/figma/platform/screens/incident-management.png",
     alt: "Incident Management — OmniSense co-analysis of an OmniStream event confirming an active kernel-mode rootkit threat at 60% confidence, with a live agent timeline alongside",
   },
-  // Awaiting its export — rendered but disabled rather than dropped, so the
-  // pill bar still matches the Figma composition.
-  { id: "co-analyst", label: "Co-Analyst", icon: Sparkles },
+  {
+    id: "co-analyst",
+    label: "Agents",
+    icon: Sparkles,
+    src: "/homepage/figma/platform/screens/co-analyst.png",
+    alt: "Agents — configure autonomous investigation agents, including Alert Normalizer, Alert Brief, Entity, Alert Triage, Phishing Analysis and Omni Graph, with their stages and status",
+  },
 ];
 
 export function Platform() {
