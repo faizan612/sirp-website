@@ -122,7 +122,6 @@
   box-sizing: border-box;
   border: .052083cqw solid #242424;
   border-radius: .833333cqw;  /* 16px */
-  opacity: .8;
   object-fit: cover;
 }
 
