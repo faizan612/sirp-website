@@ -2,168 +2,149 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { LayoutGroup, motion, useReducedMotion } from 'framer-motion'
-import { NAV_MENUS, ENABLED_MENUS } from './nav-data'
+import { useReducedMotion } from 'framer-motion'
+import { NAV_MENUS } from './nav-data'
 import { NavBar } from './NavBar'
-import { MegaPanel } from './MegaPanel'
 import { MobileNav } from './MobileNav'
 import { useHoverIntent } from './useHoverIntent'
 
+// Only the menus that actually open a panel take part in arrow-key roving and
+// in the panel's own state; a link-only item (Partners) is just a link.
+const PANEL_MENUS = NAV_MENUS.filter((menu) => Boolean(menu.columns?.length))
+const MENU_IDS = PANEL_MENUS.map((menu) => menu.id)
+
 export function SiteNav() {
   const { activeId, open, openImmediate, close, closeImmediate } = useHoverIntent()
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [triggerCenterX, setTriggerCenterX] = useState<number | null>(null)
-  const wasOpenRef = useRef(false)
   const pathname = usePathname()
-  const prefersReducedMotion = useReducedMotion()
-  const reduceMotion = Boolean(prefersReducedMotion)
+  const reduceMotion = Boolean(useReducedMotion())
 
+  const surfaceRef = useRef<HTMLDivElement>(null)
+  const mobileToggleRef = useRef<HTMLButtonElement>(null)
   const triggerRefs = useRef<Map<string, HTMLButtonElement | HTMLAnchorElement>>(new Map())
+  const wantsPanelFocus = useRef(false)
 
   const registerTriggerRef = useCallback((id: string, el: HTMLButtonElement | HTMLAnchorElement | null) => {
     if (el) triggerRefs.current.set(id, el)
     else triggerRefs.current.delete(id)
   }, [])
 
-  const measureTrigger = useCallback((id: string) => {
-    const el = triggerRefs.current.get(id)
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    setTriggerCenterX(rect.left + rect.width / 2)
+  const focusTrigger = useCallback((id: string) => {
+    triggerRefs.current.get(id)?.focus()
   }, [])
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
+  // Close on navigation.
   useEffect(() => {
     closeImmediate()
     setMobileOpen(false)
   }, [pathname, closeImmediate])
 
-  const activeMenu = activeId ? NAV_MENUS.find((m) => m.id === activeId) ?? null : null
-  const isOpen = Boolean(activeMenu)
-  const isFirstOpen = isOpen && !wasOpenRef.current
   useEffect(() => {
-    wasOpenRef.current = isOpen
-  }, [isOpen])
+    if (activeId === null) return
 
-  // The panel stays mounted permanently and is driven open/closed purely by
-  // an animated opacity, rather than by AnimatePresence mounting/unmounting
-  // it — conditionally mounting it hit a framer-motion edge case where
-  // rapid hover-driven open/close cycles left the exit animation "stuck":
-  // finished at opacity 0 but never actually removed (and still focusable).
-  // Content is retained via this ref so the last menu keeps rendering while
-  // the panel fades out instead of going blank.
-  const lastMenuRef = useRef(NAV_MENUS[0])
+    const onPointerDown = (e: PointerEvent) => {
+      if (!surfaceRef.current?.contains(e.target as Node)) closeImmediate()
+    }
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      const id = activeId
+      closeImmediate()
+      focusTrigger(id)
+    }
+
+    // Tabbing out of the header closes it, so the panel never sits open behind
+    // the page while focus has moved on.
+    const onFocusIn = (e: FocusEvent) => {
+      if (!surfaceRef.current?.contains(e.target as Node)) closeImmediate()
+    }
+
+    document.addEventListener('pointerdown', onPointerDown)
+    window.addEventListener('keydown', onKeyDown)
+    document.addEventListener('focusin', onFocusIn)
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown)
+      window.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('focusin', onFocusIn)
+    }
+  }, [activeId, closeImmediate, focusTrigger])
+
+  // ArrowDown on a trigger moves focus into the panel, but only once the open
+  // has committed and `inert` is gone.
+  useEffect(() => {
+    if (!wantsPanelFocus.current) return
+    wantsPanelFocus.current = false
+    if (activeId === null) return
+    document.getElementById('nav-mega-panel')?.querySelector<HTMLElement>('a[href]')?.focus()
+  }, [activeId])
+
+  const activeMenu = activeId ? (PANEL_MENUS.find((menu) => menu.id === activeId) ?? null) : null
+
+  // Keep rendering the last menu while the panel collapses instead of blanking.
+  const lastMenuRef = useRef(PANEL_MENUS[0])
   if (activeMenu) lastMenuRef.current = activeMenu
-  const displayMenu = activeMenu ?? lastMenuRef.current
-
-  const handleTriggerEnter = useCallback(
-    (id: string) => {
-      measureTrigger(id)
-      open(id)
-    },
-    [measureTrigger, open],
-  )
+  const panelMenu = activeMenu ?? lastMenuRef.current
 
   const handleTriggerClick = useCallback(
     (id: string) => {
-      if (activeId === id) {
-        closeImmediate()
-        return
-      }
-      measureTrigger(id)
-      openImmediate(id)
+      if (activeId === id) closeImmediate()
+      else openImmediate(id)
     },
-    [activeId, measureTrigger, openImmediate, closeImmediate],
+    [activeId, closeImmediate, openImmediate],
   )
-
-  const enabledIds = NAV_MENUS.filter((m) => ENABLED_MENUS[m.id] ?? true).map((m) => m.id)
 
   const handleTriggerKeyDown = useCallback(
     (e: React.KeyboardEvent, id: string) => {
-      if (e.key === 'Enter' || e.key === ' ') {
+      // Enter/Space arrive as a click on a <button>, handled above.
+      if (e.key === 'ArrowDown') {
         e.preventDefault()
-        if (activeId === id) {
-          closeImmediate()
-          return
-        }
-        measureTrigger(id)
+        // The panel is `inert` until this open commits, so focus has to wait
+        // for the effect below rather than move here.
+        wantsPanelFocus.current = true
         openImmediate(id)
         return
       }
-      if (e.key === 'Escape') {
-        closeImmediate()
-        triggerRefs.current.get(id)?.focus()
-        return
-      }
-      if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && activeId) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
         e.preventDefault()
-        const idx = enabledIds.indexOf(id)
-        if (idx === -1) return
-        const nextIdx =
-          e.key === 'ArrowRight' ? (idx + 1) % enabledIds.length : (idx - 1 + enabledIds.length) % enabledIds.length
-        const nextId = enabledIds[nextIdx]
-        measureTrigger(nextId)
-        openImmediate(nextId)
-        triggerRefs.current.get(nextId)?.focus()
+        const index = MENU_IDS.indexOf(id)
+        if (index === -1) return
+        const next =
+          e.key === 'ArrowRight'
+            ? MENU_IDS[(index + 1) % MENU_IDS.length]
+            : MENU_IDS[(index - 1 + MENU_IDS.length) % MENU_IDS.length]
+        // Only carry the panel along if one is already open; otherwise this is
+        // plain roving focus across the bar.
+        if (activeId !== null) openImmediate(next)
+        focusTrigger(next)
       }
     },
-    [activeId, closeImmediate, enabledIds, measureTrigger, openImmediate],
+    [activeId, focusTrigger, openImmediate],
   )
 
+  const handleMobileClose = useCallback(() => {
+    setMobileOpen(false)
+    mobileToggleRef.current?.focus()
+  }, [])
+
   return (
-    <LayoutGroup>
+    <>
       <NavBar
         menus={NAV_MENUS}
-        enabledMenus={ENABLED_MENUS}
         activeId={activeId}
-        scrolled={scrolled}
-        panelOpen={isOpen}
+        panelMenu={panelMenu}
         reduceMotion={reduceMotion}
+        surfaceRef={surfaceRef}
+        mobileToggleRef={mobileToggleRef}
         registerTriggerRef={registerTriggerRef}
-        onTriggerEnter={handleTriggerEnter}
-        onTriggerLeave={close}
+        onTriggerEnter={open}
+        onSurfaceLeave={close}
         onTriggerClick={handleTriggerClick}
         onTriggerKeyDown={handleTriggerKeyDown}
         onMobileOpen={() => setMobileOpen(true)}
-        panelSlot={
-          <motion.div
-            key="mega-panel"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: isOpen ? 1 : 0, y: 0 }}
-            transition={
-              reduceMotion
-                ? { duration: 0 }
-                : isFirstOpen
-                  ? { duration: 0.24, ease: [0.16, 1, 0.3, 1] }
-                  : { duration: isOpen ? 0.14 : 0.16, ease: isOpen ? 'linear' : 'easeOut' }
-            }
-            style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
-            aria-hidden={!isOpen}
-            inert={!isOpen}
-            className="mx-auto mt-[10px] w-[calc(100%-2rem)] max-w-[1240px]"
-          >
-            <MegaPanel
-              menu={displayMenu}
-              panelId={`nav-panel-${displayMenu.id}`}
-              labelledBy={`nav-trigger-${displayMenu.id}`}
-              isFirstOpen={isFirstOpen}
-              triggerCenterX={triggerCenterX}
-              reduceMotion={reduceMotion}
-              onMouseEnter={() => openImmediate(displayMenu.id)}
-              onMouseLeave={close}
-              onNavigate={closeImmediate}
-            />
-          </motion.div>
-        }
+        onNavigate={closeImmediate}
       />
 
-      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} menus={NAV_MENUS} />
-    </LayoutGroup>
+      <MobileNav open={mobileOpen} onClose={handleMobileClose} menus={NAV_MENUS} reduceMotion={reduceMotion} />
+    </>
   )
 }

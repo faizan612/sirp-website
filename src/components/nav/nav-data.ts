@@ -1,9 +1,23 @@
 import type { NavMenu } from './nav.types'
 
-// Only menus/links with a real built page are listed here. See
-// MENU-STRUCTURE.md for the full intended structure, including everything
-// that's been trimmed pending its page being built — restore entries as
-// they ship rather than re-deriving the structure from scratch.
+// Layout, typography and column arrangement come from the Figma navigation
+// variants (file PhhQqMYiW0bQ5O4a6leHV3, nodes 124:1217–124:1223), and so does
+// the copy for every entry below.
+//
+// Contents, however, are filtered to destinations that are actually live on
+// https://www.sirp.io. Figma lists 56 entries; 43 of them have no page, so they
+// are not rendered at all — the menu never shows a label that leads nowhere.
+// Two consequences of that filter:
+//
+//   • "Solutions" is gone. Not one of its 16 entries has a page.
+//   • "Partners" is a plain link to its live landing page rather than a
+//     dropdown, since none of its children have pages either.
+//
+// Two live pages that Figma has no slot for are surfaced here so they're
+// reachable: /enterprise-soc and /autonomous-security. /saads-home-page is
+// deliberately left out.
+//
+// See MENU-STRUCTURE.md for the full design-vs-live breakdown.
 export const NAV_MENUS: NavMenu[] = [
   {
     id: 'platform',
@@ -12,33 +26,42 @@ export const NAV_MENUS: NavMenu[] = [
       {
         eyebrow: 'Overview',
         links: [
-          { label: 'OmniSense platform', href: '/omnisense', description: 'The autonomous SOC, end to end.', status: 'live' },
-          { label: 'How it works', href: '/how-autonomous-soc-works', description: 'Planner, Governor, Executor.', status: 'live' },
+          {
+            label: 'OmniSense™ Platform',
+            description: 'The core AI-native Autonomous SOC platform, detects, learns, and responds at machine speed.',
+            href: '/omnisense',
+          },
+          {
+            label: 'How it works',
+            description: 'See how OmniSense runs the full detection-to-response loop autonomously.',
+            href: '/how-autonomous-soc-works',
+          },
+          {
+            // Not in the Figma nav; added so the live page is reachable.
+            label: 'Enterprise SOC',
+            description: 'Run your SOC as a machine, not a call center.',
+            href: '/enterprise-soc',
+          },
+        ],
+      },
+      {
+        eyebrow: 'Products',
+        links: [
+          {
+            label: 'Sara, the Co-Analyst',
+            description: 'Your AI Co-Analyst for triage, investigation, and response.',
+            href: 'https://sara-open.sirp.io/',
+            external: true,
+          },
         ],
       },
       {
         eyebrow: 'Capabilities',
         links: [
-          { label: 'Integrations', href: '/integrations', status: 'live' },
+          { label: 'Integrations', description: 'Connect your security, IT, and cloud tools.', href: '/integrations' },
         ],
       },
     ],
-    featured: {
-      eyebrow: 'Free',
-      title: 'Sara',
-      body: 'Try the Co-Analyst with no signup.',
-      href: 'https://sara-open.sirp.io/',
-      cta: 'Try Sara',
-      visual: 'sara',
-      status: 'live',
-      badge: 'Free',
-    },
-    footer: {
-      text: '200+ integrations. Build your own against the open framework.',
-      cta: 'See the catalog',
-      href: '/integrations',
-      status: 'live',
-    },
   },
   {
     id: 'why',
@@ -47,19 +70,37 @@ export const NAV_MENUS: NavMenu[] = [
       {
         eyebrow: 'The difference',
         links: [
-          { label: 'Outcomes and metrics', href: '/security-outcomes-and-metrics', status: 'live' },
-          { label: 'The manifesto', href: '/manifesto', status: 'live' },
-          { label: 'Technical whitepaper', href: '/technical-white-paper', status: 'live' },
-          { label: 'Trust Center', href: '/trust-center', status: 'live' },
+          {
+            label: 'Outcomes and metrics',
+            description: 'Measurable MTTD/MTTR and autonomy gains.',
+            href: '/security-outcomes-and-metrics',
+          },
+          { label: 'The manifesto', description: 'Our vision for the Autonomous SOC.', href: '/manifesto' },
+          {
+            label: 'Technical whitepaper',
+            description: 'A technical look at the platform, agents, and deployment.',
+            href: '/technical-white-paper',
+          },
+          { label: 'Trust Center', description: 'Our security, privacy, and compliance posture.', href: '/trust-center' },
         ],
       },
       {
         eyebrow: 'Compare',
         links: [
-          { label: 'SIRP vs SOAR', href: '/soar-vs-autonomous-soc', status: 'live' },
-          { label: "Autonomous SOC buyer's guide", href: '/buyers-guide', status: 'live' },
+          {
+            label: 'SIRP vs SOAR',
+            description: 'Autonomy that goes beyond scripted playbooks.',
+            href: '/soar-vs-autonomous-soc',
+          },
+          {
+            label: "Autonomous SOC buyer's guide",
+            description: 'What to look for before you buy.',
+            href: '/buyers-guide',
+          },
         ],
       },
+      // Figma's third column, "Proof", is dropped: its only live entry was a
+      // second "Trust center" already listed under The difference.
     ],
   },
   {
@@ -69,23 +110,40 @@ export const NAV_MENUS: NavMenu[] = [
       {
         eyebrow: 'Learn',
         links: [
-          { label: 'What is an autonomous SOC', href: '/what-is-autonomous-soc', status: 'live' },
-          { label: 'How an autonomous SOC works', href: '/how-autonomous-soc-works', status: 'live' },
+          {
+            label: 'What is an autonomous SOC',
+            description: 'The core idea, explained simply.',
+            href: '/what-is-autonomous-soc',
+          },
+          {
+            label: 'How an autonomous SOC works',
+            description: 'The full detection-to-response loop.',
+            href: '/how-autonomous-soc-works',
+          },
+          {
+            // Not in the Figma nav; added so the live page is reachable.
+            label: 'Autonomous security operations',
+            description: 'From playbooks to AI-native decision systems.',
+            href: '/autonomous-security',
+          },
         ],
       },
       {
         eyebrow: 'Library',
-        links: [
-          { label: 'Blog', href: '/blog', status: 'live' },
-        ],
+        links: [{ label: 'Blog', description: 'Insights, trends, and product news.', href: '/blog' }],
       },
       {
         eyebrow: 'Build',
         links: [
-          { label: 'Integration catalog', href: '/integrations', status: 'live' },
+          { label: 'Integration catalog', description: 'Browse supported tools and connectors.', href: '/integrations' },
         ],
       },
     ],
+  },
+  {
+    id: 'partners',
+    label: 'Partners',
+    href: '/partners',
   },
   {
     id: 'company',
@@ -94,32 +152,18 @@ export const NAV_MENUS: NavMenu[] = [
       {
         eyebrow: 'About',
         links: [
-          { label: 'Our story', href: '/our-story', status: 'live' },
-          { label: 'Contact', href: '/contact', status: 'live' },
+          { label: 'Our story', description: "Why we're building the Autonomous SOC.", href: '/our-story' },
+          { label: 'Contact', description: 'Get in touch with our team.', href: '/contact' },
         ],
       },
       {
         eyebrow: 'Trust',
         links: [
-          { label: 'Trust center', href: '/trust-center', status: 'live' },
+          { label: 'Trust center', description: 'Our security, privacy, and compliance posture.', href: '/trust-center' },
         ],
       },
     ],
-    featured: {
-      eyebrow: 'Offices',
-      title: 'Bethesda & London',
-      visual: 'static',
-      status: 'live',
-    },
   },
 ]
 
-// One line, per spec §5: flip a menu to `false` to fall back to a plain
-// top-level link (its `href`, or its first column's first link) instead of a
-// mega panel — no component changes required.
-export const ENABLED_MENUS: Record<string, boolean> = {
-  platform: true,
-  why: true,
-  resources: true,
-  company: true,
-}
+export const DEMO_HREF = '/contact'

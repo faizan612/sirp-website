@@ -87,6 +87,28 @@
   --nav-accent-wash: rgba(142, 45, 255, 0.2);
 }
 
+/* ─── Figma global nav (file PhhQqMYiW0bQ5O4a6leHV3) ─────────
+ * Values transcribed from the navigation variants: the header/mega-panel is
+ * one continuous full-width surface with an opaque radial fill, a 1px inside
+ * bottom stroke that fades out toward both edges, and a declared 80-unit
+ * background blur (= 40px in CSS).
+ *
+ * The radial in Figma is an ellipse anchored at the top-centre whose radii are
+ * ~3.4x the frame on both axes, which reads as a barely-there lift in the
+ * middle of the bar — 340% keeps that ratio at any panel height. */
+:root {
+  --nav-surface: radial-gradient(ellipse 340% 340% at 50% 0%, #18191a 0%, #141414 100%);
+  --nav-rule: linear-gradient(90deg, rgba(71, 71, 71, 0) 0%, #474747 50%, rgba(71, 71, 71, 0) 100%);
+
+  --nav-label: #ffffff;
+  --nav-label-dim: #808080;
+  --nav-eyebrow: #636363;
+  --nav-desc: #808080;
+
+  --nav-cta: #8e2dff;
+  --nav-cta-shadow: 0 2px 16px rgba(142, 45, 255, 0.55);
+}
+
 /* ─── Base reset ─────────────────────────────────────────── *
  * Wrapped in @layer base: this file is emitted after Tailwind's
  * utilities (@import "tailwindcss" expands theme/base/components/

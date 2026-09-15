@@ -1,183 +1,191 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { PrimaryButton } from '@/components/homepage/ui/primary-button'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Menu } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/shared/Button'
 import type { NavMenu } from './nav.types'
-
-const UNDERLINE_TRANSITION = { type: 'spring' as const, stiffness: 500, damping: 38 }
+import { MegaPanel } from './MegaPanel'
+import { NavChevron } from './NavIcons'
+import { DemoButton } from './DemoButton'
+import { NAV_INSET, NAV_ITEM_GAP, NAV_LOGO_GAP, NAV_PANEL_TOP_PAD } from './nav-style'
 
 export function NavBar({
   menus,
-  enabledMenus,
   activeId,
-  scrolled,
-  panelOpen,
+  panelMenu,
   reduceMotion,
+  surfaceRef,
+  mobileToggleRef,
   registerTriggerRef,
   onTriggerEnter,
-  onTriggerLeave,
+  onSurfaceLeave,
   onTriggerClick,
   onTriggerKeyDown,
   onMobileOpen,
-  panelSlot,
+  onNavigate,
 }: {
   menus: NavMenu[]
-  enabledMenus: Record<string, boolean>
   activeId: string | null
-  scrolled: boolean
-  panelOpen: boolean
+  /** Stays populated while the panel closes so it doesn't blank mid-animation. */
+  panelMenu: NavMenu
   reduceMotion: boolean
+  surfaceRef: React.RefObject<HTMLDivElement | null>
+  mobileToggleRef: React.RefObject<HTMLButtonElement | null>
   registerTriggerRef: (id: string, el: HTMLButtonElement | HTMLAnchorElement | null) => void
   onTriggerEnter: (id: string) => void
-  onTriggerLeave: () => void
+  onSurfaceLeave: () => void
   onTriggerClick: (id: string) => void
   onTriggerKeyDown: (e: React.KeyboardEvent, id: string) => void
   onMobileOpen: () => void
-  panelSlot?: React.ReactNode
+  onNavigate: () => void
 }) {
-  const isHomepage = usePathname() === '/'
+  const isOpen = activeId !== null
+
+  // The panel grows the shared surface downward, so its height has to be a real
+  // number for the open/close and menu-to-menu transitions to interpolate.
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [contentHeight, setContentHeight] = useState(0)
+
+  useEffect(() => {
+    const el = contentRef.current
+    if (!el) return
+    const measure = () => setContentHeight(el.offsetHeight)
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(el)
+    window.addEventListener('resize', measure)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', measure)
+    }
+  }, [])
+
+  // Below xl the panel is display:none, so the observer above can only have
+  // seen a height of 0. Re-measure whenever we're about to open or swap menus.
+  useEffect(() => {
+    if (isOpen && contentRef.current) setContentHeight(contentRef.current.offsetHeight)
+  }, [isOpen, panelMenu])
+
   return (
-    <header
-      data-chrome="global"
-      className="sticky top-0 z-40 w-full"
-      style={isHomepage ? { backgroundColor: '#0e0e0e' } : undefined}
-    >
-      {/* Hidden defs for the header's clipped silhouette: flat across the
-          middle, curving sharply inward starting ~10% before each edge. */}
-      <svg width="0" height="0" className="absolute" aria-hidden focusable="false">
-        <defs>
-          <clipPath id="nav-shape" clipPathUnits="objectBoundingBox">
-            <path d="M0,0 L1,0 L1,0.3 Q1,1 0.9,1 L0.1,1 Q0,1 0,0.3 Z" />
-          </clipPath>
-        </defs>
-      </svg>
-
+    // The header only reserves the closed bar's height; the surface below is
+    // absolutely positioned so an open panel overlays the page instead of
+    // pushing it down.
+    <header data-chrome="global" className="sticky top-0 z-50 h-[69px]">
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={isHomepage ? {
-          filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.25))',
-        } : undefined}
+        ref={surfaceRef}
+        onMouseLeave={onSurfaceLeave}
+        className="absolute inset-x-0 top-0 [background:var(--nav-surface)] backdrop-blur-[40px]"
       >
-      <div
-        className={cn(
-          'absolute inset-0 transition-[background-color,height] duration-300',
-          panelOpen
-            ? 'bg-[var(--nav-base)]'
-            : scrolled
-              ? 'bg-[var(--nav-base)]/72 backdrop-blur-xl'
-              : 'bg-[var(--nav-base)]/72 backdrop-blur-xl',
-        )}
-        style={{
-          clipPath: 'url(#nav-shape)',
-          filter: isHomepage ? undefined : `drop-shadow(0 1px 0 var(${panelOpen || scrolled ? '--nav-hairline-lit' : '--nav-hairline'}))`,
-        }}
-      />
-      </div>
+        <div className={cn(NAV_INSET, 'pb-[11px] pt-[10px]')}>
+          <div className="flex h-12 items-center justify-between">
+            <div className={cn('flex min-w-0 items-center', NAV_LOGO_GAP)}>
+              <Link href="/" aria-label="SIRP home" onClick={onNavigate} className="shrink-0">
+                {/* Figma logo lockup: 74 x 32. */}
+                <Image
+                  src="/images/logos/SIRP-Logo.svg"
+                  alt="SIRP"
+                  width={74}
+                  height={32}
+                  priority
+                  className="block object-contain"
+                  style={{ height: 32, width: 'auto' }}
+                />
+              </Link>
 
-      <nav
-        className={cn(
-          'container-sirp relative flex items-center justify-between transition-[height] duration-300',
-          scrolled ? 'h-[60px]' : 'h-[72px]',
-        )}
-      >
-        <Link href="/" aria-label="SIRP home" className="shrink-0">
-          <Image
-            src="/images/logos/SIRP-Logo.svg"
-            alt="SIRP"
-            width={100}
-            height={36}
-            priority
-            className="h-9 w-auto object-contain"
-          />
-        </Link>
+              <ul className={cn('m-0 hidden list-none items-center p-0 xl:flex', NAV_ITEM_GAP)}>
+                {menus.map((menu) => {
+                  const isActive = activeId === menu.id
+                  const hasPanel = Boolean(menu.columns?.length)
+                  // Figma dims the siblings of the open menu; with nothing open
+                  // every label is white.
+                  const labelClass = cn(
+                    'flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-[6px] border-none bg-transparent p-0 no-underline',
+                    'font-sans text-[16px] font-medium leading-[19px] outline-none transition-colors duration-150',
+                    'focus-visible:ring-2 focus-visible:ring-[var(--nav-accent)] focus-visible:ring-offset-4 focus-visible:ring-offset-[#161718]',
+                    !isOpen || isActive
+                      ? 'text-[var(--nav-label)]'
+                      : 'text-[var(--nav-label-dim)] hover:text-[var(--nav-label)]',
+                  )
 
-        <ul className="m-0 hidden list-none items-center gap-1 p-0 lg:flex">
-          {menus.map((menu) => {
-            const enabled = enabledMenus[menu.id] ?? true
-            const isActive = activeId === menu.id
-            const label = (
-              <>
-                {menu.label}
-                {isActive && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute inset-x-4 bottom-0 h-[2px] rounded-full bg-[var(--nav-accent)]"
-                    transition={reduceMotion ? { duration: 0 } : UNDERLINE_TRANSITION}
-                  />
-                )}
-              </>
-            )
+                  return (
+                    <li key={menu.id}>
+                      {hasPanel ? (
+                        <button
+                          ref={(el) => registerTriggerRef(menu.id, el)}
+                          type="button"
+                          id={`nav-trigger-${menu.id}`}
+                          aria-expanded={isActive}
+                          aria-controls="nav-mega-panel"
+                          onMouseEnter={() => onTriggerEnter(menu.id)}
+                          onClick={() => onTriggerClick(menu.id)}
+                          onKeyDown={(e) => onTriggerKeyDown(e, menu.id)}
+                          className={labelClass}
+                        >
+                          {menu.label}
+                          <NavChevron className="shrink-0 text-[var(--nav-label-dim)]" />
+                        </button>
+                      ) : (
+                        // A top-level item whose children all lack pages becomes
+                        // a plain link: no chevron, and hovering it closes
+                        // whatever panel is open rather than leaving it hanging.
+                        <Link
+                          ref={(el) => registerTriggerRef(menu.id, el)}
+                          href={menu.href ?? '/'}
+                          id={`nav-trigger-${menu.id}`}
+                          onMouseEnter={onSurfaceLeave}
+                          onClick={onNavigate}
+                          className={labelClass}
+                        >
+                          {menu.label}
+                        </Link>
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
 
-            return (
-              <li
-                key={menu.id}
-                className="relative"
-                onMouseEnter={() => enabled && onTriggerEnter(menu.id)}
-                onMouseLeave={() => enabled && onTriggerLeave()}
+            <div className="flex shrink-0 items-center gap-3">
+              <DemoButton className="hidden xl:inline-flex" onClick={onNavigate} />
+              <button
+                ref={mobileToggleRef}
+                type="button"
+                onClick={onMobileOpen}
+                aria-label="Open menu"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[12px] border-none bg-[var(--nav-cta)] text-white outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#141414] xl:hidden"
               >
-                {enabled ? (
-                  <button
-                    ref={(el) => registerTriggerRef(menu.id, el)}
-                    type="button"
-                    aria-expanded={isActive}
-                    aria-controls={`nav-panel-${menu.id}`}
-                    id={`nav-trigger-${menu.id}`}
-                    onClick={() => onTriggerClick(menu.id)}
-                    onKeyDown={(e) => onTriggerKeyDown(e, menu.id)}
-                    className={cn(
-                      'relative rounded-[10px] px-4 py-2 font-sans text-[15px] font-medium tracking-[-0.01em] outline-none transition-colors duration-150 focus-visible:ring-1 focus-visible:ring-[var(--nav-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--nav-base)]',
-                      isActive ? 'text-[var(--nav-text)]' : 'text-[var(--nav-text-muted)] hover:text-[var(--nav-text)]',
-                    )}
-                  >
-                    {label}
-                  </button>
-                ) : (
-                  <Link
-                    ref={(el) => registerTriggerRef(menu.id, el)}
-                    href={menu.href ?? menu.columns[0]?.links[0]?.href ?? '/'}
-                    id={`nav-trigger-${menu.id}`}
-                    className="relative flex items-center rounded-[10px] px-4 py-2 font-sans text-[15px] font-medium tracking-[-0.01em] text-[var(--nav-text-muted)] no-underline outline-none transition-colors duration-150 hover:text-[var(--nav-text)] focus-visible:ring-1 focus-visible:ring-[var(--nav-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--nav-base)]"
-                  >
-                    {label}
-                  </Link>
-                )}
-              </li>
-            )
-          })}
-        </ul>
-
-        <div className="hidden items-center gap-2 lg:flex">
-          {isHomepage ? (
-            <PrimaryButton href="/contact">Get a Demo</PrimaryButton>
-          ) : (
-            <Button href="/contact" variant="primary" className="!bg-[var(--nav-accent)]">
-              Get a demo
-            </Button>
-          )}
+                <Menu size={18} />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <button
-          type="button"
-          onClick={onMobileOpen}
-          aria-label="Open menu"
-          className="flex h-10 w-10 items-center justify-center rounded-[50px] border-none bg-[var(--nav-accent)] text-white outline-none focus-visible:ring-1 focus-visible:ring-[var(--nav-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--nav-base)] lg:hidden"
+        {/* Plain CSS height transition rather than a motion value: the panel
+            drives the height of the shared surface, so it needs to land on an
+            exact pixel value on every render, including menu-to-menu swaps. */}
+        <div
+          id="nav-mega-panel"
+          role="group"
+          aria-label={`${panelMenu.label} menu`}
+          aria-hidden={!isOpen}
+          inert={!isOpen}
+          className="hidden overflow-hidden xl:block"
+          style={{
+            height: isOpen ? contentHeight : 0,
+            pointerEvents: isOpen ? 'auto' : 'none',
+            transition: reduceMotion ? 'none' : `height ${isOpen ? 260 : 200}ms cubic-bezier(0.16, 1, 0.3, 1)`,
+          }}
         >
-          <Menu size={18} />
-        </button>
-      </nav>
-
-      {panelSlot && (
-        <div className="pointer-events-none absolute inset-x-0 top-full z-40">
-          <div className="pointer-events-auto">{panelSlot}</div>
+          <div ref={contentRef} className={cn(NAV_INSET, 'pb-10')} style={{ paddingTop: NAV_PANEL_TOP_PAD }}>
+            <MegaPanel menu={panelMenu} reduceMotion={reduceMotion} onNavigate={onNavigate} />
+          </div>
         </div>
-      )}
+
+        {/* Figma: 1px inside bottom stroke, #474747 fading to transparent at both ends. */}
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px [background:var(--nav-rule)]" />
+      </div>
     </header>
   )
 }
