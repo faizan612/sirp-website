@@ -1,14 +1,77 @@
+"use client";
+
+import { useRef, useState } from "react";
 import Image from "next/image";
+import { LayoutDashboard, ShieldAlert, Sparkles, Workflow } from "lucide-react";
 import { Container } from "@/components/homepage/ui/container";
 
 /**
  * "The platform running governed autonomous security." — dark section.
  * Layout follows sirp.io: 1280 container, 100px vertical padding.
- * Centered: eyebrow + serif heading + paragraph + OmniBoard dashboard framed in
- * a glowing purple border + closing caption. Dashboard = user export
- * "Component 383" (omniboard.png).
+ * Centered: eyebrow + serif heading + paragraph + product screen framed in a
+ * glowing purple border + closing caption.
+ *
+ * The screen is a tab switcher. The original Figma export (omniboard.png) baked
+ * the frame, the glow, the OmniBoard screen and the four-icon pill bar into a
+ * single flat PNG, so none of it could be clicked; frame, glow and pills are
+ * rebuilt here so each tab can swap its own screenshot.
  */
+
+type Screen = {
+  id: string;
+  label: string;
+  icon: typeof LayoutDashboard;
+  src?: string;
+  alt?: string;
+};
+
+const SCREENS: Screen[] = [
+  {
+    id: "omniboard",
+    label: "OmniBoard",
+    icon: LayoutDashboard,
+    src: "/homepage/figma/platform/screens/omniboard.png",
+    alt: "OmniBoard — live security operations overview across all detection sources: 6,145 tickets, severity breakdown, MTTR 0s, MTTD 5m, MTTA 9m",
+  },
+  {
+    id: "playbook-engine",
+    label: "Playbook Engine",
+    icon: Workflow,
+    src: "/homepage/figma/platform/screens/playbook-engine.png",
+    alt: "Playbook Engine — live SOC monitor of playbook execution, approvals and errors: 228 enabled playbooks, 37 awaiting human approval, 819 executed in 24h, 21.7s average execution time",
+  },
+  {
+    id: "incident-management",
+    label: "Incident Management",
+    icon: ShieldAlert,
+    src: "/homepage/figma/platform/screens/incident-management.png",
+    alt: "Incident Management — OmniSense co-analysis of an OmniStream event confirming an active kernel-mode rootkit threat at 60% confidence, with a live agent timeline alongside",
+  },
+  // Awaiting its export — rendered but disabled rather than dropped, so the
+  // pill bar still matches the Figma composition.
+  { id: "co-analyst", label: "Co-Analyst", icon: Sparkles },
+];
+
 export function Platform() {
+  const [activeId, setActiveId] = useState(SCREENS[0].id);
+  const tabRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+
+  const selectable = SCREENS.filter((screen) => screen.src);
+  const active = SCREENS.find((screen) => screen.id === activeId) ?? SCREENS[0];
+
+  const onTabKeyDown = (event: React.KeyboardEvent, id: string) => {
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+    event.preventDefault();
+    const index = selectable.findIndex((screen) => screen.id === id);
+    if (index === -1) return;
+    const next =
+      event.key === "ArrowRight"
+        ? selectable[(index + 1) % selectable.length]
+        : selectable[(index - 1 + selectable.length) % selectable.length];
+    setActiveId(next.id);
+    tabRefs.current.get(next.id)?.focus();
+  };
+
   return (
     <section className="w-full bg-home-ink-900 py-[100px]">
       <Container>
@@ -27,17 +90,98 @@ export function Platform() {
             integrate.
           </p>
 
-          {/* Dashboard framed in a glowing purple border */}
+          {/* Product screen framed in a glowing purple border */}
           <div className="mt-[48px] w-full rounded-[24px] bg-[linear-gradient(135deg,#a557ff,#8e2dff_45%,#c08bff)] p-[2px] shadow-[0_0_120px_-24px_rgba(142,45,255,0.55)]">
-            <div className="rounded-[22px] bg-home-ink-900 p-[8px]">
-              <Image
-                src="/homepage/figma/platform/omniboard.png"
-                alt="OmniBoard — live security operations overview across all detection sources: 6,145 tickets, severity breakdown, MTTR 0s, MTTD 5m, MTTA 9m"
-                width={1744}
-                height={861}
-                quality={90}
-                className="w-full rounded-[16px]"
+            <div className="relative overflow-hidden rounded-[22px] bg-home-ink-900 px-[3%] pb-[28px] pt-[3%]">
+              {/* The purple bloom that sits behind the pill bar and washes up
+                  into the bottom of the screen. */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-[14px] left-1/2 h-[150px] w-[46%] max-w-[460px] -translate-x-1/2 rounded-[50%] blur-[42px]"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at center, rgba(236,220,255,0.92) 0%, rgba(168,85,247,0.5) 34%, rgba(142,45,255,0) 70%)",
+                }}
               />
+
+              {/* Fixed aspect box so the panel doesn't jump height between tabs —
+                  the three exports differ by ~1.5% in ratio. Only the active
+                  image is exposed, so the panel reads as that screen's alt. */}
+              <div
+                id="platform-screen"
+                role="tabpanel"
+                aria-labelledby={`platform-tab-${active.id}`}
+                className="relative z-10 aspect-[1624/639] w-full"
+              >
+                {SCREENS.filter((screen) => screen.src).map((screen) => (
+                  <Image
+                    key={screen.id}
+                    src={screen.src as string}
+                    alt={screen.alt as string}
+                    fill
+                    // Near-full-bleed panel, and the sources top out at ~1620px
+                    // anyway — asking for less just guarantees an upscale.
+                    sizes="100vw"
+                    // next.config allows [75, 90]; anything else is coerced.
+                    quality={90}
+                    // The first screen is the one on show, so it gets the
+                    // preload; the rest are fetched eagerly but unprioritised,
+                    // which keeps tab switches instant without competing with
+                    // LCP. Lazy loading is wrong here — the inactive screens sit
+                    // at the same spot in the viewport and would never resolve.
+                    priority={screen.id === SCREENS[0].id}
+                    loading={screen.id === SCREENS[0].id ? undefined : "eager"}
+                    className={`rounded-[16px] object-contain transition-opacity duration-300 ${
+                      screen.id === active.id ? "opacity-100" : "opacity-0"
+                    }`}
+                    aria-hidden={screen.id !== active.id}
+                  />
+                ))}
+              </div>
+
+              {/* Pill bar */}
+              <div
+                role="tablist"
+                aria-label="OmniSense product screens"
+                className="relative z-20 mx-auto mt-[26px] flex w-fit items-center gap-[5px] rounded-[12px] border border-white/10 bg-[#141419]/90 p-[5px] backdrop-blur-sm"
+              >
+                {SCREENS.map((screen) => {
+                  const Icon = screen.icon;
+                  const isActive = screen.id === active.id;
+                  const isDisabled = !screen.src;
+
+                  return (
+                    <button
+                      key={screen.id}
+                      ref={(el) => {
+                        if (el) tabRefs.current.set(screen.id, el);
+                        else tabRefs.current.delete(screen.id);
+                      }}
+                      type="button"
+                      role="tab"
+                      id={`platform-tab-${screen.id}`}
+                      aria-selected={isActive}
+                      aria-controls="platform-screen"
+                      aria-label={screen.label}
+                      tabIndex={isActive ? 0 : -1}
+                      disabled={isDisabled}
+                      title={isDisabled ? `${screen.label} — coming soon` : screen.label}
+                      onClick={() => setActiveId(screen.id)}
+                      onKeyDown={(e) => onTabKeyDown(e, screen.id)}
+                      className={`flex h-[36px] w-[40px] items-center justify-center rounded-[9px] outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-[#c08bff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141419] ${
+                        isDisabled
+                          ? "cursor-not-allowed text-white/20"
+                          : isActive
+                            ? "cursor-pointer bg-[#8e2dff] text-white"
+                            : "cursor-pointer bg-white/[0.06] text-[#9a9aa5] hover:bg-white/[0.12] hover:text-white"
+                      }`}
+                    >
+                      <Icon size={18} strokeWidth={2} aria-hidden="true" />
+                    </button>
+                  );
+                })}
+              </div>
+
             </div>
           </div>
 
