@@ -78,6 +78,17 @@
 }
 
 /* ── Mesh artwork ───────────────────────────────────────────────────────── */
+/* One negative layer holding the halo and the glyph ring. Spans whatever box
+   .coreWrap resolves to — the full stage on desktop (where .coreWrap is
+   `display: contents`), the 280px core box in the stacked layout — so both
+   children keep positioning against exactly what they did before. */
+.haloLayer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
 .glow {
   position: absolute;
   left: -10.4069%;  /* filter region origin, -133/1278 */
@@ -87,6 +98,26 @@
   height: auto;
   aspect-ratio: 1;
   z-index: -1;
+  pointer-events: none;
+}
+
+/* The 530px glyph ring, centred on the core at stage (639, 830) — the same
+   point agents-glow.svg and agents-core.svg are built around. Negative layer so
+   the mesh's dark dial covers the characters that fall inside it. */
+.glyphs {
+  z-index: 1;
+  opacity: 0.65;
+  -webkit-mask-image: radial-gradient(circle closest-side, transparent 63.5%, #000 64%, #000 99.5%, transparent 100%);
+  mask-image: radial-gradient(circle closest-side, transparent 63.5%, #000 64%, #000 99.5%, transparent 100%);
+  position: absolute;
+  left: 29.2645%;   /* 374/1278 */
+  top: 44.3834%;    /* 565/1273 */
+  width: 41.4710%;  /* 530/1278 */
+  height: auto;
+  aspect-ratio: 1;
+  transform-origin: center;
+  animation: agents-glyph-orbit 32s linear infinite;
+  /* Keep the supplied characters readable above the purple ring, below cards. */
   pointer-events: none;
 }
 
@@ -105,12 +136,15 @@
   display: contents;
 }
 
+.linesFront { z-index: 3; }
+
 .core {
   display: none;
 }
 
 /* ── Agent cards ────────────────────────────────────────────────────────── */
 .card {
+  z-index: 2;
   position: absolute;
   width: 32.5509%;   /* 416/1278 */
   height: 12.6473%;  /* 161/1273 — a fixed box in Figma, not a minimum */
@@ -134,7 +168,7 @@
 }
 
 /* Enrichment and Suggest Playbook mirror the border too: faint beside the core. */
-.strokeRight::before {
+.card.strokeRight::before {
   background: linear-gradient(90deg, rgba(49, 50, 50, 0.2) 0%, #313232 100%);
 }
 
@@ -253,6 +287,14 @@
     width: 170%;
   }
 
+  .glyphs {
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: .72;
+  }
+
   .cards {
     display: flex;
     flex-direction: column;
@@ -299,4 +341,12 @@
 @media (max-width: 480px) {
   .stage { margin: 0 20px; }
   .lede { font-size: 15px; }
+}
+
+@keyframes agents-glyph-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glyphs { animation: none; }
 }

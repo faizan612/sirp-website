@@ -45,15 +45,25 @@ export function OmnisenseAgents({ data }: OmnisenseAgentsProps) {
         <p className={styles.lede}>{description}</p>
 
         <div className={styles.coreWrap}>
-          <Image src="/images/omnisense/agents-glow.svg" alt="" aria-hidden="true"
-            width={1545} height={1545} unoptimized className={styles.glow} />
+          {/* Halo and glyphs share one explicit layer. Ordering them by source
+              order alone did not work: .coreWrap is `display: contents`, and the
+              hoisted children would not sort against .glow's negative z-index,
+              so the characters kept painting under the halo. Wrapping them makes
+              the stacking context local and the order deterministic — glow, then
+              glyphs — while the layer as a whole stays below .lines, so the dial
+              still covers the characters that fall inside it. */}
+          <div className={styles.haloLayer}>
+            <Image src="/images/omnisense/agents-glow.svg" alt="" aria-hidden="true"
+              width={1545} height={1545} unoptimized className={styles.glow} />
+          </div>
           <Image src="/images/omnisense/agents-core.svg" alt="" aria-hidden="true"
             width={572} height={572} unoptimized className={styles.core} />
+          <Image src="/images/omnisense/agents-glyphs.png" alt="" aria-hidden="true"
+            width={530} height={530} unoptimized loading="eager" className={styles.glyphs} />
         </div>
 
         <Image src="/images/omnisense/agents-mesh.svg" alt="" aria-hidden="true"
           width={1278} height={1273} unoptimized className={styles.lines} />
-
         <div className={styles.cards}>
           {items.slice(0, SLOTS.length).map((agent, i) => {
             const slot = SLOTS[i]

@@ -76,26 +76,14 @@ export function IntegrationLogoSlider() {
       `.${styles.logoColumn}`,
     );
 
-    const revealAnimation = animate(columns, {
-      opacity: [0, 1],
-      y: [28, 0],
-      scale: [0.96, 1],
-      delay: stagger(48),
-      duration: 820,
-      ease: "outQuint",
-    });
-
-    const sliderAnimation = animate(track, {
-      x: ["0%", "-50%"],
-      duration: 30000,
-      ease: "linear",
-      loop: true,
-    });
-
-    let isVisible = true;
+    let revealAnimation: ReturnType<typeof animate> | null = null;
+    let sliderAnimation: ReturnType<typeof animate> | null = null;
+    let hasRevealed = false;
+    let isVisible = false;
     let isHovered = false;
 
     const updatePlayback = () => {
+      if (!sliderAnimation) return;
       if (isVisible && !isHovered && !document.hidden) {
         sliderAnimation.resume();
       } else {
@@ -106,9 +94,26 @@ export function IntegrationLogoSlider() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
+        if (isVisible && !hasRevealed) {
+          hasRevealed = true;
+          revealAnimation = animate(columns, {
+            opacity: [0, 1],
+            y: [28, 0],
+            scale: [0.96, 1],
+            delay: stagger(48),
+            duration: 820,
+            ease: "outQuint",
+          });
+          sliderAnimation = animate(track, {
+            x: ["0%", "-50%"],
+            duration: 30000,
+            ease: "linear",
+            loop: true,
+          });
+        }
         updatePlayback();
       },
-      { threshold: 0.05 },
+      { threshold: 0.12 },
     );
 
     const pauseForInspection = () => {
@@ -131,8 +136,8 @@ export function IntegrationLogoSlider() {
       viewport.removeEventListener("mouseenter", pauseForInspection);
       viewport.removeEventListener("mouseleave", resumeAfterInspection);
       document.removeEventListener("visibilitychange", updatePlayback);
-      revealAnimation.revert();
-      sliderAnimation.revert();
+      revealAnimation?.revert();
+      sliderAnimation?.revert();
     };
   }, []);
 

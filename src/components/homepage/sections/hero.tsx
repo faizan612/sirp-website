@@ -8,21 +8,21 @@ import { Container } from "@/components/homepage/ui/container";
 export function Hero() {
   return (
     <section className="relative w-full bg-home-ink-900">
-      <Container className="py-[128px]">
-        <div className="grid items-center gap-[64px] xl:grid-cols-[minmax(0,1fr)_598px]">
+      <Container className="pb-20 pt-12 sm:pb-24 lg:pb-[152px] lg:pt-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,598px)] xl:gap-16">
           {/* Text column */}
-          <div className="max-w-[600px]">
+          <div className="max-w-[800px]">
             <span className="box-border inline-flex h-[36px] items-center rounded-[50px] border border-home-hairline-strong bg-home-ink-850 px-[16px] text-[14px] leading-[24px] text-white">
               Autonomous SOC Platform
             </span>
 
-            <h1 className="mt-[24px] font-serif text-[50px] font-normal leading-[58px] text-[#f7f7f7]">
+            <h1 className="mt-6 font-serif text-[clamp(44px,3.34vw,64px)] font-normal leading-[1.18] text-[#f7f7f7]">
               Your SOC doesn&apos;t need another verdict.
               <br />
               It needs the case closed.
             </h1>
 
-            <p className="mt-[24px] max-w-[520px] text-[16px] leading-[24px] text-[#c2c2c2]">
+            <p className="mt-6 max-w-[760px] text-[16px] leading-[24px] text-[#c2c2c2]">
               OmniSense investigates every alert end to end, then closes it. Every
               action passes a governance gate you define, and every step is on the
               record.
@@ -41,7 +41,7 @@ export function Hero() {
           </div>
 
           {/* Animated incident-workflow panel */}
-          <div className="relative aspect-[598/818] w-full overflow-hidden rounded-[24px] border border-home-hairline">
+          <div className="relative mx-auto aspect-[598/818] w-full max-w-[598px] overflow-hidden rounded-[24px] border border-home-hairline">
             <video
               className="absolute inset-0 h-full w-full object-cover"
               autoPlay

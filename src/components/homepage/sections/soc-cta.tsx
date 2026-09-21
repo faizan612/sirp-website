@@ -16,11 +16,11 @@ export function SocCta() {
         aria-hidden
       />
 
-      <Container className="relative pt-[100px] pb-[140px]">
+      <Container className="relative pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-[140px] lg:pt-[100px]">
         <div className="flex flex-col items-center">
           <Badge variant="light">Governed autonomy</Badge>
 
-          <h2 className="mt-[24px] max-w-[520px] text-center font-serif text-[44px] font-normal leading-[52px] text-[#0a0a0a]">
+          <h2 className="mt-6 max-w-[620px] text-center font-serif text-[clamp(40px,3.34vw,64px)] font-normal leading-none text-[#0a0a0a]">
             The SOC that drives itself.
           </h2>
 
