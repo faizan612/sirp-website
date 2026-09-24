@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section className="relative w-full bg-home-ink-900">
       <Container className="pb-20 pt-12 sm:pb-24 lg:pb-[152px] lg:pt-10">
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,598px)] xl:gap-16">
+        <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(360px,598px)] xl:gap-16">
           {/* Text column */}
           <div className="max-w-[800px]">
             <span className="box-border inline-flex h-[36px] items-center rounded-[50px] border border-home-hairline-strong bg-home-ink-850 px-[16px] text-[14px] leading-[24px] text-white">

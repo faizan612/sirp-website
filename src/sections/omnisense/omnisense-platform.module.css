@@ -1,4 +1,4 @@
-.section { position: relative; background: #eaeaea; color: #0e0e0e; border-radius: min(3.334vw, 64px); padding: min(4.167vw, 80px) 0 min(6.25vw, 120px); }
+.section { position: relative; background: #eaeaea; color: #0e0e0e; border-radius: min(3.334vw, 64px); padding: min(4.167vw, 80px) 0 min(6.25vw, 120px); scroll-margin-top: calc(var(--nav-edge, 69px) + 24px); }
 :global(body):has(.section) { overflow-x: clip; }
 .container { width: 87.5%; max-width: 1680px; margin: 0 auto; }
 .heading { margin-bottom: min(6.25vw, 120px); }
@@ -29,10 +29,10 @@
   .section { border-radius: 40px; padding: 64px 0 80px; }
   .heading { margin-bottom: 72px; }
   .layout { grid-template-columns: 180px minmax(0,1fr); gap: 32px; }
-  .navigation { top: 128px; }
+  .navigation { top: max(104px, calc(var(--nav-edge, 69px) + 24px)); }
   .navigation a { padding: 18px 0; }
   .section[data-scrolling="true"] .scrollFade { display: none; }
-  .panel { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .panel { grid-template-columns: minmax(0,1fr); gap: 28px; scroll-margin-top: calc(var(--nav-edge, 69px) + 32px); }
   .copy h3 { font-size: 36px; margin-bottom: 16px; }
   .copy p { font-size: 16px; max-width: 560px; }
   .copy { padding-top: 0; }
@@ -47,7 +47,7 @@
   .navigation { position: relative; top: auto; display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 32px; }
   .navigation a, .navigation a:first-child { padding: 10px 0; gap: 8px; font-size: 13px; }
   .mark { flex-basis: 7px; height: 15px; }
-  .panel { scroll-margin-top: 104px; gap: 24px; }
+  .panel { scroll-margin-top: calc(var(--nav-edge, 69px) + 20px); gap: 24px; }
   .panel + .panel { margin-top: 64px; }
   .artwork { border-radius: 18px; }
   .copy h3 { font-size: 32px; }

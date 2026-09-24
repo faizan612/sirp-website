@@ -44,8 +44,15 @@
 
 @media (max-width: 720px) {
   .viewport {
-    width: 150%;
-    margin-left: -25%;
+    width: 100%;
+    margin-left: 0;
     margin-top: 40px;
+    aspect-ratio: 524 / 250;
+  }
+
+  .viewport::after {
+    background:
+      linear-gradient(90deg, #0e0e0e 0%, transparent 3%, transparent 97%, #0e0e0e 100%),
+      linear-gradient(180deg, #0e0e0e 0%, transparent 6%, transparent 92%, #0e0e0e 100%);
   }
 }
