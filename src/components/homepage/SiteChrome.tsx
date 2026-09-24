@@ -2,7 +2,9 @@
 
 import { usePathname } from 'next/navigation'
 import { SiteNav } from '@/components/nav/SiteNav'
-import { Footer } from '@/components/layout/Footer'
+import { Footer as GlobalFooter } from '@/components/layout/Footer'
+import { SocCta } from '@/components/homepage/sections/soc-cta'
+import { Footer as HomepageFooter } from '@/components/homepage/sections/footer'
 
 export function SiteHeader() {
   const pathname = usePathname()
@@ -29,5 +31,17 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const pathname = usePathname()
-  return pathname === '/' ? null : <Footer showHero={pathname !== '/omnisense'} />
+
+  if (pathname === '/') return null
+
+  if (pathname === '/sara') {
+    return (
+      <>
+        <SocCta />
+        <HomepageFooter />
+      </>
+    )
+  }
+
+  return <GlobalFooter showHero={pathname !== '/omnisense'} />
 }
