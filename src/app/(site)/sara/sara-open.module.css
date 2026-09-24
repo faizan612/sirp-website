@@ -1,0 +1,261 @@
+.section {
+  position: relative;
+  width: 100%;
+  height: 1425px;
+  overflow: hidden;
+  background: #111;
+  color: #f4f2f6;
+}
+
+.intro {
+  position: absolute;
+  top: 157px;
+  left: 50%;
+  width: min(940px, calc(100% - 48px));
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  min-height: 29px;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 17px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.intro h2 {
+  margin: 31px 0 17px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.intro p {
+  width: min(905px, 100%);
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.frame {
+  position: absolute;
+  top: 425px;
+  left: 50%;
+  width: 1396px;
+  height: 823px;
+  padding: 10px;
+  transform: translateX(-50%);
+  overflow: visible;
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
+}
+
+.frame::before {
+  position: absolute;
+  z-index: 0;
+  top: -2.916%;
+  left: -1.719%;
+  width: 103.438%;
+  height: 105.832%;
+  content: '';
+  pointer-events: none;
+  background: url('/images/sara/sara-open-frame.png') center / 100% 100% no-repeat;
+}
+
+.viewport {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.iframeClip {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #09090b;
+}
+
+.iframe {
+  position: absolute;
+  top: -49px;
+  left: -64px;
+  display: block;
+  width: calc(100% + 64px);
+  height: calc(100% + 49px);
+  border: 0;
+  background: #09090b;
+}
+
+.handoffOverlay {
+  position: absolute;
+  inset: 42px 48px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.01);
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+  transition: opacity 420ms ease;
+}
+
+.handoffOverlay::before,
+.handoffOverlay::after {
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 145px);
+  height: 1px;
+  content: '';
+  background: repeating-linear-gradient(90deg, rgba(184, 137, 255, 0.58) 0 4px, transparent 4px 8px);
+  box-shadow: 0 0 12px rgba(140, 75, 247, 0.42);
+}
+
+.handoffOverlay::before {
+  left: 0;
+}
+
+.handoffOverlay::after {
+  right: 0;
+}
+
+.handoffVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.handoffPrompt {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 11px 17px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(9, 9, 11, 0.76);
+  box-shadow:
+    0 0 0 1px rgba(184, 137, 255, 0.06),
+    0 0 30px rgba(140, 75, 247, 0.28);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.handoffPrompt a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(184, 137, 255, 0.82);
+  text-underline-offset: 3px;
+}
+
+.handoffPrompt a:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid #b889ff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 1700px) {
+  .section {
+    height: clamp(820px, 74.3vw, 1263px);
+  }
+
+  .intro {
+    top: clamp(74px, 8.2vw, 139px);
+  }
+
+  .intro h2 {
+    margin-top: clamp(20px, 1.85vw, 31px);
+    font-size: clamp(42px, 3.34vw, 57px);
+  }
+
+  .frame {
+    top: clamp(270px, 22.15vw, 377px);
+    width: calc(100% - 52px);
+    max-width: 1396px;
+    height: auto;
+    aspect-ratio: 1396 / 823;
+  }
+
+  .handoffOverlay {
+    inset: 5.25% 3.5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    height: 810px;
+  }
+
+  .intro {
+    top: 70px;
+    width: calc(100% - 32px);
+  }
+
+  .intro h2 {
+    margin: 22px 0 14px;
+    font-size: 42px;
+    line-height: 1.02;
+  }
+
+  .intro p {
+    font-size: 14px;
+  }
+
+  .frame {
+    top: 330px;
+    width: calc(100% - 24px);
+    min-height: 430px;
+    aspect-ratio: auto;
+    padding: 6px;
+    border-radius: 18px;
+  }
+
+  .viewport {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .iframeClip {
+    border-radius: 12px;
+  }
+
+  .handoffOverlay {
+    inset: 20px 18px;
+  }
+
+  .handoffOverlay::before,
+  .handoffOverlay::after {
+    width: calc(50% - 112px);
+  }
+
+  .handoffPrompt {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}

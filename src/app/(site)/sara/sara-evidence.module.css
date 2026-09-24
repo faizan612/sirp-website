@@ -1,0 +1,74 @@
+.section {
+  width: 100%;
+  overflow: hidden;
+  padding: 148px 32px 72px;
+  background: #0e0e0e;
+  color: #f7f7f7;
+  text-align: center;
+}
+
+.headingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid #434343;
+  border-radius: 999px;
+  color: #c4c4c4;
+  font: 400 16px/24px var(--font-inter), Arial, sans-serif;
+}
+
+.headingWrap h2 {
+  width: min(797px, 100%);
+  margin: 40px 0 0;
+  font-family: var(--font-noto-serif), Georgia, serif;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 53.5px;
+}
+
+.headingWrap p {
+  width: min(797px, 100%);
+  margin: 40px 0 0;
+  color: #a7a7a7;
+  font: 400 18px/19.5px var(--font-inter), Arial, sans-serif;
+}
+
+.diagram {
+  width: min(1680px, 100%);
+  margin: 80px auto 0;
+}
+
+.diagramImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.note {
+  margin: 24px auto 0;
+  color: #e6e6e6;
+  font: 400 18px/28px var(--font-inter), Arial, sans-serif;
+}
+
+@media (max-width: 1100px) {
+  .section { padding: 72px 28px; }
+  .headingWrap h2 { font-size: clamp(42px, 7vw, 56px); line-height: 1.12; }
+  .diagram { margin-top: 52px; }
+}
+
+@media (max-width: 760px) {
+  .section { padding: 64px 16px; }
+  .headingWrap h2 { margin-top: 26px; font-size: 42px; line-height: 1.04; }
+  .headingWrap p,
+  .note { font-size: 16px; line-height: 25px; }
+  .desktopBreak { display: none; }
+  .diagram { width: calc(100% + 16px); margin: 40px -8px 0; }
+}

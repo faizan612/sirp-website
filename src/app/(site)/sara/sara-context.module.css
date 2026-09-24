@@ -1,0 +1,157 @@
+.scrollSection {
+  --card-height: 488.75px;
+  --card-gap: 80px;
+  position: relative;
+  height: 2684px;
+  overflow: visible;
+  background: #0e0e0e;
+}
+
+.stickyStage {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  height: 1080px;
+  overflow: hidden;
+}
+
+.lightPanel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 1080px;
+  border-radius: 56px;
+  background: #f1f1f1;
+}
+
+.stageInner,
+.cardsPlane {
+  position: relative;
+  width: 100%;
+  max-width: 1680px;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.cardsPlane {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.copy {
+  position: absolute;
+  top: 388px;
+  left: 0;
+  width: 828px;
+  color: #0d0d0d;
+}
+
+.eyebrow {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 1px solid #cecece;
+  border-radius: 999px;
+  color: #434343;
+  font: 400 16px/24px var(--font-inter), Arial, sans-serif;
+}
+
+.copy h2 {
+  width: 828px;
+  margin: 40px 0 0;
+  font-family: var(--font-noto-serif), Georgia, serif;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 53.5px;
+  letter-spacing: 0;
+}
+
+.copy > p {
+  width: 687px;
+  margin: 40px 0 0;
+  color: #434343;
+  font: 400 18px/23px var(--font-inter), Arial, sans-serif;
+}
+
+.cardsRail {
+  position: absolute;
+  top: 328px;
+  right: 8px;
+  width: 686px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.card {
+  position: relative;
+  flex: 0 0 var(--card-height);
+  width: 686px;
+  overflow: hidden;
+  border-radius: 40px;
+  background: #141414;
+}
+
+.cardArtwork {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.cardA11y {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 1500px) {
+  .stageInner,
+  .cardsPlane {
+    max-width: 1280px;
+    padding: 0 32px;
+  }
+  .copy { left: 32px; width: min(560px, calc(50% - 80px)); }
+  .copy h2, .copy > p { width: 100%; }
+  .copy h2 { font-size: 56px; }
+  .cardsRail { right: 32px; width: min(600px, calc(50% - 80px)); }
+  .card { width: 100%; height: auto; aspect-ratio: 686 / 488.75; }
+}
+
+@media (max-width: 1024px) {
+  .scrollSection { height: auto; padding: 96px 28px; overflow: hidden; background: #f1f1f1; border-radius: 36px; }
+  .stickyStage { position: static; height: auto; overflow: visible; }
+  .lightPanel { display: none; }
+  .stageInner { position: static; height: auto; padding: 0; }
+  .cardsPlane { position: static; height: auto; padding: 0; pointer-events: auto; }
+  .copy { position: static; width: 100%; max-width: 687px; margin: 0 auto; text-align: center; }
+  .copy h2 { width: 100%; font-size: clamp(44px, 7vw, 56px); }
+  .copy > p { width: 100%; }
+  .cardsRail { position: static; width: 100%; max-width: 688px; margin: 72px auto 0; }
+  .card { width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .scrollSection { padding: 72px 16px; border-radius: 28px; }
+  .copy h2 { margin-top: 26px; font-size: 42px; line-height: 1.04; }
+  .copy > p { margin-top: 24px; font-size: 16px; line-height: 25px; }
+  .cardsRail { gap: 20px; }
+  .card {
+    min-height: 0;
+    height: auto;
+    flex-basis: auto;
+    aspect-ratio: 686 / 488.75;
+    border-radius: clamp(20px, 5.83vw, 40px);
+  }
+}

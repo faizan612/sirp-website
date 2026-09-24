@@ -50,8 +50,7 @@ export const NAV_MENUS: NavMenu[] = [
           {
             label: 'Sara, the Co-Analyst',
             description: 'Your AI Co-Analyst for triage, investigation, and response.',
-            href: 'https://sara-open.sirp.io/',
-            external: true,
+            href: '/sara',
           },
         ],
       },

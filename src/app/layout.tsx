@@ -85,7 +85,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-screen bg-[#121218] text-white antialiased overflow-x-hidden flex flex-col"
+        className="min-h-screen bg-[#121218] text-white antialiased overflow-x-clip flex flex-col"
         suppressHydrationWarning
       >
         {/* Pre-paint: flag the OmniSense view from the URL so the classic

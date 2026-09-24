@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/Footer'
 export function SiteHeader() {
   const pathname = usePathname()
   return <>
-    {pathname === '/' && (
+    {(pathname === '/' || pathname === '/sara') && (
       <div className="relative min-h-[41px] w-full overflow-hidden border-b-[0.8px] border-[#b889ff] bg-[#0e0e0e] text-white">
         <div
           aria-hidden="true"

@@ -1,0 +1,170 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 1423px;
+  overflow: hidden;
+  background: #0e0e0e;
+  color: #fff;
+}
+
+.backgroundArtwork {
+  position: absolute;
+  top: 352px;
+  left: 50%;
+  z-index: 0;
+  width: 1920px;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 147px 24px 0;
+  text-align: center;
+}
+
+.content h1 {
+  width: min(749px, 100%);
+  margin: 0;
+  font-family: var(--font-noto-serif), Georgia, serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: 0;
+  color: #f7f7f7;
+  text-wrap: balance;
+}
+
+.content p {
+  width: min(751px, 100%);
+  margin: 40px 0 0;
+  color: #c2c2c2;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0;
+  text-wrap: wrap;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 59px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.primaryButton {
+  width: 236px;
+  gap: 8px;
+  padding: 0 24px;
+  background: #8f2eff;
+  color: #fff;
+  box-shadow: 0 2px 16px rgba(142, 45, 255, 0.55);
+}
+
+.secondaryButton {
+  width: 153px;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(7, 7, 7, 0.86);
+  color: #fff;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.primaryButton:hover {
+  background: #9d48ff;
+  box-shadow: 0 4px 22px rgba(142, 45, 255, 0.68);
+}
+
+.secondaryButton:hover {
+  border-color: rgba(255, 255, 255, 0.62);
+  background: rgba(20, 20, 20, 0.96);
+}
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.productVisual {
+  position: absolute;
+  top: 539px;
+  left: 50%;
+  z-index: 1;
+  width: min(1444px, calc(100vw - 32px));
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+.productImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .hero { min-height: auto; padding-bottom: 74px; }
+  .content { padding-top: 62px; }
+  .content h1 { font-size: clamp(44px, 7vw, 64px); }
+  .productVisual {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 120px auto 0;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .backgroundArtwork { top: 310px; width: 1100px; }
+  .content { padding: 52px 20px 0; }
+  .content h1 { font-size: clamp(40px, 11.5vw, 52px); line-height: 1.02; }
+  .content p { margin-top: 22px; font-size: 15px; line-height: 1.55; }
+  .actions { width: 100%; flex-direction: column; gap: 12px; margin-top: 26px; }
+  .primaryButton,
+  .secondaryButton { width: min(100%, 280px); }
+  .productVisual { width: calc(100vw - 16px); margin-top: 88px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton { transition: none; }
+}
