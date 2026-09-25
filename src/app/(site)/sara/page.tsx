@@ -28,18 +28,6 @@ export default function SaraPage() {
   return (
     <>
     <section className={styles.hero}>
-      <Image
-        src="/images/sara/sara-hero-background.png"
-        alt=""
-        width={3840}
-        height={2182}
-        sizes="1920px"
-        priority
-        unoptimized
-        aria-hidden="true"
-        className={styles.backgroundArtwork}
-      />
-
       <div className={styles.content}>
         <h1>Your Co-Analyst,<br />grounded in your SOC.</h1>
         <p>

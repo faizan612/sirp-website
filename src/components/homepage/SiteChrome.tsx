@@ -2,7 +2,6 @@
 
 import { usePathname } from 'next/navigation'
 import { SiteNav } from '@/components/nav/SiteNav'
-import { Footer as GlobalFooter } from '@/components/layout/Footer'
 import { SocCta } from '@/components/homepage/sections/soc-cta'
 import { Footer as HomepageFooter } from '@/components/homepage/sections/footer'
 
@@ -43,7 +42,5 @@ export function SiteFooter() {
     )
   }
 
-  if (pathname === '/integrations') return <HomepageFooter variant="integration" />
-
-  return <GlobalFooter showHero={pathname !== '/omnisense'} />
+  return <HomepageFooter />
 }
