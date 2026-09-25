@@ -5,7 +5,7 @@
  * The bolder the claim, the closer the receipt.
  * ────────────────────────────────────────────────────────── */
 
-import { INTEGRATIONS } from '@/lib/data/integrations'
+import { FEATURED_INTEGRATIONS } from '@/lib/data/integrations'
 
 /* ─── 2. Hero ────────────────────────────────────────────── */
 export const HERO_DATA = {
@@ -143,9 +143,8 @@ export const PLATFORM_DEPTH_DATA = {
 } as const
 
 /* ─── 8. Integrations ────────────────────────────────────── *
- * The logo list is sourced from the shared data module so the homepage
- * marquee and the /integrations grid stay in sync. The marquee expects
- * { name, src }, so the shared { name, logo } entries are mapped here. */
+ * The marquee intentionally uses a smaller art-directed logo set. The
+ * complete categorized catalog is rendered only on /integrations. */
 export const INTEGRATIONS_DATA = {
   pill: 'Autonomous SOC ecosystem',
   heading: '200+ integrations.',
@@ -154,7 +153,7 @@ export const INTEGRATIONS_DATA = {
   description:
     'OmniSense sits on top of the stack you already run: SIEM, EDR, firewalls, identity, ticketing, and threat intelligence. If it has an API, it is probably already on the list.',
   ctaHref: '/integrations',
-  logos: INTEGRATIONS.map((i) => ({ name: i.name, src: i.logo })),
+  logos: FEATURED_INTEGRATIONS.map((i) => ({ name: i.name, src: i.logo })),
 } as const
 
 /* ─── 9. Final CTA (homepage) ────────────────────────────── */

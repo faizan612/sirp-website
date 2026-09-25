@@ -1,8 +1,8 @@
 .scrollSection {
-  --card-height: 488.75px;
-  --card-gap: 80px;
+  --card-height: 427px;
+  --card-gap: 56px;
   position: relative;
-  height: 2684px;
+  height: calc(100vh + 1449px);
   overflow: visible;
   background: #0e0e0e;
 }
@@ -12,7 +12,7 @@
   top: 0;
   z-index: 0;
   width: 100%;
-  height: 1080px;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -21,7 +21,7 @@
   inset: 0;
   z-index: 0;
   width: 100%;
-  height: 1080px;
+  height: 100%;
   border-radius: 56px;
   background: #f1f1f1;
 }
@@ -30,7 +30,7 @@
 .cardsPlane {
   position: relative;
   width: 100%;
-  max-width: 1680px;
+  max-width: 1440px;
   height: 100%;
   margin: 0 auto;
   z-index: 1;
@@ -45,9 +45,9 @@
 
 .copy {
   position: absolute;
-  top: 388px;
-  left: 0;
-  width: 828px;
+  top: clamp(210px, 35vh, 360px);
+  left: 48px;
+  width: 600px;
   color: #0d0d0d;
 }
 
@@ -64,17 +64,17 @@
 }
 
 .copy h2 {
-  width: 828px;
+  width: 600px;
   margin: 40px 0 0;
   font-family: var(--font-noto-serif), Georgia, serif;
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 400;
-  line-height: 53.5px;
+  line-height: 49px;
   letter-spacing: 0;
 }
 
 .copy > p {
-  width: 687px;
+  width: 590px;
   margin: 40px 0 0;
   color: #434343;
   font: 400 18px/23px var(--font-inter), Arial, sans-serif;
@@ -82,9 +82,9 @@
 
 .cardsRail {
   position: absolute;
-  top: 328px;
-  right: 8px;
-  width: 686px;
+  top: clamp(165px, 29vh, 300px);
+  right: 48px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   gap: var(--card-gap);
@@ -93,7 +93,7 @@
 .card {
   position: relative;
   flex: 0 0 var(--card-height);
-  width: 686px;
+  width: 600px;
   overflow: hidden;
   border-radius: 40px;
   background: #141414;
@@ -122,15 +122,15 @@
     max-width: 1280px;
     padding: 0 32px;
   }
-  .copy { left: 32px; width: min(560px, calc(50% - 80px)); }
+  .copy { left: 32px; width: min(540px, calc(50% - 64px)); }
   .copy h2, .copy > p { width: 100%; }
-  .copy h2 { font-size: 56px; }
-  .cardsRail { right: 32px; width: min(600px, calc(50% - 80px)); }
+  .copy h2 { font-size: 46px; line-height: 1.04; }
+  .cardsRail { right: 32px; width: min(540px, calc(50% - 64px)); }
   .card { width: 100%; height: auto; aspect-ratio: 686 / 488.75; }
 }
 
-@media (max-width: 1024px) {
-  .scrollSection { height: auto; padding: 96px 28px; overflow: hidden; background: #f1f1f1; border-radius: 36px; }
+@media (max-width: 960px) {
+  .scrollSection { height: auto; padding: 88px 24px; overflow: hidden; background: #f1f1f1; border-radius: 36px; }
   .stickyStage { position: static; height: auto; overflow: visible; }
   .lightPanel { display: none; }
   .stageInner { position: static; height: auto; padding: 0; }
@@ -138,15 +138,23 @@
   .copy { position: static; width: 100%; max-width: 687px; margin: 0 auto; text-align: center; }
   .copy h2 { width: 100%; font-size: clamp(44px, 7vw, 56px); }
   .copy > p { width: 100%; }
-  .cardsRail { position: static; width: 100%; max-width: 688px; margin: 72px auto 0; }
+  .cardsRail {
+    position: static;
+    display: grid;
+    width: 100%;
+    max-width: 820px;
+    margin: 64px auto 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
   .card { width: 100%; }
 }
 
 @media (max-width: 640px) {
   .scrollSection { padding: 72px 16px; border-radius: 28px; }
-  .copy h2 { margin-top: 26px; font-size: 42px; line-height: 1.04; }
+  .copy h2 { margin-top: 26px; font-size: 34px; line-height: 1.06; }
   .copy > p { margin-top: 24px; font-size: 16px; line-height: 25px; }
-  .cardsRail { gap: 20px; }
+  .cardsRail { max-width: 420px; grid-template-columns: 1fr; gap: 20px; }
   .card {
     min-height: 0;
     height: auto;
@@ -154,4 +162,10 @@
     aspect-ratio: 686 / 488.75;
     border-radius: clamp(20px, 5.83vw, 40px);
   }
+}
+
+@media (max-width: 380px) {
+  .scrollSection { padding: 58px 12px; border-radius: 24px; }
+  .copy h2 { font-size: 32px; }
+  .copy > p { font-size: 15px; line-height: 23px; }
 }

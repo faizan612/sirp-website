@@ -47,15 +47,6 @@ export default function SaraPage() {
           Sara brings together the security context that matters, explains what it found, and shows where the answer came from.
         </p>
 
-        <div className={styles.actions}>
-          <a className={styles.primaryButton} href="https://sara-open.sirp.io/">
-            See Sara work a case
-            <ArrowUpRight />
-          </a>
-          <Link className={styles.secondaryButton} href="/contact">
-            Get a demo
-          </Link>
-        </div>
       </div>
 
       <div className={styles.productVisual}>
@@ -69,6 +60,16 @@ export default function SaraPage() {
           unoptimized
           className={styles.productImage}
         />
+      </div>
+
+      <div className={styles.actions}>
+        <a className={styles.primaryButton} href="https://sara-open.sirp.io/">
+          See Sara work a case
+          <ArrowUpRight />
+        </a>
+        <Link className={styles.secondaryButton} href="/contact">
+          Get a demo
+        </Link>
       </div>
     </section>
     <SaraContextSection />

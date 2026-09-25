@@ -45,9 +45,9 @@ const footerGroups = [
   },
 ] as const;
 
-export function Footer() {
+export function Footer({ variant = 'default' }: { variant?: 'default' | 'integration' }) {
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${variant === 'integration' ? styles.integrationFooter : ''}`}>
       <div className={`${styles.shell} ${styles.content}`}>
         <div className={styles.grid}>
           <div className={styles.brand}>
@@ -122,35 +122,14 @@ export function Footer() {
 
           <div className={styles.socials} aria-label="SIRP social media">
             <a href="https://twitter.com/sirp_io" className={styles.socialLink} aria-label="SIRP on X">
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                className={styles.socialIcon}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path d="M4 3.5 19.5 20.5M19.5 3.5 4 20.5" />
-              </svg>
+              <Image src="/images/logos/twitter.svg" alt="" width={22} height={22} className={styles.socialIcon} />
             </a>
             <a
               href="https://linkedin.com/company/sirp-io"
               className={styles.socialLink}
               aria-label="SIRP on LinkedIn"
             >
-              <svg
-                viewBox="3 3 18 18"
-                aria-hidden="true"
-                className={styles.socialIcon}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="5" cy="5.5" r="1" fill="currentColor" stroke="none" />
-                <path d="M5 10v10M10 20V10m0 4.5c0-2.6 1.75-4.5 4.4-4.5 2.7 0 4.6 2 4.6 5v5" />
-              </svg>
+              <Image src="/images/logos/linkedin.svg" alt="" width={22} height={22} className={styles.socialIcon} />
             </a>
           </div>
         </div>

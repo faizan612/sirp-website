@@ -43,5 +43,7 @@ export function SiteFooter() {
     )
   }
 
+  if (pathname === '/integrations') return <HomepageFooter variant="integration" />
+
   return <GlobalFooter showHero={pathname !== '/omnisense'} />
 }

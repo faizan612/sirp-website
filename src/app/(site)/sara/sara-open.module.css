@@ -1,18 +1,17 @@
 .section {
   position: relative;
   width: 100%;
-  height: 1425px;
+  height: auto;
+  padding: 110px 0 96px;
   overflow: hidden;
   background: #111;
   color: #f4f2f6;
 }
 
 .intro {
-  position: absolute;
-  top: 157px;
-  left: 50%;
+  position: relative;
   width: min(940px, calc(100% - 48px));
-  transform: translateX(-50%);
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -34,7 +33,7 @@
 .intro h2 {
   margin: 31px 0 17px;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 400;
   line-height: 0.98;
   letter-spacing: -0.035em;
@@ -50,13 +49,12 @@
 }
 
 .frame {
-  position: absolute;
-  top: 425px;
-  left: 50%;
-  width: 1396px;
-  height: 823px;
+  position: relative;
+  width: min(1396px, calc(100% - 64px));
+  height: auto;
+  aspect-ratio: 1396 / 823;
+  margin: 56px auto 0;
   padding: 10px;
-  transform: translateX(-50%);
   overflow: visible;
   border: 0;
   border-radius: 24px;
@@ -100,12 +98,13 @@
 .iframe {
   position: absolute;
   top: -49px;
-  left: -64px;
+  left: -304px;
   display: block;
-  width: calc(100% + 64px);
+  width: calc(100% + 304px);
   height: calc(100% + 49px);
   border: 0;
   background: #09090b;
+  color-scheme: dark;
 }
 
 .handoffOverlay {
@@ -182,20 +181,19 @@
 
 @media (max-width: 1700px) {
   .section {
-    height: clamp(820px, 74.3vw, 1263px);
+    padding-top: clamp(78px, 6.5vw, 110px);
   }
 
   .intro {
-    top: clamp(74px, 8.2vw, 139px);
+    width: min(900px, calc(100% - 48px));
   }
 
   .intro h2 {
     margin-top: clamp(20px, 1.85vw, 31px);
-    font-size: clamp(42px, 3.34vw, 57px);
+    font-size: clamp(40px, 3vw, 48px);
   }
 
   .frame {
-    top: clamp(270px, 22.15vw, 377px);
     width: calc(100% - 52px);
     max-width: 1396px;
     height: auto;
@@ -209,18 +207,24 @@
 
 @media (max-width: 768px) {
   .section {
-    height: 810px;
+    height: auto;
+    min-height: 0;
+    padding: 64px 0 64px;
   }
 
   .intro {
-    top: 70px;
+    position: relative;
+    top: auto;
+    left: auto;
     width: calc(100% - 32px);
+    margin: 0 auto;
+    transform: none;
   }
 
   .intro h2 {
     margin: 22px 0 14px;
-    font-size: 42px;
-    line-height: 1.02;
+    font-size: clamp(32px, 8.6vw, 36px);
+    line-height: 1.05;
   }
 
   .intro p {
@@ -228,16 +232,21 @@
   }
 
   .frame {
-    top: 330px;
+    position: relative;
+    top: auto;
+    left: auto;
     width: calc(100% - 24px);
-    min-height: 430px;
-    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+    margin: 40px auto 0;
+    aspect-ratio: 1396 / 823;
     padding: 6px;
     border-radius: 18px;
+    transform: none;
   }
 
   .viewport {
-    padding: 16px;
+    padding: clamp(9px, 3vw, 16px);
     border-radius: 12px;
   }
 
@@ -245,8 +254,13 @@
     border-radius: 12px;
   }
 
+  .iframe {
+    left: -56px;
+    width: calc(100% + 56px);
+  }
+
   .handoffOverlay {
-    inset: 20px 18px;
+    inset: 14px 12px;
   }
 
   .handoffOverlay::before,
@@ -258,4 +272,13 @@
     padding: 10px 14px;
     font-size: 12px;
   }
+}
+
+@media (max-width: 380px) {
+  .section { padding-top: 62px; }
+  .intro { width: calc(100% - 24px); }
+  .intro h2 { font-size: 31px; }
+  .intro p { font-size: 13px; line-height: 1.5; }
+  .frame { width: calc(100% - 16px); margin-top: 44px; }
+  .viewport { padding: 12px; }
 }

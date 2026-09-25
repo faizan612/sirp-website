@@ -1,7 +1,8 @@
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: 1423px;
+  min-height: 0;
+  padding-bottom: 104px;
   overflow: hidden;
   background: #0e0e0e;
   color: #fff;
@@ -53,11 +54,13 @@
 }
 
 .actions {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 59px;
+  margin: 36px auto 0;
 }
 
 .primaryButton,
@@ -125,13 +128,10 @@
 }
 
 .productVisual {
-  position: absolute;
-  top: 539px;
-  left: 50%;
+  position: relative;
   z-index: 1;
   width: min(1444px, calc(100vw - 32px));
-  margin: 0;
-  transform: translateX(-50%);
+  margin: 72px auto 0;
 }
 
 .productImage {
@@ -140,28 +140,37 @@
   height: auto;
 }
 
-@media (max-width: 1024px) {
-  .hero { min-height: auto; padding-bottom: 74px; }
-  .content { padding-top: 62px; }
+@media (max-width: 1100px) {
+  .hero { padding-bottom: 72px; }
+  .backgroundArtwork { top: 260px; width: 1480px; }
+  .content { padding: 88px 32px 0; }
   .content h1 { font-size: clamp(44px, 7vw, 64px); }
+  .content p { width: min(680px, 100%); margin-top: 30px; }
+  .actions { margin-top: 32px; }
   .productVisual {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: 120px auto 0;
-    transform: none;
+    width: calc(100vw - 40px);
+    margin-top: 62px;
   }
 }
 
 @media (max-width: 640px) {
-  .backgroundArtwork { top: 310px; width: 1100px; }
-  .content { padding: 52px 20px 0; }
-  .content h1 { font-size: clamp(40px, 11.5vw, 52px); line-height: 1.02; }
+  .hero { padding-bottom: 48px; }
+  .backgroundArtwork { top: 280px; width: 980px; }
+  .content { padding: 52px 18px 0; }
+  .content h1 { font-size: clamp(36px, 11.5vw, 48px); line-height: 1.02; }
   .content p { margin-top: 22px; font-size: 15px; line-height: 1.55; }
-  .actions { width: 100%; flex-direction: column; gap: 12px; margin-top: 26px; }
+  .actions { width: 100%; flex-direction: column; gap: 12px; margin-top: 24px; }
   .primaryButton,
   .secondaryButton { width: min(100%, 280px); }
-  .productVisual { width: calc(100vw - 16px); margin-top: 88px; }
+  .productVisual { width: calc(100vw - 12px); margin-top: 48px; }
+}
+
+@media (max-width: 380px) {
+  .content { padding-inline: 14px; }
+  .content h1 { font-size: 35px; }
+  .content p { font-size: 14px; }
+  .primaryButton,
+  .secondaryButton { max-width: 260px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

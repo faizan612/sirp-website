@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { IntegrationsHero } from '@/sections/integrations/IntegrationsHero'
 import { IntegrationsValueProps } from '@/sections/integrations/IntegrationsValueProps'
 import { IntegrationsGrid } from '@/sections/integrations/IntegrationsGrid'
-import { FinalCtaSection } from '@/sections/home/FinalCtaSection'
-import { INTEGRATIONS_PAGE_DATA } from '@/lib/constants'
+import { IntegrationsCta } from '@/sections/integrations/IntegrationsCta'
 
 export const metadata: Metadata = {
   title: 'Integrations | OmniSense',
@@ -17,7 +16,7 @@ export default function IntegrationsPage() {
       <IntegrationsHero />
       <IntegrationsValueProps />
       <IntegrationsGrid />
-      <FinalCtaSection data={INTEGRATIONS_PAGE_DATA.cta} />
+      <IntegrationsCta />
     </>
   )
 }
