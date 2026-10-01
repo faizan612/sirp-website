@@ -238,15 +238,27 @@
 
 /* Shared CTA feedback, scoped so tabs and controls never lift on hover. */
 [data-cta] {
-  transition: translate 220ms ease, filter 220ms ease, background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  transition: translate 220ms ease, filter 220ms ease, color 220ms ease, background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 [data-cta] > :is(img, svg), [data-cta] .sirp-button__text > svg {
-  transition: translate 220ms ease;
+  transition: translate 220ms ease, filter 220ms ease;
 }
 @media (hover: hover) and (pointer: fine) {
   [data-cta]:not(:disabled):not([aria-disabled="true"]):hover { translate: 0 -2px; }
-  [data-cta="primary"]:hover { filter: brightness(1.12); box-shadow: 0 5px 22px rgb(142 45 255 / 38%); }
-  [data-cta="secondary"]:hover { background-color: #202024; border-color: #777; }
+  [data-cta="primary"]:not(:disabled):not([aria-disabled="true"]):hover {
+    background-color: #eee3ff;
+    color: #29133f;
+    filter: none;
+    box-shadow: 0 4px 16px rgb(142 45 255 / 20%);
+  }
+  [data-cta="secondary"]:not(:disabled):not([aria-disabled="true"]):hover {
+    background-color: #f1f0f3;
+    border-color: #f1f0f3;
+    color: #17151c;
+    filter: none;
+  }
+  [data-cta]:hover > img { filter: brightness(0); }
+  [data-cta]:hover .sirp-button__glow { opacity: 0; }
   [data-cta]:hover > :is(img, svg), [data-cta]:hover .sirp-button__text > svg { translate: 2px -2px; }
 }
 [data-cta]:focus-visible { outline: 2px solid #b98aff; outline-offset: 4px; }
