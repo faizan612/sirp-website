@@ -7,9 +7,11 @@ import { Motion } from "@/components/homepage/sections/motion";
 import { Integrations } from "@/components/homepage/sections/integrations";
 import { SocCta } from "@/components/homepage/sections/soc-cta";
 import { Footer } from "@/components/homepage/sections/footer";
+import { HomeHeadingMotion } from "@/components/homepage/ui/home-heading-motion";
 
 export default function Home() {
   return (
+    <HomeHeadingMotion>
     <div className="homepage-design w-full overflow-x-hidden bg-home-ink-900">
       <Hero />
 
@@ -36,5 +38,6 @@ export default function Home() {
 
       <Footer />
     </div>
+    </HomeHeadingMotion>
   );
 }

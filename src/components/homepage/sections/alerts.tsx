@@ -16,7 +16,7 @@ export function Alerts() {
         <div className="max-w-[650px]">
           <Badge variant="light">How it works</Badge>
 
-          <h2 className="mt-6 font-serif text-[clamp(40px,2.92vw,56px)] font-normal leading-[1.05] text-[#0f0f0f]">
+          <h2 data-home-heading="outcomes" className="mt-6 font-serif text-[clamp(40px,2.92vw,56px)] font-normal leading-[1.05] text-[#0f0f0f]">
             Thousands of alerts a day. Your team only touches what matters.
           </h2>
 

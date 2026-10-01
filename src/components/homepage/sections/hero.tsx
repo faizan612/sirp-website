@@ -16,7 +16,7 @@ export function Hero() {
               Autonomous SOC Platform
             </span>
 
-            <h1 className="mt-6 font-serif text-[clamp(44px,3.34vw,64px)] font-normal leading-[1.18] text-[#f7f7f7]">
+            <h1 data-home-heading="hero" className="mt-6 font-serif text-[clamp(44px,3.34vw,64px)] font-normal leading-[1.18] text-[#f7f7f7]">
               Your SOC doesn&apos;t need another verdict.
               <br />
               It needs the case closed.
