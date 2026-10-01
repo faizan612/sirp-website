@@ -1,0 +1,32 @@
+.buyers-print-page { width:min(100% - 48px, 940px); margin:64px auto 100px; padding:48px; color:#171717; background:#fff; font-family:var(--font-sans),Arial,sans-serif; }
+.buyers-print-toolbar { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:40px; }
+.buyers-print-toolbar a { color:#b891ee; text-decoration:none; }
+.buyers-print-button { padding:11px 17px; border:0; border-radius:12px; background:#8e2dff; color:#fff; font:inherit; cursor:pointer; }
+.buyers-print-header { display:block; padding-bottom:34px; border-bottom:2px solid #8e2dff; }
+.buyers-print-header span { color:#8e2dff; font-size:12px; font-weight:700; letter-spacing:.08em; }
+.buyers-print-header h1 { max-width:760px; margin:18px 0; color:#171717; font-family:var(--font-serif),Georgia,serif; font-size:48px; font-weight:400; line-height:1.08; }
+.buyers-print-header p { max-width:690px; margin:0; color:#575757; font-size:16px; line-height:1.5; }
+.buyers-print-list { display:grid; gap:0; }
+.buyers-print-question { break-inside:avoid; padding:30px 0; border-bottom:1px solid #d7d7d7; }
+.buyers-print-question-head { display:flex; align-items:baseline; gap:18px; }
+.buyers-print-question-head span { color:#8e2dff; font-size:13px; font-weight:700; }
+.buyers-print-question-head h2 { margin:0; color:#171717; font-family:var(--font-serif),Georgia,serif; font-size:27px; font-weight:400; }
+.buyers-print-question dl { display:grid; gap:10px; margin:18px 0; }
+.buyers-print-question dl > div { display:grid; grid-template-columns:70px 1fr; gap:12px; }
+.buyers-print-question dt { color:#555; font-size:12px; font-weight:700; text-transform:uppercase; }
+.buyers-print-question dd { margin:0; color:#222; font-size:14px; line-height:1.45; }
+.buyers-print-notes { min-height:46px; border:1px solid #ddd; border-radius:8px; }
+.buyers-print-notes span { display:block; padding:8px 12px; color:#888; font-size:11px; }
+.buyers-print-footer { margin-top:28px; color:#777; font-size:11px; }
+@media(max-width:620px){.buyers-print-page{width:min(100% - 32px,940px);margin:32px auto 60px;padding:24px}.buyers-print-header h1{font-size:38px}}
+@media print {
+  @page { size:A4; margin:13mm; }
+  html,body { margin:0!important; padding:0!important; background:#fff!important; color:#111!important; }
+  header:not(.buyers-print-header), footer:not(.buyers-print-footer), nav, .buyers-print-toolbar { display:none!important; }
+  .buyers-print-page { width:100%; max-width:none; margin:0; padding:0; }
+  .buyers-print-header h1 { font-size:32px; }
+  .buyers-print-question { padding:16px 0; }
+  .buyers-print-question-head h2 { font-size:20px; }
+  .buyers-print-question dl { gap:5px; margin:10px 0; }
+  .buyers-print-notes { min-height:34px; }
+}

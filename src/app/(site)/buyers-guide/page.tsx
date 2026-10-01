@@ -5,6 +5,7 @@ import { Scorecard } from '@/sections/buyers-guide/Scorecard'
 import { ScoreGrid } from '@/sections/buyers-guide/ScoreGrid'
 import { DownloadSection } from '@/sections/buyers-guide/DownloadSection'
 import { FaqAccordionSection } from '@/components/shared/FaqAccordionSection'
+import { SocCta } from '@/components/homepage/sections/soc-cta'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { SITE_URL } from '@/lib/constants'
 import { buyersGuideContent } from './content'
@@ -50,13 +51,20 @@ export default function BuyersGuidePage() {
         }}
       />
 
-      <div className="buyers-guide-page">
-        <Hero data={buyersGuideContent.hero} />
-        <ClassifyCards data={buyersGuideContent.classify} />
+      <div className="buyers-guide-page homepage-design">
+        <Hero data={buyersGuideContent.hero} criteria={buyersGuideContent.scorecard.rows} />
+        <div className="buyers-guide-light-panel">
+          <ClassifyCards data={buyersGuideContent.classify} />
+        </div>
         <Scorecard data={buyersGuideContent.scorecard} />
-        <ScoreGrid data={buyersGuideContent.omniSenseScores} />
-        <DownloadSection data={buyersGuideContent.download} />
-        <FaqAccordionSection data={buyersGuideContent.faq} />
+        <div className="buyers-guide-light-panel">
+          <ScoreGrid data={buyersGuideContent.omniSenseScores} />
+          <DownloadSection data={buyersGuideContent.download} />
+        </div>
+        <div className="buyers-guide-faq">
+          <FaqAccordionSection data={buyersGuideContent.faq} />
+        </div>
+        <div className="buyers-guide-closing"><SocCta /></div>
       </div>
     </>
   )

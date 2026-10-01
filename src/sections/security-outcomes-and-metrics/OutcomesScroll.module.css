@@ -1,0 +1,57 @@
+.story { --outcome-accent:#b889ff; display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(40px,7vw,120px); align-items:start; }
+.sticky { position:sticky; top:100px; padding:12px 0; }
+.sticky h2 { max-width:500px; }
+.sticky p { max-width:370px; }
+.navigation { display:grid; margin-top:24px; max-width:370px; }
+.navigation a { display:flex; align-items:center; gap:18px; padding:16px 0; border-bottom:1px solid #d8d5dc; color:#716a78; font-size:14px; transition:color .2s; }
+.navigation a span { font-size:11px; color:#8e2dff; }
+.navigation a svg { margin-left:auto; }
+.navigation a[aria-current],.navigation a:hover { color:#7424c4; }
+.progress { max-width:370px; height:2px; background:#d4d4d4; margin-top:24px; }
+.progress span { display:block; height:100%; background:#8e2dff; transform:scaleX(var(--progress,.25)); transform-origin:left; transition:transform .35s; }
+.hint { display:flex; gap:10px; align-items:center; margin-top:18px; font-size:13px; color:#5f5f5f; }
+.cards { display:grid; gap:28px; }
+.cards>div { --outcome-accent:#b889ff; --card-glow:#503365; --card-mid:#251d2d; }
+.cards>div:nth-child(2) { --outcome-accent:#8febb3; --card-glow:#305743; --card-mid:#1a2921; }
+.cards>div:nth-child(3) { --outcome-accent:#f5c483; --card-glow:#655037; --card-mid:#2d261d; }
+.cards>div:nth-child(4) { --outcome-accent:#ee9b9e; --card-glow:#674345; --card-mid:#2c2022; }
+/* Radius, hairline and padding follow the reference cards: home tops out at
+   24px with a #282828 hairline, OmniSense sits at 12-16px. 32px with a #383838
+   border made these read as a heavier, differently-rounded card than anything
+   else on the site. Fixed padding too — the clamp resolved to fractions. */
+.card { position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; min-height:430px; color:#f7f7f7; padding:32px; border:1px solid #282828; border-radius:24px; background:radial-gradient(ellipse 70% 70% at 85% 0%,var(--card-glow) 0%,var(--card-mid) 44%,transparent 85%),#131313; box-shadow:0 16px 28px -24px #0009; scroll-margin-top:120px; }
+.cardNumber { position:absolute; z-index:-1; right:7%; top:6%; font-size:clamp(210px,23vw,350px); font-weight:400; line-height:1; letter-spacing:-.07em; color:transparent; -webkit-text-stroke:1px var(--outcome-accent); mask-image:linear-gradient(#0006,transparent 88%); pointer-events:none; }
+.cardCopy { max-width:390px; padding-right:16px; }
+.result { position:relative; margin-top:auto; padding-top:54px; }
+.value { display:block; color:var(--outcome-accent); font-size:clamp(38px,3.4vw,52px); font-weight:400; letter-spacing:-.04em; line-height:1.1; }
+.label { display:block; max-width:340px; color:#d3d3d3; font-size:14px; line-height:1.5; margin-top:8px; }
+.card.card h3 { max-width:370px; margin:0 0 14px; font-size:22px; font-weight:500; line-height:1.3; }
+.card.card p { max-width:390px; margin:0; color:#aaa; font-size:15px; line-height:1.6; }
+.card details { position:relative; margin-top:24px; border-top:1px solid #ffffff20; }
+.card summary { cursor:pointer; display:flex; align-items:center; justify-content:space-between; min-height:48px; padding:12px 0; font-size:13px; color:var(--outcome-accent); list-style:none; }
+.card summary span { display:flex; align-items:center; justify-content:center; width:24px; height:24px; font-size:20px; font-weight:300; transition:transform .2s; }
+.card summary:focus-visible { outline:2px solid var(--outcome-accent); outline-offset:4px; }
+.card summary::-webkit-details-marker { display:none; }
+.card details[open] summary { padding-bottom:16px; }
+.card details[open] summary span { transform:rotate(45deg); }
+.card.card details p { font-size:14px; padding:0 0 0 16px; border-left:2px solid var(--outcome-accent); color:#c5c5c5; margin:0 0 8px; }
+.card details[open] p { animation:explain-enter .25s ease-out; }
+@keyframes explain-enter { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+.story[data-motion] .cards { gap:40px; }
+.story[data-motion] .card { transform:translateY(calc((1 - var(--focus,1))*64px)) scale(calc(.97 + var(--focus,1)*.03)); transform-origin:center bottom; }
+@media(max-width:899px),(prefers-reduced-motion:reduce) {
+  .sticky { position:static; padding-top:0; }
+  .story { grid-template-columns:1fr; gap:32px; }
+  .sticky p { max-width:580px; }
+  .navigation { display:none; }
+  .hint,.progress { display:none; }
+  .cards { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+  .card { padding:28px; min-height:420px; border-radius:20px; }
+  .value { font-size:42px; }
+}
+@media(max-height:649px) { .sticky { position:static; } }
+@media(max-width:600px) {
+  .cards { grid-template-columns:1fr; }
+  .card { border-radius:20px; min-height:390px; }
+}
+@media(prefers-reduced-motion:reduce) { .navigation a,.progress span,.card summary span { transition:none; }.card details[open] p { animation:none; } }

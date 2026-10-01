@@ -8,7 +8,7 @@ export const buyersGuideContent = {
     eyebrow: "Buyer's guide",
     headline: "Evaluate this the way you'd evaluate anyone.",
     lead: 'A scorecard for judging any Autonomous SOC or SOAR platform, including this one. Built from the questions real buyers ask before they sign, not the ones vendors want asked.',
-    primaryCta: { label: 'Download the scorecard', href: '#download' },
+    primaryCta: { label: 'Get the scorecard', href: '#download' },
     secondaryCta: { label: 'Read it on this page', href: '#scorecard' },
     meta: [
       { label: 'Read time', value: '7 minutes' },
@@ -158,7 +158,7 @@ export const buyersGuideContent = {
     heading: 'Get the scorecard as a document',
     lead: 'A clean, portable version you can drop straight into an RFP or circulate to your evaluation committee.',
     title: "Buyer's guide, PDF",
-    body: 'Same eight criteria, formatted for procurement. No pitch inside — just the scorecard.',
+    body: 'Open the print-ready guide and save it as a PDF from your browser. Every question, weak answer, and strong answer is included.',
   },
   faq: {
     heading: 'Questions about this guide',

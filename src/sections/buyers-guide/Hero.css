@@ -1,102 +1,111 @@
 .bg-hero {
-  background: var(--bg-dark);
-  color: var(--ink-dark);
-  padding: 130px 0 90px;
+  padding: 78px 0 100px;
+  background: #0e0e0e;
+  color: #f7f7f7;
 }
-
-.bg-hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  display: flex;
+.bg-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: clamp(40px, 5vw, 96px);
+  max-width: 1480px;
+  margin-inline: auto;
 }
-
-.bg-hero-eyebrow::before {
-  content: '';
-  width: 18px;
-  height: 1px;
-  background: var(--accent);
-}
-
+.bg-hero-copy { max-width: 720px; }
 .bg-hero-headline {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  font-size: clamp(2.25rem, 5vw, 3.625rem);
-  line-height: 1.06;
   max-width: 16ch;
-  color: var(--ink-dark);
+  margin: 25px 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(44px, 3.8vw, 64px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: #f7f7f7;
+  text-wrap: balance;
 }
-
 .bg-hero-lead {
-  font-family: var(--font-sans);
-  font-size: 1.1875rem;
-  line-height: 1.5;
-  color: var(--ink-dark-dim);
-  margin-top: 22px;
-  max-width: 52ch;
+  max-width: 590px;
+  margin: 24px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #c2c2c2;
 }
-
-.bg-hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-
+.bg-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
 .bg-hero-secondary-link {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.02em;
-  padding: 14px 26px;
-  border-radius: 2px;
-  border: 1px solid var(--line-dark);
-  color: var(--ink-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 1px solid #323232;
+  border-radius: 12px;
+  background: #080808;
+  color: #fff;
+  font-size: 15px;
+  line-height: 24px;
   text-decoration: none;
-  transition: border-color 0.2s ease;
+  transition: border-color .2s;
 }
-
-.bg-hero-secondary-link:hover {
-  border-color: var(--accent);
+.bg-hero-secondary-link:hover { border-color: #b889ff; }
+.bg-hero-meta { display: flex; flex-wrap: wrap; gap: 20px 28px; margin: 42px 0 0; }
+.bg-hero-meta dt { color: #85858a; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+.bg-hero-meta dd { margin: 5px 0 0; color: #cac9cf; font-size: 13px; line-height: 1.4; }
+.bg-guide-index {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 540px;
+  justify-self: end;
+  overflow: hidden;
+  border: 1px solid #51425e;
+  border-radius: 24px;
+  background: #141019;
+  box-shadow: 0 20px 65px #0006, 0 0 35px #8e2dff12;
 }
-
-.bg-hero-meta {
-  display: flex;
-  gap: 48px;
-  flex-wrap: wrap;
-  margin: 64px 0 0;
-  padding-top: 28px;
-  border-top: 1px solid var(--line-dark);
+.bg-guide-index .bg-guide-index-art { z-index: -2; object-fit: cover; object-position: 78% 100%; opacity: .8; }
+.bg-guide-index::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, #190b2d2e, #17101fe8 36%, #111014 76%);
 }
-
-.bg-hero-meta div {
-  margin: 0;
+.bg-guide-index-content { position: relative; padding: 32px 34px 24px; }
+.bg-guide-index-brand { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.bg-guide-index-brand > img { width: 82px; height: auto; }
+.bg-guide-index-brand > span { color: #ede3f6; font-size: 10px; letter-spacing: .12em; }
+.bg-guide-index h2 { margin: 38px 0 0; color: #fff; font-family: var(--font-serif); font-size: clamp(32px, 2.6vw, 44px); font-weight: 400; line-height: 1.15; letter-spacing: 0; }
+.bg-guide-index-content > p { margin: 14px 0 26px; font-size: 13px; color: #cbbad9; }
+.bg-guide-index-links { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+.bg-guide-index-links > a { display: flex; gap: 9px; align-items: baseline; padding: 13px 0; border-top: 1px solid #ffffff1c; font-size: 12px; line-height: 1.45; color: #ded7e5; text-decoration: none; transition: color .16s; }
+.bg-guide-index-links > a span { flex: none; color: #b889ff; font-size: 11px; }
+.bg-guide-index-links > a:hover { color: #fff; }
+.bg-guide-index-link { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ffffff1c; margin-top: 14px; padding-top: 20px; color: #f7f7f7; font-size: 13px; text-decoration: none; }
+@media (max-width: 1000px) {
+  .bg-hero-layout { gap: 32px; }
+  .bg-guide-index-content { padding: 26px 24px 22px; }
+  .bg-guide-index-links { gap: 0 14px; }
+  .bg-guide-index-brand > span { font-size: 9px; }
 }
-
-.bg-hero-meta dt {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--ink-dark-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+@media (max-width: 900px) {
+  .bg-hero { padding: 56px 0 72px; }
+  .bg-hero-layout { grid-template-columns: 1fr; gap: 48px; }
+  .bg-hero-copy { max-width: 680px; }
+  .bg-hero-headline { max-width: 18ch; font-size: clamp(42px, 7vw, 60px); }
+  .bg-guide-index { max-width: 600px; justify-self: center; }
+  .bg-guide-index-content { padding: 32px; }
+  .bg-guide-index h2 { font-size: 38px; }
 }
-
-.bg-hero-meta dd {
-  font-family: var(--font-sans);
-  font-size: 0.9375rem;
-  color: var(--ink-dark);
-  font-weight: 600;
-  margin: 4px 0 0;
+@media (max-width: 500px) {
+  .bg-hero-headline { font-size: clamp(38px, 10.8vw, 46px); }
+  .bg-hero-actions > * { width: 100%; }
+  .bg-hero-meta { gap: 18px; }
+  .bg-hero-meta > div:last-child { flex-basis: 100%; }
+  .bg-guide-index { border-radius: 20px; }
+  .bg-guide-index-content { padding: 25px 22px; }
+  .bg-guide-index h2 { font-size: 34px; margin-top: 30px; }
+  .bg-guide-index-links { column-gap: 16px; }
 }
-
-@media (max-width: 760px) {
-  .bg-hero-meta {
-    gap: 28px;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .bg-guide-index-links > a, .bg-hero-secondary-link { transition: none; }
 }

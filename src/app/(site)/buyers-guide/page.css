@@ -1,18 +1,26 @@
 .buyers-guide-page {
-  --bg-dark: #121218;
-  --bg-dark-panel: var(--color-bg-elevated, #252534);
-  --bg-light: #f6f5f8;
-  --bg-light-panel: #ececf0;
-
-  --ink-dark: #ffffff;
-  --ink-dark-dim: rgba(255, 255, 255, 0.6);
-  --ink-light: #0b0b12;
-  --ink-light-dim: rgba(0, 0, 0, 0.62);
-
-  --line-dark: var(--color-border-med, rgba(255, 255, 255, 0.14));
-  --line-light: rgba(0, 0, 0, 0.12);
-
-  --accent: var(--color-purple, #8e2dff);
-  --signal-strong: #35c98f;
-  --signal-weak: #ff8a5b;
+  background: #0e0e0e;
+  color: #f7f7f7;
+  overflow-x: clip;
+}
+.buyers-guide-light-panel {
+  overflow: hidden;
+  border-radius: 40px;
+  background: #f6f5f8;
+}
+.buyers-guide-page :is(a, button):focus-visible {
+  outline: 2px solid #ae71f2;
+  outline-offset: 4px;
+}
+.buyers-guide-faq { padding: 82px 0 88px; background: #0e0e0e; }
+.buyers-guide-faq .faq-accordion-section { padding: 0; background: transparent; }
+.buyers-guide-faq .container-sirp { width: 100%; max-width: 1080px; margin-inline: auto; padding-inline: 32px; }
+.buyers-guide-faq .faq-accordion-heading { margin: 0 0 32px; color: #f7f7f7; font-family: var(--font-serif); font-size: clamp(36px, 3vw, 48px); font-weight: 400; line-height: 1.16; text-align: center; letter-spacing: 0; }
+.buyers-guide-closing { background: #0e0e0e; }
+.buyers-guide-closing > div { border-radius: 40px 40px 64px 64px; }
+@media (max-width: 767px) {
+  .buyers-guide-light-panel { border-radius: 26px; }
+  .buyers-guide-faq { padding: 64px 0; }
+  .buyers-guide-faq .container-sirp { padding-inline: 20px; }
+  .buyers-guide-closing > div { border-radius: 26px 26px 36px 36px; }
 }

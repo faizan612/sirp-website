@@ -1,124 +1,76 @@
-.bg-scorecard {
-  background: var(--bg-dark);
-  color: var(--ink-dark);
-  padding: 96px 0;
+.bg-scorecard { padding: 96px 0; background: #0e0e0e; color: #f7f7f7; scroll-margin-top: 80px; }
+.bg-scorecard-intro { max-width: 760px; margin-inline: auto; text-align: center; }
+.bg-scorecard-heading { margin: 24px 0 0; font-family: var(--font-serif); font-size: clamp(36px, 3vw, 48px); font-weight: 400; line-height: 1.15; color: #f7f7f7; letter-spacing: 0; text-wrap: balance; }
+.bg-scorecard-lead { max-width: 640px; margin: 22px auto 0; font-size: 16px; line-height: 1.5; color: #98989f; }
+.bg-scorecard-frame { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(240px, .32fr) minmax(0, .68fr); max-width: 1320px; margin: 48px auto 0; padding: 8px; border: 1px solid #35303e; border-radius: 24px; background: #141117; box-shadow: 0 0 32px #af89ce0e; }
+/* Follows the OmniSense platform navigation (omnisense-platform.module.css
+   .navigation), which is the site's only other vertical criterion list:
+   underlined rows with no fill and no rounded box, muted -> full-strength text
+   for the active row, and brand purple carried by a small mark rather than a
+   tinted panel. Colours are the dark-surface equivalents of its light ones. */
+.bg-scorecard-tabs { display: flex; flex-direction: column; min-width: 0; padding: 12px 16px; }
+.bg-scorecard-tabs > button { display: flex; align-items: center; gap: 14px; padding: 18px 0; border: 0; border-bottom: 1px solid #242424; background: transparent; color: #8a8a8a; text-align: left; font: inherit; font-size: 16px; line-height: 1.4; cursor: pointer; scroll-margin-top: 130px; transition: color .25s, border-color .25s; }
+.bg-scorecard-tabs > button:first-child { padding-top: 0; }
+.bg-scorecard-tabs > button > span:first-child { flex: none; color: #5f5f5f; font-size: 14px; transition: color .25s; }
+.bg-scorecard-tabs > button[aria-selected='true'] { color: #f7f7f7; border-color: #f7f7f7; }
+.bg-scorecard-tabs > button[aria-selected='true'] > span:first-child { color: #b889ff; }
+.bg-scorecard-tabs > button:hover { color: #f7f7f7; }
+.bg-scorecard-tabs > button:focus-visible { outline: 2px solid #8e2dff; outline-offset: 5px; border-radius: 4px; }
+.bg-scorecard-content { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; padding: 34px 36px 24px; border: 1px solid #302b37; border-radius: 20px; background: #101013; }
+.bg-question-panel { outline-offset: 5px; animation: guide-question-in .2s ease; }
+.bg-question-panel[hidden] { display: none; }
+.bg-question-label { color: #b889ff; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
+/* The min-heights that used to sit on the heading (128px) and each answer
+   (156px) were holding the frame steady between questions, but most questions
+   don't fill them — which is what left the panel looking half-empty. One
+   min-height on the panel does the same job without the dead space. */
+.bg-question-panel { min-height: 330px; }
+.bg-question-panel h3 { margin: 14px 0 26px; max-width: 36ch; color: #f7f7f7; font-family: var(--font-serif); font-size: clamp(24px, 2.1vw, 32px); line-height: 1.3; font-weight: 400; letter-spacing: 0; }
+.bg-question-answers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.bg-question-answer { padding: 21px; border: 1px solid #ffffff0f; border-radius: 12px; }
+.bg-question-answer--weak { background: #21191d; }
+.bg-question-answer--strong { background: #15211e; }
+.bg-question-answer-label { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; }
+.bg-question-answer--weak .bg-question-answer-label { color: #ed9a9c; }
+.bg-question-answer--strong .bg-question-answer-label { color: #70d0ae; }
+/* Answer copy is the content of this card, so it sits at the site's 16px body
+   size rather than 14px, on the shared #c2c2c2. */
+.bg-question-answer p { margin: 14px 0 0; color: #c2c2c2; font-size: 16px; line-height: 1.55; }
+.bg-scorecard-controls { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 28px; padding-top: 20px; border-top: 1px solid #242424; }
+.bg-scorecard-position { color: #8a8a8a; font-size: 13px; }
+.bg-scorecard-position > span > span { color: #6a6a6a; margin-left: 3px; }
+.bg-scorecard-arrows { display: flex; gap: 8px; }
+.bg-scorecard-arrows button { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #2a2a2a; border-radius: 50%; background: #161616; color: #c2c2c2; cursor: pointer; transition: background-color .18s, color .18s; }
+.bg-scorecard-arrows button:disabled { opacity: .3; cursor: default; }
+.bg-scorecard-arrows button:not(:disabled):hover { background: #242424; color: #f7f7f7; }
+.bg-scorecard-document { margin: 25px 0 0; text-align: center; }
+.bg-scorecard-document a { display: inline-flex; align-items: center; gap: 9px; font-size: 13px; color: #8a8a8a; text-underline-offset: 4px; }
+@keyframes guide-question-in { from { opacity: .3; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1000px) {
+  .bg-scorecard-frame { grid-template-columns: minmax(220px, .32fr) minmax(0, .68fr); }
+  .bg-scorecard-content { padding: 26px 25px 22px; }
+  .bg-question-answer { padding: 17px; }
 }
-
-.bg-scorecard-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+@media (max-width: 800px) {
+  .bg-scorecard { padding: 72px 0; }
+  .bg-scorecard-frame { grid-template-columns: 1fr; margin-top: 36px; border-radius: 20px; }
+  /* Horizontal scroller below 800px, so the underline becomes a per-item rule
+     rather than a continuous list edge. */
+  .bg-scorecard-tabs { flex-direction: row; overflow-x: auto; padding: 6px 2px 14px; scrollbar-width: thin; scrollbar-color: #3a3a3a transparent; }
+  .bg-scorecard-tabs > button { flex: none; white-space: nowrap; padding: 12px 0; margin-right: 22px; gap: 9px; font-size: 15px; }
+  .bg-scorecard-tabs > button:first-child { padding-top: 12px; }
+  .bg-question-panel { min-height: 300px; }
+  .bg-question-panel h3 { font-size: clamp(24px, 4vw, 32px); }
 }
-
-.bg-scorecard-eyebrow::before {
-  content: '';
-  width: 18px;
-  height: 1px;
-  background: var(--accent);
+@media (max-width: 500px) {
+  .bg-scorecard-heading { font-size: 36px; }
+  .bg-scorecard-content { padding: 22px 18px 20px; border-radius: 16px; }
+  .bg-question-panel { min-height: 0; }
+  .bg-question-panel h3 { font-size: 25px; margin-bottom: 22px; }
+  .bg-question-answers { grid-template-columns: 1fr; gap: 10px; }
+  .bg-question-answer { padding: 18px; }
 }
-
-.bg-scorecard-heading {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
-  line-height: 1.12;
-  max-width: 18ch;
-  color: var(--ink-dark);
-}
-
-.bg-scorecard-lead {
-  font-family: var(--font-sans);
-  font-size: 1.0625rem;
-  color: var(--ink-dark-dim);
-  margin-top: 16px;
-  max-width: 56ch;
-}
-
-.bg-scorecard-log {
-  border-top: 1px solid var(--line-dark);
-  margin-top: 48px;
-}
-
-.bg-scorecard-row {
-  border-bottom: 1px solid var(--line-dark);
-  padding: 28px 0;
-  display: grid;
-  grid-template-columns: 210px 1fr;
-  gap: 32px;
-}
-
-.bg-scorecard-num {
-  font-family: var(--font-mono);
-  color: var(--accent);
-  font-size: 0.8125rem;
-}
-
-.bg-scorecard-title {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 1.0625rem;
-  margin-top: 6px;
-  color: var(--ink-dark);
-}
-
-.bg-scorecard-body {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.bg-scorecard-line {
-  display: grid;
-  grid-template-columns: 78px 1fr;
-  gap: 16px;
-  align-items: baseline;
-}
-
-.bg-scorecard-key {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding-top: 2px;
-}
-
-.bg-scorecard-key--ask {
-  color: var(--ink-dark-dim);
-}
-
-.bg-scorecard-key--weak {
-  color: var(--signal-weak);
-}
-
-.bg-scorecard-key--strong {
-  color: var(--signal-strong);
-}
-
-.bg-scorecard-value {
-  font-family: var(--font-sans);
-  font-size: 0.9375rem;
-  color: var(--ink-dark);
-  max-width: 60ch;
-  margin: 0;
-}
-
-@media (max-width: 760px) {
-  .bg-scorecard-row {
-    grid-template-columns: 1fr;
-  }
-
-  .bg-scorecard-line {
-    grid-template-columns: 64px 1fr;
-  }
-
-  .bg-scorecard-key {
-    font-size: 0.625rem;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .bg-question-panel { animation: none; }
+  .bg-scorecard-tabs > button { transition: none; }
 }
