@@ -1,18 +1,19 @@
 import type { ReactNode } from "react";
 
 /**
- * Page container — the reference uses 120px desktop gutters at 1920px.
- * A 1776px outer width with 48px padding leaves a 1680px content area.
+ * Share the navbar's responsive gutters at every viewport, not just 1920px.
  */
 export function Container({
   children,
   className = "",
+  surface,
 }: {
   children: ReactNode;
   className?: string;
+  surface?: 'light' | 'dark';
 }) {
   return (
-    <div className={`mx-auto w-full max-w-[1776px] px-5 sm:px-8 lg:px-12 ${className}`}>
+    <div data-cta-surface={surface} className={`mx-auto w-full px-[var(--site-gutter)] ${className}`}>
       {children}
     </div>
   );

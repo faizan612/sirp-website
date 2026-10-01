@@ -9,7 +9,7 @@ import { Container } from "@/components/homepage/ui/container";
  */
 export function SocCta() {
   return (
-    <div className="relative overflow-hidden rounded-b-[64px] bg-[#f6f5f8]">
+    <div data-cta-surface="light" className="relative overflow-hidden rounded-b-[64px] bg-[#f6f5f8]">
       {/* Purple gradient glow anchored to the bottom edge */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[420px] bg-[url('/homepage/figma/soc-cta/gradient-bg.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat"
@@ -20,7 +20,7 @@ export function SocCta() {
         <div className="flex flex-col items-center">
           <Badge variant="light">Governed autonomy</Badge>
 
-          <h2 className="mt-6 max-w-[620px] text-center font-serif text-[clamp(40px,3.34vw,64px)] font-normal leading-none text-[#0a0a0a]">
+          <h2 className="mt-6 max-w-[620px] text-center font-serif text-[clamp(32px,8.5vw,40px)] font-normal leading-[1.08] text-[#0a0a0a] sm:text-[clamp(40px,3.34vw,64px)]">
             The SOC that drives itself.
           </h2>
 

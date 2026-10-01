@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 
 /**
@@ -22,12 +21,14 @@ export function PrimaryButton({
       className={`inline-flex shrink-0 items-center justify-center gap-[8px] rounded-[12px] bg-home-primary-300 py-[12px] pl-[24px] pr-[20px] text-[16px] font-medium leading-[24px] text-white no-underline shadow-[0px_2px_16px_0px_rgba(142,45,255,0.55)] transition-[background-color,box-shadow] duration-150 hover:bg-home-primary-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none ${className}`}
     >
       {children}
-      <Image
-        src="/homepage/figma/shared/arrow-up-right.svg"
-        alt=""
-        width={20}
-        height={20}
-        className="size-[20px] shrink-0"
+      <span
+        data-cta-icon
+        aria-hidden="true"
+        className="size-[20px] shrink-0 bg-current"
+        style={{
+          mask: "url('/homepage/figma/shared/arrow-up-right.svg') center / contain no-repeat",
+          WebkitMask: "url('/homepage/figma/shared/arrow-up-right.svg') center / contain no-repeat",
+        }}
       />
     </a>
   );

@@ -11,7 +11,7 @@ import { Container } from "@/components/homepage/ui/container";
  */
 export function Autonomy() {
   return (
-    <Container className="py-14 sm:py-16 lg:py-20">
+    <Container surface="light" className="py-14 sm:py-16 lg:py-20">
       <div className="grid items-center gap-12 lg:grid-cols-2 xl:gap-16 2xl:grid-cols-[min(45.3125vw,870px)_minmax(0,1fr)]">
         <Image
           src="/homepage/figma/autonomy/policy-card.png"
@@ -25,7 +25,7 @@ export function Autonomy() {
         <div className="max-w-[650px]">
           <Badge variant="light">Governed autonomy</Badge>
 
-          <h2 data-home-heading="autonomy" className="mt-6 font-serif text-[clamp(40px,2.92vw,56px)] font-normal leading-[1.05] text-[#0f0f0f]">
+          <h2 data-home-heading="autonomy" className="mt-6 font-serif text-[clamp(32px,8.5vw,40px)] font-normal leading-[1.05] text-[#0f0f0f] sm:text-[clamp(40px,2.92vw,56px)]">
             Autonomy stops where you say it stops.
           </h2>
 

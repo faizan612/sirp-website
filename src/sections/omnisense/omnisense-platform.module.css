@@ -42,7 +42,7 @@
   .section { border-radius: 28px; padding: 48px 0 64px; }
   .container { width: auto; margin: 0 20px; }
   .heading { margin-bottom: 32px; }
-  .heading h2 { font-size: 44px; margin-top: 24px; }
+  .heading h2 { font-size: clamp(32px, 8.5vw, 44px); margin-top: 24px; }
   .layout { display: block; }
   .navigation { position: relative; top: auto; display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 32px; }
   .navigation a, .navigation a:first-child { padding: 10px 0; gap: 8px; font-size: 13px; }

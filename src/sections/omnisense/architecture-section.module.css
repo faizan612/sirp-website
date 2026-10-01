@@ -44,7 +44,7 @@
 }
 .card:last-child .copy p { width: 87.562189cqw; }
 /* Reflow on smaller screens; preserve readable card copy. */
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
   .section { padding: 80px 0; }
   .container { height: auto; width: calc(100% - 48px); margin: auto; }
   .badge { position: static; width: 114px; height: 36px; margin: auto; border-width: 1px; border-radius: 50px; font-size: 14px; }

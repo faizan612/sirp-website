@@ -52,6 +52,9 @@
   height: auto;
 }
 
+.diagram:focus-visible { outline: 2px solid #b98aff; outline-offset: 4px; }
+.diagramHint { display: none; }
+
 .note {
   margin: 24px auto 0;
   color: #e6e6e6;
@@ -71,10 +74,14 @@
   .note { font-size: 16px; line-height: 25px; }
   .desktopBreak { display: none; }
   .diagram {
-    width: calc(100% + 16px);
-    margin: 40px -8px 0;
+    width: 100%;
+    margin: 40px auto 0;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #54415d #151515;
   }
-  .diagramImage { width: 100%; max-width: 100%; }
+  .diagramImage { width: 960px; max-width: none; }
+  .diagramHint { display: block; margin: 12px 0 0; color: #a7a7a7; font-size: 12px; line-height: 20px; }
   .note { max-width: 340px; }
 }
 

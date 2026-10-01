@@ -9,14 +9,14 @@ export function Hero() {
   return (
     <section className="relative w-full bg-home-ink-900">
       <Container className="pb-20 pt-12 sm:pb-24 lg:pb-[152px] lg:pt-10">
-        <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(360px,598px)] xl:gap-16">
+        <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,min(38vw,598px))] xl:gap-16">
           {/* Text column */}
           <div className="max-w-[800px]">
             <span className="box-border inline-flex h-[36px] items-center rounded-[50px] border border-home-hairline-strong bg-home-ink-850 px-[16px] text-[14px] leading-[24px] text-white">
               Autonomous SOC Platform
             </span>
 
-            <h1 data-home-heading="hero" className="mt-6 font-serif text-[clamp(44px,3.34vw,64px)] font-normal leading-[1.18] text-[#f7f7f7]">
+            <h1 data-home-heading="hero" className="mt-6 font-serif text-[clamp(34px,9.5vw,44px)] font-normal leading-[1.18] text-[#f7f7f7] sm:text-[clamp(44px,3.34vw,64px)]">
               Your SOC doesn&apos;t need another verdict.
               <br />
               It needs the case closed.

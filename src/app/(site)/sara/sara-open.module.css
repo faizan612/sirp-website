@@ -236,10 +236,10 @@
     top: auto;
     left: auto;
     width: calc(100% - 24px);
-    height: auto;
-    min-height: 0;
+    height: clamp(480px, 72svh, 640px);
+    min-height: 480px;
     margin: 40px auto 0;
-    aspect-ratio: 1396 / 823;
+    aspect-ratio: auto;
     padding: 6px;
     border-radius: 18px;
     transform: none;
@@ -255,8 +255,8 @@
   }
 
   .iframe {
-    left: -56px;
-    width: calc(100% + 56px);
+    left: 0;
+    width: 100%;
   }
 
   .handoffOverlay {

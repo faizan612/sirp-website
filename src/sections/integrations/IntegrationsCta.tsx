@@ -7,7 +7,7 @@ export function IntegrationsCta() {
   const { cta } = INTEGRATIONS_PAGE_DATA
 
   return (
-    <section className={styles.ctaSection} aria-labelledby="integrations-cta-title">
+    <section data-cta-surface="light" className={styles.ctaSection} aria-labelledby="integrations-cta-title">
       <Image
         className={styles.ctaArtwork}
         src="/integrations/figma/cta-background.png"

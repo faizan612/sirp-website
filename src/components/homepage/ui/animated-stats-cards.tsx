@@ -6,8 +6,6 @@ import primaryCardBackground from "../assets/Rectangle 34626737.png";
 import progressFill from "../assets/Rectangle 34626739.png";
 import annotationLine from "../assets/Rectangle 34627169.png";
 import progressFrame from "../assets/Frame 2147224819.png";
-import reductionLabel from "../assets/Reduction in MTTD.png";
-import fasterMttrLabel from "../assets/Faster MTTR.png";
 import mttrTrack from "../assets/Ellipse 1946 (Stroke).png";
 import mttrFill from "../assets/MTTR arc.png";
 import mttrMarker from "../assets/MTTR marker.png";
@@ -223,13 +221,7 @@ export function AnimatedStatsCards() {
 
         <div className={styles.primaryContent}>
           <p className={styles.primaryValue}>{reduction}%</p>
-          <Image
-            src={reductionLabel}
-            alt="Reduction in MTTD"
-            width={711}
-            height={61}
-            className={styles.primaryLabelAsset}
-          />
+          <p className={styles.primaryLabelAsset}>Reduction in MTTD</p>
         </div>
 
         <div className={styles.progressTrack}>
@@ -286,13 +278,7 @@ export function AnimatedStatsCards() {
 
         <article className={styles.secondaryCard}>
           <p className={styles.secondaryValue}>{response}%</p>
-          <Image
-            src={fasterMttrLabel}
-            alt="Faster MTTR"
-            width={477}
-            height={60}
-            className={styles.mttrLabel}
-          />
+          <p className={styles.mttrLabel}>Faster MTTR</p>
           <MttrGauge
             isActive={isActive}
             isProgressActive={isMttrProgressActive}

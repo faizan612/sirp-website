@@ -13,11 +13,11 @@ export function Integrations() {
       <div className="flex flex-col items-center">
         <Badge variant="light">Integrations</Badge>
 
-        <h2 className="mt-6 max-w-[1040px] text-center font-serif text-[clamp(40px,3.34vw,64px)] font-normal leading-none text-[#0f0f0f] lg:w-[54.1667vw]">
+        <h2 className="mt-6 max-w-[1040px] text-center font-serif text-[clamp(32px,8.5vw,40px)] font-normal leading-[1.08] text-[#0f0f0f] sm:text-[clamp(40px,3.34vw,64px)] lg:w-[54.1667vw]">
           Every connection is something OmniSense can act on.
         </h2>
 
-        <p className="mt-6 max-w-[1100px] text-center text-[18px] leading-[26px] text-[#5f5f5f] lg:w-[57.2917vw]">
+        <p className="mt-6 max-w-[1100px] text-center text-[16px] leading-[26px] text-[#5f5f5f] sm:text-[18px] lg:w-[57.2917vw]">
           OmniSense connects to the SIEM, endpoint, identity, and ticketing tools
           your SOC already runs. Each connection becomes an action agents can
           take, governed by the same policy you set for everything else. When

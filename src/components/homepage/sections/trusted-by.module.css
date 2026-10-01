@@ -17,7 +17,7 @@
 }
 
 .logoStrip {
-  width: min(1680px, calc(100vw - 96px));
+  width: clamp(1000px, calc(100vw - 2 * var(--site-gutter)), 1680px);
   height: auto;
   flex: none;
   object-fit: contain;
@@ -31,6 +31,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; mask-image: none; }
+  .logoStrip[aria-hidden="true"]:nth-child(2) { display: none; }
   .track {
     animation: none;
   }

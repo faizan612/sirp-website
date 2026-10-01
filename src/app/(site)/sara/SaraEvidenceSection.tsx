@@ -13,18 +13,19 @@ export function SaraEvidenceSection() {
         </p>
       </div>
 
-      <div className={styles.diagram} role="img" aria-label="Sara draws on five evidence sources in priority order">
+      <div className={styles.diagram} role="region" tabIndex={0} aria-label="Sara's five evidence sources; scroll horizontally on smaller screens to explore">
         <Image
           className={styles.diagramImage}
           src="/images/sara/answer-engine-diagram.png"
-          alt=""
+          alt="Sara draws on SIRP security doctrine, your policies, tenant knowledge, your active case, then external intelligence. These sources converge into the Sara answer engine."
           width={3360}
           height={1480}
           sizes="(max-width: 1760px) calc(100vw - 64px), 1680px"
           unoptimized
-          aria-hidden="true"
         />
       </div>
+
+      <p className={styles.diagramHint}>Swipe to explore the diagram</p>
 
       <p className={styles.note}>When the evidence is not strong enough, Sara says so instead of filling the gap.</p>
     </section>

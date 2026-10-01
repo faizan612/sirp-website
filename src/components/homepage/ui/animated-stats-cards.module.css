@@ -44,16 +44,18 @@
 
 .secondaryLabel {
   margin: 1.45cqw 0 0;
-  font-size: 2.42cqw;
+  font-size: clamp(12px, 2.42cqw, 20px);
   line-height: 1.2;
 }
 
 .primaryLabelAsset {
   display: block;
-  width: 21.5cqw;
+  width: auto;
   height: auto;
   margin-top: 1.69cqw;
-  filter: brightness(0) invert(1);
+  font-size: clamp(12px, 2.42cqw, 20px);
+  line-height: 1.2;
+  color: #fff;
 }
 
 .progressTrack {
@@ -173,9 +175,12 @@
 
 .mttrLabel {
   display: block;
-  width: 14.4cqw;
+  width: auto;
   height: auto;
   margin-top: 1.45cqw;
+  font-size: clamp(12px, 2.42cqw, 20px);
+  line-height: 1.2;
+  color: #575757;
 }
 
 .mttrGauge {
@@ -362,7 +367,12 @@
 @media (max-width: 640px) {
   .statsCards {
     gap: 10px;
+    aspect-ratio: auto;
+    grid-template-rows: minmax(150px, auto) minmax(140px, auto);
   }
+
+  .primaryValue { font-size: max(42px, 9.18cqw); }
+  .secondaryValue { font-size: max(32px, 8.21cqw); }
 
   .secondaryCards {
     gap: 10px;

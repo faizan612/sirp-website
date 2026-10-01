@@ -129,7 +129,7 @@
   .card { width: 100%; height: auto; aspect-ratio: 686 / 488.75; }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .scrollSection { height: auto; padding: 88px 24px; overflow: hidden; background: #f1f1f1; border-radius: 36px; }
   .stickyStage { position: static; height: auto; overflow: visible; }
   .lightPanel { display: none; }
