@@ -17,7 +17,7 @@ export function OmnisenseParticleHero() {
         </p>
         <div className={styles.actions}>
           <PrimaryButton href="https://sara-open.sirp.io/">Try Sara, free</PrimaryButton>
-          <a className={styles.secondary} href="/#omnisense-motion">See the autonomous SOC in motion</a>
+          <a data-cta="secondary" className={styles.secondary} href="/#omnisense-motion">See the autonomous SOC in motion</a>
         </div>
       </div>
       <div className={styles.visual}>

@@ -23,10 +23,10 @@ export function IntegrationsCta() {
         </h2>
         <p className={styles.ctaBody}>{cta.body}</p>
         <div className={styles.ctaActions}>
-          <Link href={cta.primaryBtn.href} className={styles.ctaPrimary}>
+          <Link data-cta="primary" href={cta.primaryBtn.href} className={styles.ctaPrimary}>
             {cta.primaryBtn.label} <span aria-hidden="true">↗</span>
           </Link>
-          <Link href={cta.secondaryBtn.href} className={styles.ctaSecondary}>
+          <Link data-cta="secondary" href={cta.secondaryBtn.href} className={styles.ctaSecondary}>
             {cta.secondaryBtn.label}
           </Link>
         </div>

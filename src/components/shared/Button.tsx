@@ -64,7 +64,7 @@ export function Button(props: ButtonProps) {
     }
 
     return (
-      <Link href={props.href} target={props.target} rel={props.rel} className={classes}>
+      <Link data-cta={variant} href={props.href} target={props.target} rel={props.rel} className={classes}>
         <ButtonContent variant={variant}>{children}</ButtonContent>
       </Link>
     )
@@ -72,6 +72,7 @@ export function Button(props: ButtonProps) {
 
   return (
     <button
+      data-cta={variant}
       type={props.type ?? 'button'}
       className={classes}
       disabled={disabled}

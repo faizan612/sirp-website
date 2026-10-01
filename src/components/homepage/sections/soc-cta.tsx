@@ -31,6 +31,7 @@ export function SocCta() {
           <div className="mt-[32px] flex flex-wrap items-center justify-center gap-[16px]">
             <PrimaryButton href="/omnisense">Experience OmniSense&trade;</PrimaryButton>
             <a
+              data-cta="secondary"
               href="/contact"
               className="inline-flex items-center justify-center rounded-[12px] bg-black px-[24px] py-[12px] text-[16px] font-medium leading-[24px] text-white"
             >

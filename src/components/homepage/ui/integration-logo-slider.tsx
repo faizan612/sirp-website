@@ -26,6 +26,14 @@ const integrationColumns = [
   { src: elasticAws, alt: "Elastic and AWS" },
 ];
 
+const logoFiles: Record<string, string> = {
+  Cisco: 'Cisco Tetration Analytics', Gmail: 'Gmail', 'ANY.RUN': 'ANY.RUN',
+  AbuseIPDB: 'AbuseIPDB', Slack: 'Slack', VirusTotal: 'VirusTotal',
+  NetWitness: 'NetWitness', Censys: 'Censys', Imperva: 'Imperva',
+  'IBM X-Force': 'IBM', GreyNoise: 'GreyNoise', CrowdStrike: 'CrowdStrike Falcon Host',
+  'Microsoft Defender': 'Microsoft', Elastic: 'Elastic', Devo: 'Devo',
+};
+
 function LogoGroup({ duplicate = false }: { duplicate?: boolean }) {
   return (
     <div
@@ -33,19 +41,27 @@ function LogoGroup({ duplicate = false }: { duplicate?: boolean }) {
       aria-hidden={duplicate || undefined}
       role={duplicate ? undefined : "list"}
     >
-      {integrationColumns.map((column) => (
+      {integrationColumns.map((column, index) => (
         <div
-          className={styles.logoColumn}
+          className={`${styles.logoColumn} ${index % 2 === 0 ? styles.staggered : ''}`}
           role={duplicate ? undefined : "listitem"}
           key={`${duplicate ? "duplicate" : "original"}-${column.alt}`}
         >
-          <Image
-            src={column.src}
-            alt={duplicate ? "" : column.alt}
-            loading="eager"
-            draggable={false}
-            className={styles.logoAsset}
-          />
+          {column.alt.split(' and ').map((name, row) => (
+            <div className={styles.card} key={name}>
+              <div className={styles.logoWindow} aria-hidden="true">
+                {logoFiles[name] ? (
+                  <Image src={`/integrations/logos/${encodeURIComponent(logoFiles[name])}.svg`}
+                    alt="" width={72} height={54} unoptimized className={styles.vectorLogo}
+                    style={{ filter: ['GreyNoise', 'Devo'].includes(name) ? 'brightness(0.35)' : undefined }} />
+                ) : (
+                  <Image src={column.src} alt="" loading="eager" draggable={false}
+                    className={styles.logoAsset} style={{ top: row === 1 ? '-137cqw' : '-17px' }} />
+                )}
+              </div>
+              <span className={styles.label}>{name}</span>
+            </div>
+          ))}
         </div>
       ))}
     </div>

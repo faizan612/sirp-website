@@ -58,8 +58,12 @@ export function OmnisenseAgents({ data }: OmnisenseAgentsProps) {
           </div>
           <Image src="/images/omnisense/agents-core.svg" alt="" aria-hidden="true"
             width={572} height={572} unoptimized className={styles.core} />
-          <Image src="/images/omnisense/agents-glyphs.png" alt="" aria-hidden="true"
-            width={530} height={530} unoptimized loading="eager" className={styles.glyphs} />
+          <div className={styles.glyphs} aria-hidden="true">
+            <div className={styles.glyphRain}>
+              {[0, 1].map(tile => <Image key={tile} src="/images/omnisense/agents-glyphs.png" alt=""
+                width={530} height={530} unoptimized loading="eager" />)}
+            </div>
+          </div>
         </div>
 
         <Image src="/images/omnisense/agents-mesh.svg" alt="" aria-hidden="true"

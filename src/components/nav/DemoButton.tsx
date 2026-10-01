@@ -10,6 +10,7 @@ import { DEMO_HREF } from './nav-data'
 export function DemoButton({ className, onClick }: { className?: string; onClick?: () => void }) {
   return (
     <Link
+      data-cta="primary"
       href={DEMO_HREF}
       onClick={onClick}
       className={cn(

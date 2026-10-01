@@ -32,6 +32,7 @@ export function Hero() {
               <PrimaryButton href="https://sara-open.sirp.io/">Try Sara, free</PrimaryButton>
 
               <a
+                data-cta="secondary"
                 href="#omnisense-motion"
                 className="inline-flex items-center justify-center rounded-[16px] border border-home-hairline-strong bg-black px-[24px] py-[12px] text-[16px] font-medium leading-[24px] text-white"
               >

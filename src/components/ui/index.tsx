@@ -42,16 +42,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (href) {
       return external ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+        <a data-cta={variant} href={href} target="_blank" rel="noopener noreferrer" className={cls}>
           {children}
         </a>
       ) : (
-        <Link href={href} className={cls}>{children}</Link>
+        <Link data-cta={variant} href={href} className={cls}>{children}</Link>
       )
     }
 
     return (
-      <button ref={ref} className={cls} {...props}>
+      <button data-cta={variant} ref={ref} className={cls} {...props}>
         {children}
       </button>
     )

@@ -116,7 +116,7 @@
   height: auto;
   aspect-ratio: 1;
   transform-origin: center;
-  animation: agents-glyph-orbit 32s linear infinite;
+  overflow: hidden;
   /* Keep the supplied characters readable above the purple ring, below cards. */
   pointer-events: none;
 }
@@ -350,10 +350,17 @@
   .card p { margin-top: 7px; font-size: 13px; line-height: 1.4; }
 }
 
-@keyframes agents-glyph-orbit {
-  to { transform: rotate(360deg); }
+.glyphRain {
+  width: 100%;
+  animation: agents-glyph-rain 24s linear infinite;
+  will-change: transform;
+}
+.glyphRain img { display: block; width: 100%; height: auto; }
+@keyframes agents-glyph-rain {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glyphs { animation: none; }
+  .glyphRain { animation: none; will-change: auto; }
 }

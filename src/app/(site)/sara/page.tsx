@@ -51,11 +51,11 @@ export default function SaraPage() {
       </div>
 
       <div className={styles.actions}>
-        <a className={styles.primaryButton} href="https://sara-open.sirp.io/">
+        <a data-cta="primary" className={styles.primaryButton} href="https://sara-open.sirp.io/">
           See Sara work a case
           <ArrowUpRight />
         </a>
-        <Link className={styles.secondaryButton} href="/contact">
+        <Link data-cta="secondary" className={styles.secondaryButton} href="/contact">
           Get a demo
         </Link>
       </div>

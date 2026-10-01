@@ -17,6 +17,7 @@ export function PrimaryButton({
 }) {
   return (
     <a
+      data-cta="primary"
       href={href}
       className={`inline-flex shrink-0 items-center justify-center gap-[8px] rounded-[12px] bg-home-primary-300 py-[12px] pl-[24px] pr-[20px] text-[16px] font-medium leading-[24px] text-white no-underline shadow-[0px_2px_16px_0px_rgba(142,45,255,0.55)] transition-[background-color,box-shadow] duration-150 hover:bg-home-primary-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none ${className}`}
     >

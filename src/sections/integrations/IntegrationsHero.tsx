@@ -40,10 +40,10 @@ export function IntegrationsHero() {
         </h1>
         <p className={styles.heroCopy}>{subhead}</p>
         <div className={styles.actions}>
-          <Link href={primaryCta.href} className={styles.primaryButton}>
+          <Link data-cta="primary" href={primaryCta.href} className={styles.primaryButton}>
             {primaryCta.label} ↗
           </Link>
-          <a href={secondaryCta.href} className={styles.secondaryButton}>
+          <a data-cta="secondary" href={secondaryCta.href} className={styles.secondaryButton}>
             {secondaryCta.label}
           </a>
         </div>
