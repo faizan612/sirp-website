@@ -8,6 +8,7 @@ import { SaraWorkflowSection } from './SaraWorkflowSection'
 import { SaraShiftSection } from './SaraShiftSection'
 import { SaraGovernanceSection } from './SaraGovernanceSection'
 import { SaraOpenSection } from './SaraOpenSection'
+import { TextMotion } from '@/components/shared/motion/TextMotion'
 
 export const metadata: Metadata = {
   title: 'Sara — The Co-Analyst inside OmniSense',
@@ -26,10 +27,10 @@ function ArrowUpRight() {
 
 export default function SaraPage() {
   return (
-    <>
+    <TextMotion>
     <section className={styles.hero}>
       <div className={styles.content}>
-        <h1>Your Co-Analyst,<br />grounded in your SOC.</h1>
+        <h1 data-text-motion="hero">Your Co-Analyst,<br />grounded in your SOC.</h1>
         <p>
           Sara is the Co-Analyst inside OmniSense. Ask about an alert, an active case, your environment, or a threat.
           Sara brings together the security context that matters, explains what it found, and shows where the answer came from.
@@ -66,6 +67,6 @@ export default function SaraPage() {
     <SaraShiftSection />
     <SaraGovernanceSection />
     <SaraOpenSection />
-    </>
+    </TextMotion>
   )
 }

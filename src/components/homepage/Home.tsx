@@ -7,7 +7,7 @@ import { Motion } from "@/components/homepage/sections/motion";
 import { Integrations } from "@/components/homepage/sections/integrations";
 import { SocCta } from "@/components/homepage/sections/soc-cta";
 import { Footer } from "@/components/homepage/sections/footer";
-import { HomeHeadingMotion } from "@/components/homepage/ui/home-heading-motion";
+import { TextMotion as HomeHeadingMotion } from "@/components/shared/motion/TextMotion";
 
 export default function Home() {
   return (

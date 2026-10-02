@@ -6,7 +6,7 @@ export function SaraWorkflowSection() {
     <section className={styles.section} aria-labelledby="sara-workflow-title">
       <div className={styles.headingWrap}>
         <span className={styles.eyebrow}>See It Work</span>
-        <h2 id="sara-workflow-title">
+        <h2 data-text-motion="reveal" id="sara-workflow-title">
           From alert to decision,
           <br />
           without starting over.

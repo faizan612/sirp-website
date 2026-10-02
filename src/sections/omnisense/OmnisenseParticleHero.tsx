@@ -7,7 +7,7 @@ export function OmnisenseParticleHero() {
     <section className={styles.hero} aria-labelledby="omnisense-hero-title">
       <div className={styles.content}>
         <span className={styles.eyebrow}>OmniSense Platform</span>
-        <h1 id="omnisense-hero-title" className={styles.title}>
+        <h1 data-text-motion="hero" id="omnisense-hero-title" className={styles.title}>
           The engine that runs<br className={styles.desktopBreak} /> the autonomous SOC.
         </h1>
         <p className={styles.description}>

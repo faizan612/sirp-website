@@ -15,7 +15,7 @@ export function TheLoopSection() {
       <div className={styles.container}>
         <header className={styles.header}>
           <span className={styles.badge}>Architecture</span>
-          <h2 id="architecture-heading">Three parts. One loop.<br />Nothing skips the gate.</h2>
+          <h2 data-text-motion="scroll" id="architecture-heading">Three parts. One loop.<br />Nothing skips the gate.</h2>
           <p>{BODY}</p>
         </header>
         <div className={styles.cards}>

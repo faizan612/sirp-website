@@ -25,7 +25,7 @@ export function Autonomy() {
         <div className="max-w-[650px]">
           <Badge variant="light">Governed autonomy</Badge>
 
-          <h2 data-home-heading="autonomy" className="mt-6 font-serif text-[clamp(32px,8.5vw,40px)] font-normal leading-[1.05] text-[#0f0f0f] sm:text-[clamp(40px,2.92vw,56px)]">
+          <h2 data-text-motion="scroll" className="mt-6 font-serif text-[clamp(32px,8.5vw,40px)] font-normal leading-[1.05] text-[#0f0f0f] sm:text-[clamp(40px,2.92vw,56px)]">
             Autonomy stops where you say it stops.
           </h2>
 

@@ -7,6 +7,7 @@ import { OmnisenseSara } from '@/sections/omnisense/OmnisenseSara'
 import { Integrations } from '@/components/homepage/sections/integrations'
 import { SocCta } from '@/components/homepage/sections/soc-cta'
 import { OMNISENSE_PAGE_DATA } from '@/lib/constants'
+import { TextMotion } from '@/components/shared/motion/TextMotion'
 
 export const metadata: Metadata = {
   title: 'OmniSense™: Security Decision Intelligence',
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function OmnisensePage() {
   return (
-    <>
+    <TextMotion>
       <OmnisenseParticleHero />
       <OmnisensePlatform data={OMNISENSE_PAGE_DATA.platform} />
       <TheLoopSection />
@@ -34,6 +35,6 @@ export default function OmnisensePage() {
           <SocCta />
         </div>
       </div>
-    </>
+    </TextMotion>
   )
 }

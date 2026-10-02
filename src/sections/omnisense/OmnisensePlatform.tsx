@@ -69,7 +69,7 @@ export function OmnisensePlatform({ data }: { data: PlatformData }) {
       <div className={styles.container}>
         <header className={styles.heading}>
           <span className={styles.badge}>{data.badge}</span>
-          <h2 id="pillars-heading">Five pillars<br />One engine</h2>
+          <h2 data-text-motion="reveal" id="pillars-heading">Five pillars<br />One engine</h2>
         </header>
         <div className={styles.layout}>
           <nav className={styles.navigation} aria-label="The five pillars of OmniSense">

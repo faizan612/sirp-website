@@ -6,7 +6,7 @@ export function SaraEvidenceSection() {
     <section className={styles.section} aria-labelledby="sara-evidence-title">
       <div className={styles.headingWrap}>
         <span className={styles.eyebrow}>How Sara Answers</span>
-        <h2 id="sara-evidence-title">A Co-Analyst that shows its<br />work.</h2>
+        <h2 data-text-motion="scroll" id="sara-evidence-title">A Co-Analyst that shows its<br />work.</h2>
         <p>
           Sara does not treat every source as equal. It starts with the context closest to your security
           <br className={styles.desktopBreak} /> operation and reaches outward only when it needs to.

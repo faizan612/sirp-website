@@ -36,7 +36,7 @@ export function SaraContextSection() {
         <div className={styles.stageInner}>
           <div className={styles.copy}>
             <span className={styles.eyebrow}>One Co-Analyst. Four Modes</span>
-            <h2 id="sara-context-title">The right context for the question in front of you.</h2>
+            <h2 data-text-motion="reveal" id="sara-context-title">The right context for the question in front of you.</h2>
             <p>
               A general security question and a live investigation are not the same problem. Sara knows the difference.
               It shifts the context it uses based on what your analyst is trying to understand, investigate, or hunt.
